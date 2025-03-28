@@ -1,0 +1,19 @@
+# ${HOME}/ondemand/dev/my_app/form.yml
+---
+
+# the cluster(s) this app can submit jobs to.
+cluster: "owens"
+
+# 'form' is a list of form choices for this app. Here we're allowing users to set
+# the account and the number of cores they want to request for this job.
+form:
+  - account
+  - cores
+
+# By default, everything defined in 'form' above is a text_field. Let's leave account alone
+# We do however, want cores to be a number_field and with some min & max values.
+attributes:
+  cores:
+    widget: 'number_field'
+    min: 1
+    max: 40

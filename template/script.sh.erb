@@ -1,0 +1,39 @@
+#!/bin/bash -l
+
+echo SLURM_JOBID: $SLURM_JOBID
+
+ulimit -c 0
+echo node type: <%= context.node_type %>
+# Set working directory to home directory
+cd "${SCRATCH}"
+
+# Restore the module environment to avoid conflicts
+module restore
+
+#
+# Launch Fluxbox
+#
+
+# Create Fluxbox root or it will override the init rc file
+(
+  umask 077
+  mkdir -p "${HOME}/.fluxbox"
+)
+
+# Export the module function for the terminal
+[[ $(type -t module) == "function" ]] && export -f module
+
+# Start the Fluxbox window manager (it likes to crash on occassion, so we
+# restart it when it does)
+(
+  until fluxbox -display "${DISPLAY}.0" -rc "<%= session.staged_root.join("fluxbox.rc") %>"; do
+    echo "Fluxbox crashed with exit code $?. Respawning..." >&2
+    sleep 1
+  done
+) &
+
+#
+
+unset TMPDIR
+xterm -fa 'Monospace' -fs <%= context.font_size %> -e "echo 'Hello, world!'; bash"
+<% end %>

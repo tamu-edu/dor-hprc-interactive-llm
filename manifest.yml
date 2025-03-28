@@ -1,0 +1,10 @@
+---
+name: My Cool Biology App
+category: Interactive Apps
+subcategory: Biology
+role: batch_connect
+description: |
+  This is a multi-line description that will be shown throughout the
+  dashboard.
+# metadata:
+#   field_of_science: botany

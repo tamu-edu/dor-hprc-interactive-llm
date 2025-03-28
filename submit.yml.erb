@@ -1,0 +1,13 @@
+---
+batch_connect:
+  template: vnc
+
+script:
+  native:
+    - "--ntasks=1"
+    - "--cpus-per-task=<%= cpus_per_task %>"
+    - "--partition=cpu"
+    <%- unless email.blank? -%>
+    - "--mail-user=<%= email %>"
+    <%- end -%>
+    - "--mem=<%= total_memory %>G"
