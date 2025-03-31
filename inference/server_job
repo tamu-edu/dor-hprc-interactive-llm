@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=
+#SBATCH --time=02:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --nodes=1
+#SBATCH --mem=2G
+#SBATCH --output=out.%j
+#SBATCH --error=error.%j
+
+
+module purge
+module load WebProxy 
+
+
+# ADD YOUR COMMANDS BELOW
+cd /scratch/user/u.ks124812/dor-hprc-interactive-llm
+source modules.sh
+source venv/bin/activate
+cd inference
+python3 app.py
+
