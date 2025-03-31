@@ -1,9 +1,0 @@
----
-name: llm_inference
-category: Admin
-subcategory: GUI
-role: batch_connect
-description: |
-  This app will launch a deveopment environment on [FASTER] (https://hprc.tamu.edu/kb/User-Guides/FASTER) for making edits to the website.
-# metadata:
-#   field_of_science: botany
