@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Generative AI",
+  "description": "JupyterLab generative artificial intelligence integration.",
+  "jupyter.lab.setting-icon": "jupyter-ai::chat",
+  "jupyter.lab.setting-icon-label": "Jupyter AI Chat",
+  "jupyter.lab.menus": {
+    "main": [
+      {
+        "id": "jp-mainmenu-settings",
+        "items": [
+          {
+            "type": "separator",
+            "rank": 110
+          },
+          {
+            "command": "jupyter-ai:open-settings",
+            "rank": 110
+          },
+          {
+            "type": "separator",
+            "rank": 110
+          }
+        ]
+      }
+    ]
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
