@@ -1,7 +1,7 @@
 # User Documentation
 ## Installing on HPRC Launch
 ```
-git clone git@github.com:tamu-edu/dor-hprc-interactive-llm.git
+git clone --recursive git@github.com:tamu-edu/dor-hprc-interactive-llm.git
 cd dor-hprc-interactive-llm
 source modules.sh
 python3 -m venv venv
