@@ -9,3 +9,6 @@
 /ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/transformers/generation/utils.py:2208: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on cuda. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('cuda') before running `.generate()`.
   warnings.warn(
 10.72.10.1 - - [04/Apr/2025 15:28:53] "POST /infer HTTP/1.1" 200 -
+10.72.10.1 - - [04/Apr/2025 15:51:00] "POST /infer HTTP/1.1" 200 -
+10.72.10.1 - - [04/Apr/2025 15:52:44] "POST /infer HTTP/1.1" 200 -
+10.72.10.1 - - [04/Apr/2025 16:48:40] "POST /infer HTTP/1.1" 200 -
