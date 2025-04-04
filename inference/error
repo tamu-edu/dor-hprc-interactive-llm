@@ -1,12 +1,6 @@
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.90s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.88s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.85s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.29s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.50s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:03<00:11,  3.94s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:05<00:05,  2.75s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:07<00:02,  2.36s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  1.62s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:08<00:00,  2.06s/it]
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://127.0.0.1:5000
 [33mPress CTRL+C to quit[0m
-/ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:676: UserWarning: `num_beams` is set to 1. However, `early_stopping` is set to `True` -- this flag is only used in beam-based generation modes. You should set `num_beams>1` or unset `early_stopping`.
-  warnings.warn(
-/ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/transformers/generation/utils.py:2208: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on cuda. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('cuda') before running `.generate()`.
-  warnings.warn(
-10.72.10.1 - - [04/Apr/2025 11:52:06] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [04/Apr/2025 13:15:04] "POST /infer HTTP/1.1" 200 -
