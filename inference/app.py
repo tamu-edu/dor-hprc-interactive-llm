@@ -7,8 +7,9 @@ def infer():
     try:
         data = request.json
         prompt = data.get("input", "")
+        model = data.get("model", "")
         max_response_length = int(data.get("length", ""))
-        return jsonify({"response": perform_inference(prompt, max_response_length)})
+        return jsonify({"response": perform_inference(prompt, max_response_length, model)})
     except Exception as e:
         print("failed with exception: ", e)
         return jsonify({"status": 500})
