@@ -1,4 +1,4 @@
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.85s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.84s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.83s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.29s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.49s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:05,  1.90s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.88s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.85s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.29s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.50s/it]
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
@@ -8,15 +8,4 @@
   warnings.warn(
 /ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/transformers/generation/utils.py:2208: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on cuda. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('cuda') before running `.generate()`.
   warnings.warn(
-10.72.10.1 - - [02/Apr/2025 11:03:31] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:31:52] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:37:20] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:38:58] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:38:58] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:38:59] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:38:59] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:39:00] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:40:05] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:40:05] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:40:06] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [02/Apr/2025 11:45:40] "POST /infer HTTP/1.1" 200 -
+10.72.10.1 - - [04/Apr/2025 11:52:06] "POST /infer HTTP/1.1" 200 -
