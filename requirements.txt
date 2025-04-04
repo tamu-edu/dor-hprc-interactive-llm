@@ -4,3 +4,4 @@ accelerate
 torch 
 torchvision 
 torchaudio
+cookiecutter
