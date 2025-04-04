@@ -16,7 +16,7 @@ $SCRATCH/dor-hprc-interactive-llm/venv/bin/activate
 ```
 All other parameters are arbitrary.  
 Once in your jupyterlab session, click on the conversation icon on the left side of the screen:  
-![]()
+![](doc_assets/jupyterlab.png)
 Click "start here" if that appears. 
 Select one of the HPRC providers for the completion model parameter, and leave other parameters unchanged.  
 Click "save changes" and navigate back with the back arrow.  
