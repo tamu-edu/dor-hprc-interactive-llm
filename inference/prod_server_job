@@ -9,7 +9,7 @@
 #SBATCH --mem=370G
 #SBATCH --output=out
 #SBATCH --error=error
-
+#SBATCH --nodelist=lg09
 
 module purge
 module load WebProxy 

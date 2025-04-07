@@ -1,13 +1,14 @@
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.36it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.07it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.01it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.77it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.48it/s]
-[1;36m(VllmWorker rank=0 pid=2044265)[0;0m 
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:09<00:28,  9.54s/it]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:20<00:20, 10.46s/it]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:32<00:10, 10.96s/it]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:35<00:00,  7.74s/it]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:35<00:00,  8.75s/it]
+[1;36m(VllmWorker rank=0 pid=89028)[0;0m 
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
-slurmstepd: error: *** JOB 27224 ON lg01 CANCELLED AT 2025-04-07T15:24:55 ***
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.15s/it, est. speed input: 48.28 toks/s, output: 75.28 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.15s/it, est. speed input: 48.28 toks/s, output: 75.28 toks/s]
+10.72.10.1 - - [07/Apr/2025 15:34:50] "POST /infer HTTP/1.1" 200 -
