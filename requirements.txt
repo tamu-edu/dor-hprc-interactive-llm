@@ -6,3 +6,4 @@ torchvision
 torchaudio
 cookiecutter
 jupyter
+vllm
