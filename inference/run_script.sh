@@ -1,3 +1,5 @@
 #!/bin/bash
 export NUM_GPUS=8
-CCL_ZE_IPC_EXCHANGE=sockets torchrun --standalone --nnodes=1 --nproc-per-node $NUM_GPUS inference_script.py 
+export DEEPSPEED_LOG_LEVEL=debug
+deepspeed --num_gpus $NUM_GPUS inference_script.py --ds_inference
+
