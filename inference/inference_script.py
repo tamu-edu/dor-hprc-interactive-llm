@@ -1,6 +1,7 @@
 import os
 import time
 import torch
+import torch.distributed as dist
 import deepspeed
 from transformers import AutoConfig, AutoTokenizer, pipeline, AutoModelForCausalLM
 import sys
@@ -30,31 +31,47 @@ def perform_inference(prompt, max_length, model = None):
     output = pipe(prompt, max_new_tokens=max_length)
     return output
 
-if __name__ == "__main__":
+def broadcast_prompt(prompt):
     """
-    prompt = "What is tensor parallelism and why is it important in large language models?"
-    output = perform_inference(prompt, max_length=100)
-    print("Output:", output)
+    Broadcasts an object (here, a prompt string) from rank 0 to all ranks.
+    We use broadcast_object_list for simplicity.
     """
-    print(f"[rank {local_rank}] now waiting for input. Send prompt ending with <<<END>>>", flush=True)
+    # On rank 0 the prompt_list contains the real prompt;
+    # on other ranks, it’s an empty string placeholder.
+    prompt_list = [prompt] if local_rank == 0 else [""]
+    dist.broadcast_object_list(prompt_list, src=0)
+    return prompt_list[0]
 
-    buffer = []
-    for line in sys.stdin:
-        if "<<<END>>>" in line:
-            print("got to inner if")
-            line.replace("<<<END>>>", "")
-            buffer.append(line)
-            prompt = "\n".join(buffer).strip()
-            buffer = []
+if __name__ == "__main__":
+    
+    if local_rank == 0:
+        print(f"[rank {local_rank}] Waiting for multi-line input (end your prompt with <<<END>>>):", flush=True)
+        buffer = []
+        for line in sys.stdin:
+            if "<<<END>>>" in line:
+                clean_line = line.replace("<<<END>>>", "").strip()
+                buffer.append(clean_line)
+                prompt = "\n".join(buffer).strip()
+                buffer = []  
+                if prompt.lower() == "exit":
+                    prompt = "exit"
+                    broadcast_prompt(prompt)
+                    print(f"[rank {local_rank}] Exiting.", flush=True)
+                    break
+                prompt = broadcast_prompt(prompt)
+                try:
+                    response = perform_inference(prompt, max_length=100)
+                    print(response, flush=True)
+                except Exception as e:
+                    print(f"[rank {local_rank}] Inference failed: {e}", flush=True)
+            else:
+                buffer.append(line.rstrip("\n"))
+    else:
+        while True:
+            prompt = broadcast_prompt("")  
             if prompt.lower() == "exit":
-                print(f"[rank {local_rank}] Exiting child process.", flush=True)
                 break
             try:
-                print("attempting to generate response for prompt: ", prompt)
-                response = perform_inference(prompt, max_length=100)
-                print(response, flush=True)
+                _ = perform_inference(prompt, max_length=100)
             except Exception as e:
-                print(f"[rank {local_rank}] Inference failed: {e}", flush=True)
-        else:
-            buffer.append(line.rstrip('\n'))
-
+                print(f"[rank {local_rank}] Error during inference: {e}", flush=True)
