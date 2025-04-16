@@ -17,7 +17,7 @@ module load WebProxy
 
 # ADD YOUR COMMANDS BELOW
 ip addr | grep inet
-cd /scratch/group/hprc/dor-hprc-interactive-llm
+cd /sw/hprc/sw/dor-hprc-interactive-llm
 source modules.sh
 source venv/bin/activate
 cd inference
