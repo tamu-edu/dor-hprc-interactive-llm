@@ -1,5 +1,5 @@
 from vllm import LLM, SamplingParams
-LLAMA_8B_MODEL_PATH = "/ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/"
+LLAMA_8B_MODEL_PATH = "/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/"
 
 model_dict = {
         "llama_8B": LLM(model=LLAMA_8B_MODEL_PATH, tensor_parallel_size=2, max_model_len=2048, max_num_seqs=2)

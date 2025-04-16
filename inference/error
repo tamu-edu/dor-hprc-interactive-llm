@@ -1,21 +1,158 @@
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.82it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.17it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.05it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.65it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.47it/s]
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m 
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.56it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:01,  1.42it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:02<00:00,  1.34it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.92it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.70it/s]
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m 
+[1;36m(VllmWorker rank=0 pid=99721)[0;0m [rank0]:W0412 22:10:43.555000 99721 torch/_inductor/utils.py:1137] [0/0] Not enough SMs to use max_autotune_gemm mode
+[1;36m(VllmWorker rank=1 pid=99732)[0;0m [rank1]:W0412 22:10:43.555000 99732 torch/_inductor/utils.py:1137] [0/0] Not enough SMs to use max_autotune_gemm mode
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 7.35 toks/s, output: 78.44 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 7.35 toks/s, output: 78.44 toks/s]
-10.72.10.1 - - [07/Apr/2025 16:33:16] "POST /infer HTTP/1.1" 200 -
-10.72.10.1 - - [09/Apr/2025 10:38:19] "POST /infer HTTP/1.1" 200 -
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.29s/it, est. speed input: 3.88 toks/s, output: 77.64 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.29s/it, est. speed input: 3.88 toks/s, output: 77.64 toks/s]
-10.72.10.4 - - [09/Apr/2025 10:43:07] "POST /infer HTTP/1.1" 200 -
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.50s/it, est. speed input: 7.39 toks/s, output: 78.80 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.50s/it, est. speed input: 7.39 toks/s, output: 78.80 toks/s]
-10.72.10.1 - - [09/Apr/2025 10:51:09] "POST /infer HTTP/1.1" 200 -
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.49s/it, est. speed input: 7.55 toks/s, output: 78.85 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.49s/it, est. speed input: 7.55 toks/s, output: 78.85 toks/s]
-10.72.10.1 - - [09/Apr/2025 11:17:25] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.15s/it, est. speed input: 70.80 toks/s, output: 75.92 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.15s/it, est. speed input: 70.80 toks/s, output: 75.92 toks/s]
+10.72.10.1 - - [12/Apr/2025 22:12:47] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 41.24 toks/s, output: 78.20 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 41.24 toks/s, output: 78.20 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:47:38] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 47.66 toks/s, output: 77.47 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 47.66 toks/s, output: 77.47 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:48:11] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.59s/it, est. speed input: 48.72 toks/s, output: 77.72 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.59s/it, est. speed input: 48.72 toks/s, output: 77.72 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:48:41] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 0/2 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:   0%|          | 0/3 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A
+
+
+Processed prompts:   0%|          | 0/4 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A[A
+
+
+
+Processed prompts:   0%|          | 0/5 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A[A[A
+
+
+
+
+Processed prompts:   0%|          | 0/6 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A[A[A[A
+
+
+
+
+
+Processed prompts:   0%|          | 0/7 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A[A[A[A[AProcessed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.98s/it, est. speed input: 13.47 toks/s, output: 73.37 toks/s]
+Processed prompts:  50%|█████     | 1/2 [00:06<00:06,  6.99s/it, est. speed input: 31.74 toks/s, output: 73.21 toks/s][A
+
+
+Processed prompts:  25%|██▌       | 1/4 [00:12<00:36, 12.10s/it, est. speed input: 7.69 toks/s, output: 31.49 toks/s][A[A[A
+
+Processed prompts:  33%|███▎      | 1/3 [00:13<00:27, 13.88s/it, est. speed input: 7.35 toks/s, output: 36.88 toks/s][A[A
+
+
+
+Processed prompts:  20%|██        | 1/5 [00:19<01:16, 19.00s/it, est. speed input: 5.47 toks/s, output: 26.94 toks/s][A[A[A[A
+
+
+Processed prompts:  50%|█████     | 2/4 [00:20<00:20, 10.10s/it, est. speed input: 9.33 toks/s, output: 42.94 toks/s][A[A[A
+
+
+
+
+Processed prompts:  17%|█▋        | 1/6 [00:25<02:08, 25.65s/it, est. speed input: 8.46 toks/s, output: 19.96 toks/s][A[A[A[A[AProcessed prompts:   0%|          | 0/7 [00:25<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:07] "POST /infer HTTP/1.1" 200 -
+Processed prompts:  17%|█▋        | 1/6 [00:25<02:08, 25.65s/it, est. speed input: 8.46 toks/s, output: 19.96 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:07] "POST /infer HTTP/1.1" 200 -
+
+
+
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A[A[A[A
+Processed prompts: 100%|██████████| 2/2 [00:32<00:00, 17.80s/it, est. speed input: 23.61 toks/s, output: 31.65 toks/s][AProcessed prompts: 100%|██████████| 2/2 [00:32<00:00, 16.18s/it, est. speed input: 23.61 toks/s, output: 31.65 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:13] "POST /infer HTTP/1.1" 200 -
+Processed prompts:  33%|███▎      | 1/3 [00:32<01:04, 32.36s/it, est. speed input: 7.35 toks/s, output: 36.88 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:13] "POST /infer HTTP/1.1" 200 -
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts:   0%|          | 0/2 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[A
+
+Processed prompts:  50%|█████     | 1/2 [00:06<00:06,  6.50s/it, est. speed input: 83.63 toks/s, output: 78.71 toks/s][A[A
+Processed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.39s/it, est. speed input: 42.63 toks/s, output: 69.29 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:07<00:00,  7.39s/it, est. speed input: 42.63 toks/s, output: 69.29 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:21] "POST /infer HTTP/1.1" 200 -
+Processed prompts:  50%|█████     | 2/4 [00:39<00:39, 19.88s/it, est. speed input: 9.33 toks/s, output: 42.94 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:21] "POST /infer HTTP/1.1" 200 -
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+
+Processed prompts: 100%|██████████| 2/2 [00:13<00:00,  6.80s/it, est. speed input: 70.68 toks/s, output: 75.79 toks/s][A[AProcessed prompts: 100%|██████████| 2/2 [00:13<00:00,  6.76s/it, est. speed input: 70.68 toks/s, output: 75.79 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:27] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:20<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+10.72.10.1 - - [14/Apr/2025 09:49:27] "POST /infer HTTP/1.1" 200 -
+
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A[AProcessed prompts: 2it [30:26, 1073.41s/it, est. speed input: 0.08 toks/s, output: 0.56 toks/s]                       Processed prompts: 2it [30:26, 913.45s/it, est. speed input: 0.08 toks/s, output: 0.56 toks/s] 
+10.72.10.1 - - [14/Apr/2025 10:19:08] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [29:47<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:19:08] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+
+Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.16s/it, est. speed input: 19.00 toks/s, output: 11.43 toks/s][A[AProcessed prompts:  20%|██        | 1/5 [30:32<2:02:10, 1832.54s/it, est. speed input: 5.47 toks/s, output: 26.94 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:19:14] "POST /infer HTTP/1.1" 200 -
+Processed prompts: 100%|██████████| 1/1 [00:12<00:00, 12.16s/it, est. speed input: 19.00 toks/s, output: 11.43 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:19:14] "POST /infer HTTP/1.1" 200 -
+
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 23.26 toks/s, output: 78.36 toks/s][AProcessed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 23.26 toks/s, output: 78.36 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:30:47] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [11:35<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:30:47] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.54s/it, est. speed input: 7.34 toks/s, output: 78.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.54s/it, est. speed input: 7.34 toks/s, output: 78.27 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:34:39] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 7.49 toks/s, output: 78.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 7.49 toks/s, output: 78.22 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:39:29] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.30s/it, est. speed input: 14.83 toks/s, output: 79.02 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.30s/it, est. speed input: 14.83 toks/s, output: 79.02 toks/s]
+10.72.10.1 - - [14/Apr/2025 10:49:14] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 4.01 toks/s, output: 80.14 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.25s/it, est. speed input: 4.01 toks/s, output: 80.14 toks/s]
+10.72.10.5 - - [14/Apr/2025 11:04:05] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 3.92 toks/s, output: 78.35 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.28s/it, est. speed input: 3.92 toks/s, output: 78.35 toks/s]
+10.72.10.5 - - [14/Apr/2025 11:08:13] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.27s/it, est. speed input: 3.93 toks/s, output: 78.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.27s/it, est. speed input: 3.93 toks/s, output: 78.69 toks/s]
+10.72.10.13 - - [14/Apr/2025 11:09:34] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 38.31 toks/s, output: 78.46 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 38.31 toks/s, output: 78.46 toks/s]
+10.72.10.1 - - [14/Apr/2025 13:30:53] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 109.73 toks/s, output: 76.95 toks/s]Processed prompts: 100%|██████████| 1/1 [00:02<00:00,  2.11s/it, est. speed input: 109.73 toks/s, output: 76.95 toks/s]
+10.72.10.1 - - [14/Apr/2025 13:33:44] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 7.63 toks/s, output: 78.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.55s/it, est. speed input: 7.63 toks/s, output: 78.16 toks/s]
+10.72.10.1 - - [14/Apr/2025 13:34:37] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.90s/it, est. speed input: 89.66 toks/s, output: 78.39 toks/s]Processed prompts: 100%|██████████| 1/1 [00:03<00:00,  3.90s/it, est. speed input: 89.66 toks/s, output: 78.39 toks/s]
+10.72.10.1 - - [16/Apr/2025 09:08:10] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.54s/it, est. speed input: 9.32 toks/s, output: 78.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.54s/it, est. speed input: 9.32 toks/s, output: 78.27 toks/s]
+10.72.10.1 - - [16/Apr/2025 09:10:14] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 39.07 toks/s, output: 78.45 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 39.07 toks/s, output: 78.45 toks/s]
+10.72.10.1 - - [16/Apr/2025 09:29:47] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.68s/it, est. speed input: 133.53 toks/s, output: 76.65 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.68s/it, est. speed input: 133.53 toks/s, output: 76.65 toks/s]
+10.72.10.1 - - [16/Apr/2025 09:31:10] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.65s/it, est. speed input: 231.89 toks/s, output: 75.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.65s/it, est. speed input: 231.89 toks/s, output: 75.89 toks/s]
+10.72.10.1 - - [16/Apr/2025 09:31:52] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.49s/it, est. speed input: 8.78 toks/s, output: 78.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.49s/it, est. speed input: 8.78 toks/s, output: 78.84 toks/s]
+10.72.10.1 - - [16/Apr/2025 10:49:57] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.74s/it, est. speed input: 167.34 toks/s, output: 76.22 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.75s/it, est. speed input: 167.34 toks/s, output: 76.22 toks/s]
+10.72.10.1 - - [16/Apr/2025 10:52:47] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.64s/it, est. speed input: 87.16 toks/s, output: 77.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.64s/it, est. speed input: 87.16 toks/s, output: 77.08 toks/s]
+10.72.10.1 - - [16/Apr/2025 10:56:23] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.60s/it, est. speed input: 84.84 toks/s, output: 77.57 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.60s/it, est. speed input: 84.84 toks/s, output: 77.57 toks/s]
+10.72.10.1 - - [16/Apr/2025 10:56:29] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.57s/it, est. speed input: 39.10 toks/s, output: 77.89 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.57s/it, est. speed input: 39.10 toks/s, output: 77.89 toks/s]
+10.72.10.1 - - [16/Apr/2025 10:59:16] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.69s/it, est. speed input: 165.10 toks/s, output: 76.50 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.69s/it, est. speed input: 165.10 toks/s, output: 76.50 toks/s]
+10.72.10.1 - - [16/Apr/2025 11:00:01] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 84.59 toks/s, output: 77.48 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 84.59 toks/s, output: 77.48 toks/s]
+10.72.10.1 - - [16/Apr/2025 11:00:08] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 43.52 toks/s, output: 77.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.53s/it, est. speed input: 43.52 toks/s, output: 77.69 toks/s]
+10.72.10.1 - - [16/Apr/2025 11:03:40] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.76s/it, est. speed input: 163.58 toks/s, output: 75.80 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.76s/it, est. speed input: 163.58 toks/s, output: 75.80 toks/s]
+10.72.10.1 - - [16/Apr/2025 11:04:53] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 84.70 toks/s, output: 77.44 toks/s]Processed prompts: 100%|██████████| 1/1 [00:06<00:00,  6.61s/it, est. speed input: 84.70 toks/s, output: 77.44 toks/s]
+10.72.10.1 - - [16/Apr/2025 11:05:00] "POST /infer HTTP/1.1" 200 -
