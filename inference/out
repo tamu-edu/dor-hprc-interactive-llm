@@ -1,52 +1,403 @@
     inet 127.0.0.1/8 scope host lo
-    inet 10.74.0.19/24 brd 10.74.0.255 scope global eno8303
-    inet 10.72.10.19/22 brd 10.72.11.255 scope global ib0
-INFO 04-21 15:26:11 [__init__.py:239] Automatically detected platform cuda.
-INFO 04-21 15:26:18 [config.py:689] This model supports multiple tasks: {'embed', 'score', 'generate', 'classify', 'reward'}. Defaulting to 'generate'.
-INFO 04-21 15:26:18 [config.py:1713] Defaulting to use mp for distributed inference
-INFO 04-21 15:26:18 [config.py:1901] Chunked prefill is enabled with max_num_batched_tokens=8192.
-INFO 04-21 15:26:19 [core.py:61] Initializing a V1 LLM engine (v0.8.4) with config: model='/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/', speculative_config=None, tokenizer='/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
-INFO 04-21 15:26:19 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 10485760, 10, 'psm_bcb7fca4'), local_subscribe_addr='ipc:///tmp/job.28417/7d3d51c6-279f-4059-a1df-62ffc95966b9', remote_subscribe_addr=None, remote_addr_ipv6=False)
-WARNING 04-21 15:26:20 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x14b1b35c7850>
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:20 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_459008a3'), local_subscribe_addr='ipc:///tmp/job.28417/0370b2a8-6998-433d-8a75-984811dbbd3e', remote_subscribe_addr=None, remote_addr_ipv6=False)
-WARNING 04-21 15:26:21 [utils.py:2444] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x14b1b35c7910>
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_bc2763e0'), local_subscribe_addr='ipc:///tmp/job.28417/3a4c6e55-8eb8-410b-90e4-4cfced9a6c26', remote_subscribe_addr=None, remote_addr_ipv6=False)
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [utils.py:993] Found nccl from library libnccl.so.2
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [utils.py:993] Found nccl from library libnccl.so.2
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [pynccl.py:69] vLLM is using nccl==2.21.5
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [pynccl.py:69] vLLM is using nccl==2.21.5
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/u.ks124812/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/u.ks124812/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_0ea09861'), local_subscribe_addr='ipc:///tmp/job.28417/da1b9f0c-12ce-45e6-8877-5eda48f6435d', remote_subscribe_addr=None, remote_addr_ipv6=False)
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [parallel_state.py:959] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 0
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [parallel_state.py:959] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 1
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [cuda.py:221] Using Flash Attention backend on V1 engine.
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [cuda.py:221] Using Flash Attention backend on V1 engine.
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:21 [gpu_model_runner.py:1276] Starting to load model /ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/...
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:21 [gpu_model_runner.py:1276] Starting to load model /ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/...
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m WARNING 04-21 15:26:21 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m WARNING 04-21 15:26:21 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:23 [loader.py:458] Loading weights took 1.39 seconds
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:23 [gpu_model_runner.py:1291] Model loading took 7.5123 GiB and 1.546352 seconds
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:23 [loader.py:458] Loading weights took 1.69 seconds
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:24 [gpu_model_runner.py:1291] Model loading took 7.5123 GiB and 1.844261 seconds
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:29 [backends.py:416] Using cache directory: /home/u.ks124812/.cache/vllm/torch_compile_cache/94ae70c59d/rank_0_0 for vLLM's torch.compile
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:29 [backends.py:426] Dynamo bytecode transform time: 5.26 s
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:29 [backends.py:416] Using cache directory: /home/u.ks124812/.cache/vllm/torch_compile_cache/94ae70c59d/rank_1_0 for vLLM's torch.compile
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:29 [backends.py:426] Dynamo bytecode transform time: 5.27 s
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:29 [backends.py:115] Directly load the compiled graph for shape None from the cache
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:30 [backends.py:115] Directly load the compiled graph for shape None from the cache
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:34 [monitor.py:33] torch.compile takes 5.26 s in total
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:34 [monitor.py:33] torch.compile takes 5.27 s in total
-INFO 04-21 15:26:36 [kv_cache_utils.py:634] GPU KV cache size: 205,360 tokens
-INFO 04-21 15:26:36 [kv_cache_utils.py:637] Maximum concurrency for 2,048 tokens per request: 100.27x
-INFO 04-21 15:26:36 [kv_cache_utils.py:634] GPU KV cache size: 205,360 tokens
-INFO 04-21 15:26:36 [kv_cache_utils.py:637] Maximum concurrency for 2,048 tokens per request: 100.27x
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:56 [custom_all_reduce.py:195] Registering 4355 cuda graph addresses
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:57 [custom_all_reduce.py:195] Registering 4355 cuda graph addresses
-[1;36m(VllmWorker rank=1 pid=118246)[0;0m INFO 04-21 15:26:57 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 1.82 GiB
-[1;36m(VllmWorker rank=0 pid=118235)[0;0m INFO 04-21 15:26:57 [gpu_model_runner.py:1626] Graph capturing finished in 21 secs, took 1.82 GiB
-INFO 04-21 15:26:57 [core.py:163] init engine (profile, create kv cache, warmup model) took 33.13 seconds
-INFO 04-21 15:26:57 [core_client.py:435] Core engine process 0 ready.
- * Serving Flask app 'app'
- * Debug mode: off
+    inet6 ::1/128 scope host 
+    inet 10.71.1.124/22 brd 10.71.3.255 scope global eno8303
+    inet6 fe80::ee2a:72ff:fe51:30f2/64 scope link 
+    inet 10.71.8.124/22 brd 10.71.11.255 scope global ib0
+    inet6 fe80::1270:fd03:ce:f0ee/64 scope link 
+ 
+:: WARNING: setvars.sh has already been run. Skipping re-execution.
+   To force a re-execution of setvars.sh, use the '--force' option.
+   Using '--force' can result in excessive use of your environment variables.
+  
+usage: source setvars.sh [--force] [--config=file] [--help] [...]
+  --force        Force setvars.sh to re-run, doing so may overload environment.
+  --config=file  Customize env vars using a setvars.sh configuration file.
+  --help         Display this help message and exit.
+  ...            Additional args are passed to individual env/vars.sh scripts
+                 and should follow this script's arguments.
+  
+  Some POSIX shells do not accept command-line options. In that case, you can pass
+  command-line options via the SETVARS_ARGS environment variable. For example:
+  
+  $ SETVARS_ARGS="--config=config.txt" ; export SETVARS_ARGS
+  $ . path/to/setvars.sh
+  
+  The SETVARS_ARGS environment variable is cleared on exiting setvars.sh.
+  
+The oneAPI toolkits no longer support 32-bit libraries, starting with the 2025.0 toolkit release. See the oneAPI release notes for more details.
+  
+[W421 16:46:42.795221433 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+[W421 16:46:47.211212428 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+INFO 04-21 16:46:47 [__init__.py:239] Automatically detected platform xpu.
+INFO 04-21 16:46:57 [config.py:713] This model supports multiple tasks: {'reward', 'embed', 'generate', 'classify', 'score'}. Defaulting to 'generate'.
+WARNING 04-21 16:46:57 [_logger.py:68] device type=xpu is not supported by the V1 Engine. Falling back to V0. 
+INFO 04-21 16:46:57 [config.py:1760] Defaulting to use mp for distributed inference
+INFO 04-21 16:46:57 [config.py:1794] Disabled the custom all-reduce kernel because it is not supported on current platform.
+ERROR 04-21 16:46:57 [xpu.py:104] Both start methods (spawn and fork) have issue on XPU if you use mp backend, setting it to ray instead.
+INFO 04-21 16:46:57 [llm_engine.py:243] Initializing a V0 LLM engine (v0.8.5.dev116+g63e26fff7) with config: model='/scratch/group/hprc/llama-models/llama-3_3-70B', speculative_config=None, tokenizer='/scratch/group/hprc/llama-models/llama-3_3-70B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=256, download_dir=None, load_format=auto, tensor_parallel_size=8, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=xpu, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=/scratch/group/hprc/llama-models/llama-3_3-70B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[],"max_capture_size":0}, use_cached_outputs=False, 
+WARNING 04-21 16:46:57 [_logger.py:68] No existing RAY instance detected. A new instance will be launched with current node resources.
+2025-04-21 16:47:00,216	INFO worker.py:1852 -- Started a local Ray instance.
+INFO 04-21 16:47:03 [ray_utils.py:335] No current placement group found. Creating a new placement group.
+INFO 04-21 16:47:03 [ray_distributed_executor.py:176] use_ray_spmd_worker: False
+[36m(pid=3489930)[0m [W421 16:47:05.729634833 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+[36m(pid=3489930)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key
+[36m(pid=3489930)[0m   operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+[36m(pid=3489930)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+[36m(pid=3489930)[0m   dispatch key: XPU
+[36m(pid=3489930)[0m   previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+[36m(pid=3489930)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+[36m(pid=3489931)[0m INFO 04-21 16:47:09 [__init__.py:239] Automatically detected platform xpu.
+INFO 04-21 16:47:11 [ray_distributed_executor.py:352] non_carry_over_env_vars from config: set()
+INFO 04-21 16:47:11 [ray_distributed_executor.py:354] Copying the following environment variables to workers: ['LD_LIBRARY_PATH', 'VLLM_USE_V1']
+INFO 04-21 16:47:11 [ray_distributed_executor.py:357] If certain env vars should NOT be copied to workers, add them to /home/u.ks124812/.config/vllm/ray_non_carry_over_env_vars.json file
+INFO 04-21 16:47:11 [xpu.py:35] Cannot use None backend on XPU.
+INFO 04-21 16:47:11 [xpu.py:36] Using IPEX attention backend.
+WARNING 04-21 16:47:11 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 04-21 16:47:11 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:47:11 [xpu.py:35] Cannot use None backend on XPU.
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:47:11 [xpu.py:36] Using IPEX attention backend.
+[36m(RayWorkerWrapper pid=3489931)[0m WARNING 04-21 16:47:11 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:47:11 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.
+INFO 04-21 16:47:11 [shm_broadcast.py:266] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3, 4, 5, 6, 7], buffer_handle=(7, 4194304, 6, 'psm_9dcb3975'), local_subscribe_addr='ipc:///tmp/job.1045246/4e0a582f-cc2d-42c6-80e7-a81e62a60fcb', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-21 16:47:11 [parallel_state.py:946] rank 0 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 0
+2025:04:21-16:47:11:(3489042) |CCL_WARN| value of CCL_ATL_TRANSPORT changed to be ofi (default:mpi)
+2025:04:21-16:47:11:(3489042) |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2025:04:21-16:47:11:(3489042) |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 8 (default:-1)
+2025:04:21-16:47:11:(3489042) |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:47:13:(3489042) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:47:11 [parallel_state.py:946] rank 1 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 1
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:47:13:(3489931) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+Loading safetensors checkpoint shards:   0% Completed | 0/30 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   3% Completed | 1/30 [00:05<02:29,  5.15s/it]
+Loading safetensors checkpoint shards:   7% Completed | 2/30 [00:07<01:30,  3.22s/it]
+Loading safetensors checkpoint shards:  10% Completed | 3/30 [00:09<01:12,  2.68s/it]
+Loading safetensors checkpoint shards:  13% Completed | 4/30 [00:11<01:07,  2.61s/it]
+Loading safetensors checkpoint shards:  17% Completed | 5/30 [00:14<01:04,  2.57s/it]
+Loading safetensors checkpoint shards:  20% Completed | 6/30 [00:15<00:54,  2.29s/it]
+Loading safetensors checkpoint shards:  23% Completed | 7/30 [00:17<00:47,  2.08s/it]
+Loading safetensors checkpoint shards:  27% Completed | 8/30 [00:19<00:42,  1.93s/it]
+Loading safetensors checkpoint shards:  30% Completed | 9/30 [00:20<00:38,  1.81s/it]
+Loading safetensors checkpoint shards:  33% Completed | 10/30 [00:22<00:38,  1.91s/it]
+Loading safetensors checkpoint shards:  37% Completed | 11/30 [00:26<00:44,  2.36s/it]
+Loading safetensors checkpoint shards:  40% Completed | 12/30 [00:28<00:40,  2.24s/it]
+Loading safetensors checkpoint shards:  43% Completed | 13/30 [00:30<00:39,  2.31s/it]
+Loading safetensors checkpoint shards:  47% Completed | 14/30 [00:32<00:35,  2.21s/it]
+Loading safetensors checkpoint shards:  50% Completed | 15/30 [00:34<00:31,  2.08s/it]
+Loading safetensors checkpoint shards:  53% Completed | 16/30 [00:35<00:26,  1.86s/it]
+Loading safetensors checkpoint shards:  57% Completed | 17/30 [00:37<00:23,  1.82s/it]
+Loading safetensors checkpoint shards:  60% Completed | 18/30 [00:40<00:26,  2.21s/it]
+Loading safetensors checkpoint shards:  63% Completed | 19/30 [00:42<00:22,  2.01s/it]
+Loading safetensors checkpoint shards:  67% Completed | 20/30 [00:44<00:20,  2.03s/it]
+Loading safetensors checkpoint shards:  70% Completed | 21/30 [00:45<00:17,  1.95s/it]
+Loading safetensors checkpoint shards:  73% Completed | 22/30 [00:47<00:15,  1.90s/it]
+Loading safetensors checkpoint shards:  77% Completed | 23/30 [00:49<00:12,  1.82s/it]
+Loading safetensors checkpoint shards:  80% Completed | 24/30 [00:51<00:11,  1.98s/it]
+Loading safetensors checkpoint shards:  83% Completed | 25/30 [00:53<00:10,  2.03s/it]
+Loading safetensors checkpoint shards:  87% Completed | 26/30 [00:55<00:07,  1.97s/it]
+Loading safetensors checkpoint shards:  90% Completed | 27/30 [00:57<00:05,  1.91s/it]
+Loading safetensors checkpoint shards:  93% Completed | 28/30 [01:00<00:04,  2.22s/it]
+Loading safetensors checkpoint shards:  97% Completed | 29/30 [01:02<00:02,  2.16s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [01:04<00:00,  2.00s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [01:04<00:00,  2.13s/it]
+
+INFO 04-21 16:48:18 [loader.py:458] Loading weights took 64.04 seconds
+WARNING 04-21 16:48:18 [_logger.py:68] Pin memory is not supported on XPU.
+INFO 04-21 16:48:18 [xpu_model_runner.py:425] Loading model weights took 16.4607 GiB
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-16:49:20:(3489042) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:48:53 [loader.py:458] Loading weights took 99.26 seconds
+[36m(RayWorkerWrapper pid=3489931)[0m WARNING 04-21 16:48:53 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(pid=3489937)[0m INFO 04-21 16:47:09 [__init__.py:239] Automatically detected platform xpu.[32m [repeated 7x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:47:11 [xpu.py:35] Cannot use None backend on XPU.[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:47:11 [xpu.py:36] Using IPEX attention backend.[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m WARNING 04-21 16:47:11 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:47:11 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:47:11 [parallel_state.py:946] rank 7 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 7[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m 2025:04:21-16:47:13:(3489937) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 336x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m 2025:04:21-16:47:13:(3489937) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=3489931)[0m INFO 04-21 16:48:53 [xpu_model_runner.py:425] Loading model weights took 16.4607 GiB
+[36m(RayWorkerWrapper pid=3489935)[0m INFO 04-21 16:49:18 [loader.py:458] Loading weights took 124.12 seconds
+[36m(RayWorkerWrapper pid=3489935)[0m WARNING 04-21 16:49:18 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(RayWorkerWrapper pid=3489935)[0m INFO 04-21 16:49:18 [xpu_model_runner.py:425] Loading model weights took 16.4607 GiB
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:49:19 [loader.py:458] Loading weights took 125.20 seconds
+[36m(RayWorkerWrapper pid=3489937)[0m WARNING 04-21 16:49:19 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=3489931)[0m 2025:04:21-16:49:20:(3489931) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+INFO 04-21 16:49:28 [executor_base.py:112] # xpu blocks: 43809, # CPU blocks: 6553
+INFO 04-21 16:49:28 [executor_base.py:117] Maximum concurrency for 256 tokens per request: 2738.06x
+INFO 04-21 16:49:29 [llm_engine.py:449] init engine (profile, create kv cache, warmup model) took 9.87 seconds
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:34<00:00, 34.81s/it, est. speed input: 0.14 toks/s, output: 7.24 toks/s]Processed prompts: 100%|██████████| 1/1 [00:34<00:00, 34.81s/it, est. speed input: 0.14 toks/s, output: 7.24 toks/s]
+ 6
+Following up on the recent announcement of Perl 6 being released, I thought it would be interesting to try it out.
+First off, I had to get Perl 6 installed. On Ubuntu 16.04, I was able to install rakudo , which is the reference implementation of Perl 6, using the following command:
+sudo apt-get install rakudo
+After installing rakudo, I verified that it was working correctly by running the following command:
+rakudo -v
+This printed out the version of rakudo that I just installed.
+Next, I created a file called hello.p6 with the following contents:
+say 'Hello, World!';
+This is the Perl 6 equivalent of the traditional "Hello, World!" program.
+To run the program, I used the following command:
+rakudo hello.p6
+This printed out "Hello, World!" to the console, verifying that everything is working correctly.
+Overall, my experience with Perl 6 so far has been very positive. The installation process was straightforward, and the language itself seems to be well-designed and easy to use. I'm looking forward to learning more about it in the coming days and weeks.
+Update: I've since found out that there's a more "official"
+
+[36m(pid=3489937)[0m [W421 16:47:05.730432178 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m   operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m   dispatch key: XPU[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m   previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477[32m [repeated 7x across cluster][0m
+[36m(pid=3489937)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())[32m [repeated 7x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m INFO 04-21 16:49:19 [xpu_model_runner.py:425] Loading model weights took 16.4607 GiB[32m [repeated 5x across cluster][0m
+[36m(RayWorkerWrapper pid=3489936)[0m INFO 04-21 16:49:19 [loader.py:458] Loading weights took 125.27 seconds[32m [repeated 4x across cluster][0m
+[36m(RayWorkerWrapper pid=3489936)[0m WARNING 04-21 16:49:19 [_logger.py:68] Pin memory is not supported on XPU.[32m [repeated 4x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m 2025:04:21-16:49:20:(3489937) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 336x across cluster][0m
+[36m(RayWorkerWrapper pid=3489937)[0m 2025:04:21-16:49:20:(3489937) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 6x across cluster][0m
+Exception ignored in: <function LLMEngine.__del__ at 0x154096710d30>
+Traceback (most recent call last):
+  File "/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev116+g63e26fff7.xpu-py3.10.egg/vllm/engine/llm_engine.py", line 538, in __del__
+  File "/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev116+g63e26fff7.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 127, in shutdown
+AttributeError: 'NoneType' object has no attribute 'info'
+Exception ignored in: <function RayDistributedExecutor.__del__ at 0x154096738f70>
+Traceback (most recent call last):
+  File "/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev116+g63e26fff7.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 635, in __del__
+  File "/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev116+g63e26fff7.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 127, in shutdown
+AttributeError: 'NoneType' object has no attribute 'info'
+/sw/eb/sw/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

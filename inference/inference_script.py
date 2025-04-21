@@ -3,13 +3,13 @@ import os
 cluster = os.environ["CLUSTER"]
 MODEL_PATH = None
 if(cluster == "ACES"):
-    MODEL_PATH = "/scratch/user/u.ks124812/llm_models/llama-8B"
+    MODEL_PATH = "/scratch/group/hprc/llama-models/llama-3_3-70B"
 elif(cluster == "LAUNCH"):
     MODEL_PATH = "/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/"
 model_dict = {}
 if(cluster == "ACES"):
     model_dict = {
-            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=4, max_model_len=2048, max_num_seqs=2, device="xpu")
+            "llama_8B": LLM(cpu_offload_gb=40, model=MODEL_PATH,dtype="bfloat16",enforce_eager=True, tensor_parallel_size=8,max_model_len=256, max_num_seqs=1, device="xpu")
     }
 elif(cluster == "LAUNCH"):
     model_dict = {
