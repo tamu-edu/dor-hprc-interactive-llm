@@ -1,0 +1,35 @@
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host 
+    inet 10.71.1.125/22 brd 10.71.3.255 scope global eno8303
+    inet6 fe80::ee2a:72ff:fe51:34f4/64 scope link 
+    inet 10.119.119.2/24 scope global eno8403
+    inet6 fe80::ee2a:72ff:fe51:34f5/64 scope link 
+    inet 10.71.8.125/22 brd 10.71.11.255 scope global ib0
+    inet6 fe80::1270:fd03:ce:f216/64 scope link 
+ 
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.4.20(1)-release
+   args: Using "$@" for setvars.sh arguments: 
+:: advisor -- latest
+:: ccl -- latest
+:: compiler -- latest
+:: dal -- latest
+:: debugger -- latest
+:: dev-utilities -- latest
+:: dnnl -- latest
+:: dpcpp-ct -- latest
+:: dpl -- latest
+:: ipp -- latest
+:: ippcp -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: pti -- latest
+:: tbb -- latest
+:: umf -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+Traceback (most recent call last):
+  File "/scratch/user/u.ks124812/dor-hprc-interactive-llm/inference/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'

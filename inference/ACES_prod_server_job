@@ -1,24 +1,20 @@
 #!/bin/bash
-#SBATCH --job-name=inference
-#SBATCH --time=7-00:00:00
+#SBATCH --job-name=test_inference
+#SBATCH --time=10:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=192
-#SBATCH --gres=gpu:a30:2
+#SBATCH --cpus-per-task=96
+#SBATCH --gres=gpu:pvc:4
 #SBATCH --nodes=1
 #SBATCH --partition=staff
-#SBATCH --mem=370G
+#SBATCH --mem=488G
 #SBATCH --output=out
-#SBATCH --error=error
-
+#SBATCH --exclusive
 module purge
 module load WebProxy 
-
-
 # ADD YOUR COMMANDS BELOW
 ip addr | grep inet
-cd /scratch/group/hprc/dor-hprc-interactive-llm
+cd /scratch/user/u.ks124812/dor-hprc-interactive-llm/
 source modules.sh
 source venv/bin/activate
 cd inference
-python3 app.py
-
+bash run_script.sh

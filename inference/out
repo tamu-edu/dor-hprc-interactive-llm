@@ -1,52 +1,152 @@
     inet 127.0.0.1/8 scope host lo
-    inet 10.74.0.19/24 brd 10.74.0.255 scope global eno8303
-    inet 10.72.10.19/22 brd 10.72.11.255 scope global ib0
-INFO 04-07 16:12:02 [__init__.py:239] Automatically detected platform cuda.
-INFO 04-07 16:12:08 [config.py:600] This model supports multiple tasks: {'score', 'classify', 'generate', 'reward', 'embed'}. Defaulting to 'generate'.
-INFO 04-07 16:12:08 [config.py:1600] Defaulting to use mp for distributed inference
-INFO 04-07 16:12:08 [config.py:1780] Chunked prefill is enabled with max_num_batched_tokens=8192.
-INFO 04-07 16:12:10 [core.py:61] Initializing a V1 LLM engine (v0.8.3) with config: model='/ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/', speculative_config=None, tokenizer='/ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=/ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
-INFO 04-07 16:12:10 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 10485760, 10, 'psm_37a3b383'), local_subscribe_addr='ipc:///tmp/job.27232/e594e4c2-bd3f-43ac-825c-9101b02a3cc5', remote_subscribe_addr=None, remote_addr_ipv6=False)
-WARNING 04-07 16:12:10 [utils.py:2413] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x151d313798d0>
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:10 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_ef495728'), local_subscribe_addr='ipc:///tmp/job.27232/96d53d40-9d93-4029-b06f-5c31fe9eca73', remote_subscribe_addr=None, remote_addr_ipv6=False)
-WARNING 04-07 16:12:10 [utils.py:2413] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x151d3218ba90>
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:10 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_45dcfbde'), local_subscribe_addr='ipc:///tmp/job.27232/c12eb8d3-371e-4b06-8de1-54ea669f59fa', remote_subscribe_addr=None, remote_addr_ipv6=False)
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [utils.py:990] Found nccl from library libnccl.so.2
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [utils.py:990] Found nccl from library libnccl.so.2
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [pynccl.py:69] vLLM is using nccl==2.21.5
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [pynccl.py:69] vLLM is using nccl==2.21.5
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/u.ks124812/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/u.ks124812/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [shm_broadcast.py:264] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_5c621e41'), local_subscribe_addr='ipc:///tmp/job.27232/42a01294-9a09-4ad2-8908-9c81ce7650f5', remote_subscribe_addr=None, remote_addr_ipv6=False)
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [parallel_state.py:957] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 1
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [parallel_state.py:957] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 0
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [cuda.py:221] Using Flash Attention backend on V1 engine.
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [cuda.py:221] Using Flash Attention backend on V1 engine.
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:11 [gpu_model_runner.py:1258] Starting to load model /ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/...
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:11 [gpu_model_runner.py:1258] Starting to load model /ztank/scratch/group/hprc/llm_interactive/llm_base_models/llama-3.1-8B-Instruct/...
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m WARNING 04-07 16:12:11 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m WARNING 04-07 16:12:11 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:13 [loader.py:447] Loading weights took 1.66 seconds
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:13 [gpu_model_runner.py:1273] Model loading took 7.5123 GiB and 1.818659 seconds
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:13 [loader.py:447] Loading weights took 2.06 seconds
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:14 [gpu_model_runner.py:1273] Model loading took 7.5123 GiB and 2.231927 seconds
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:19 [backends.py:416] Using cache directory: /home/u.ks124812/.cache/vllm/torch_compile_cache/1e522efac2/rank_0_0 for vLLM's torch.compile
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:19 [backends.py:426] Dynamo bytecode transform time: 5.30 s
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:19 [backends.py:416] Using cache directory: /home/u.ks124812/.cache/vllm/torch_compile_cache/1e522efac2/rank_1_0 for vLLM's torch.compile
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:19 [backends.py:426] Dynamo bytecode transform time: 5.38 s
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:20 [backends.py:115] Directly load the compiled graph for shape None from the cache
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:20 [backends.py:115] Directly load the compiled graph for shape None from the cache
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:25 [monitor.py:33] torch.compile takes 5.30 s in total
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:25 [monitor.py:33] torch.compile takes 5.38 s in total
-INFO 04-07 16:12:26 [kv_cache_utils.py:578] GPU KV cache size: 205,360 tokens
-INFO 04-07 16:12:26 [kv_cache_utils.py:581] Maximum concurrency for 2,048 tokens per request: 100.27x
-INFO 04-07 16:12:26 [kv_cache_utils.py:578] GPU KV cache size: 205,360 tokens
-INFO 04-07 16:12:26 [kv_cache_utils.py:581] Maximum concurrency for 2,048 tokens per request: 100.27x
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:46 [custom_all_reduce.py:195] Registering 4355 cuda graph addresses
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:57 [custom_all_reduce.py:195] Registering 4355 cuda graph addresses
-[1;36m(VllmWorker rank=1 pid=89733)[0;0m INFO 04-07 16:12:57 [gpu_model_runner.py:1608] Graph capturing finished in 31 secs, took 1.82 GiB
-[1;36m(VllmWorker rank=0 pid=89722)[0;0m INFO 04-07 16:12:57 [gpu_model_runner.py:1608] Graph capturing finished in 31 secs, took 1.82 GiB
-INFO 04-07 16:12:57 [core.py:162] init engine (profile, create kv cache, warmup model) took 43.14 seconds
+    inet6 ::1/128 scope host 
+    inet 10.71.1.125/22 brd 10.71.3.255 scope global eno8303
+    inet6 fe80::ee2a:72ff:fe51:34f4/64 scope link 
+    inet 10.119.119.2/24 scope global eno8403
+    inet6 fe80::ee2a:72ff:fe51:34f5/64 scope link 
+    inet 10.71.8.125/22 brd 10.71.11.255 scope global ib0
+    inet6 fe80::1270:fd03:ce:f216/64 scope link 
+ 
+:: WARNING: setvars.sh has already been run. Skipping re-execution.
+   To force a re-execution of setvars.sh, use the '--force' option.
+   Using '--force' can result in excessive use of your environment variables.
+  
+usage: source setvars.sh [--force] [--config=file] [--help] [...]
+  --force        Force setvars.sh to re-run, doing so may overload environment.
+  --config=file  Customize env vars using a setvars.sh configuration file.
+  --help         Display this help message and exit.
+  ...            Additional args are passed to individual env/vars.sh scripts
+                 and should follow this script's arguments.
+  
+  Some POSIX shells do not accept command-line options. In that case, you can pass
+  command-line options via the SETVARS_ARGS environment variable. For example:
+  
+  $ SETVARS_ARGS="--config=config.txt" ; export SETVARS_ARGS
+  $ . path/to/setvars.sh
+  
+  The SETVARS_ARGS environment variable is cleared on exiting setvars.sh.
+  
+The oneAPI toolkits no longer support 32-bit libraries, starting with the 2025.0 toolkit release. See the oneAPI release notes for more details.
+  
+[W421 13:37:50.445338576 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+INFO 04-21 13:37:54 [__init__.py:239] Automatically detected platform xpu.
+[W421 13:37:54.053334382 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+INFO 04-21 13:38:03 [config.py:713] This model supports multiple tasks: {'score', 'embed', 'generate', 'reward', 'classify'}. Defaulting to 'generate'.
+WARNING 04-21 13:38:03 [_logger.py:68] device type=xpu is not supported by the V1 Engine. Falling back to V0. 
+INFO 04-21 13:38:03 [config.py:1760] Defaulting to use mp for distributed inference
+INFO 04-21 13:38:03 [config.py:1794] Disabled the custom all-reduce kernel because it is not supported on current platform.
+WARNING 04-21 13:38:03 [_logger.py:68] CUDA graph is not supported on XPU, fallback to the eager mode.
+ERROR 04-21 13:38:03 [xpu.py:104] Both start methods (spawn and fork) have issue on XPU if you use mp backend, setting it to ray instead.
+INFO 04-21 13:38:03 [llm_engine.py:243] Initializing a V0 LLM engine (v0.8.5.dev116+g63e26fff7) with config: model='/scratch/user/u.ks124812/llm_models/llama-8B', speculative_config=None, tokenizer='/scratch/user/u.ks124812/llm_models/llama-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=xpu, decoding_config=DecodingConfig(guided_decoding_backend='auto', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=/scratch/user/u.ks124812/llm_models/llama-8B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[2,1],"max_capture_size":2}, use_cached_outputs=False, 
+WARNING 04-21 13:38:04 [_logger.py:68] No existing RAY instance detected. A new instance will be launched with current node resources.
+2025-04-21 13:38:06,444	INFO worker.py:1852 -- Started a local Ray instance.
+INFO 04-21 13:38:09 [ray_utils.py:335] No current placement group found. Creating a new placement group.
+INFO 04-21 13:38:09 [ray_distributed_executor.py:176] use_ray_spmd_worker: False
+[36m(pid=418559)[0m [W421 13:38:11.157141806 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+[36m(pid=418559)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key
+[36m(pid=418559)[0m   operator: aten::_validate_compressed_sparse_indices(bool is_crow, Tensor compressed_idx, Tensor plain_idx, int cdim, int dim, int nnz) -> ()
+[36m(pid=418559)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+[36m(pid=418559)[0m   dispatch key: XPU
+[36m(pid=418559)[0m   previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCPU.cpp:30477
+[36m(pid=418559)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/aten/generated/ATen/RegisterXPU.cpp:468 (function operator())
+[36m(pid=418559)[0m INFO 04-21 13:38:14 [__init__.py:239] Automatically detected platform xpu.
+INFO 04-21 13:38:16 [ray_distributed_executor.py:352] non_carry_over_env_vars from config: set()
+INFO 04-21 13:38:16 [ray_distributed_executor.py:354] Copying the following environment variables to workers: ['LD_LIBRARY_PATH', 'VLLM_USE_V1']
+INFO 04-21 13:38:16 [ray_distributed_executor.py:357] If certain env vars should NOT be copied to workers, add them to /home/u.ks124812/.config/vllm/ray_non_carry_over_env_vars.json file
+INFO 04-21 13:38:16 [xpu.py:35] Cannot use None backend on XPU.
+INFO 04-21 13:38:16 [xpu.py:36] Using IPEX attention backend.
+WARNING 04-21 13:38:16 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 04-21 13:38:16 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.
+INFO 04-21 13:38:16 [shm_broadcast.py:266] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_e73947fd'), local_subscribe_addr='ipc:///tmp/job.1042618/ccde09a0-14df-4d1a-aa0f-f8a0aa5909ef', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 04-21 13:38:16 [parallel_state.py:946] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0
+2025:04:21-13:38:16:(417970) |CCL_WARN| value of CCL_ATL_TRANSPORT changed to be ofi (default:mpi)
+2025:04:21-13:38:16:(417970) |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2025:04:21-13:38:16:(417970) |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 4 (default:-1)
+2025:04:21-13:38:16:(417970) |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:18:(417970) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=418561)[0m INFO 04-21 13:38:16 [xpu.py:35] Cannot use None backend on XPU.
+[36m(RayWorkerWrapper pid=418561)[0m INFO 04-21 13:38:16 [xpu.py:36] Using IPEX attention backend.
+[36m(RayWorkerWrapper pid=418561)[0m WARNING 04-21 13:38:16 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+[36m(RayWorkerWrapper pid=418561)[0m INFO 04-21 13:38:16 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.
+[36m(RayWorkerWrapper pid=418561)[0m INFO 04-21 13:38:16 [parallel_state.py:946] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418561)[0m 2025:04:21-13:38:18:(418561) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=418563)[0m 2025:04:21-13:38:18:(418563) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:02,  1.28it/s]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:01<00:00,  2.16it/s]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.74it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.48it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.56it/s]
+
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:21 [loader.py:458] Loading weights took 2.17 seconds
+[36m(RayWorkerWrapper pid=418563)[0m WARNING 04-21 13:38:21 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(pid=418563)[0m INFO 04-21 13:38:15 [__init__.py:239] Automatically detected platform xpu.[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:21 [xpu_model_runner.py:425] Loading model weights took 3.7418 GiB
+INFO 04-21 13:38:21 [loader.py:458] Loading weights took 2.65 seconds
+WARNING 04-21 13:38:21 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:16 [xpu.py:35] Cannot use None backend on XPU.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:16 [xpu.py:36] Using IPEX attention backend.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=418563)[0m WARNING 04-21 13:38:16 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:16 [importing.py:16] Triton not installed or not compatible; certain GPU-related functions will not be available.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=418563)[0m INFO 04-21 13:38:16 [parallel_state.py:946] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3[32m [repeated 2x across cluster][0m
+INFO 04-21 13:38:22 [xpu_model_runner.py:425] Loading model weights took 3.7418 GiB
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:04:21-13:38:22:(417970) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+INFO 04-21 13:38:24 [executor_base.py:112] # xpu blocks: 80810, # CPU blocks: 8192
+INFO 04-21 13:38:24 [executor_base.py:117] Maximum concurrency for 2048 tokens per request: 631.33x
+INFO 04-21 13:38:24 [llm_engine.py:449] init engine (profile, create kv cache, warmup model) took 2.65 seconds
  * Serving Flask app 'app'
  * Debug mode: off
-failed with exception:  ''
+2025-04-21 13:38:25,774 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://127.0.0.1:5000
+2025-04-21 13:38:25,775 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.70s/it, est. speed input: 1.06 toks/s, output: 21.27 toks/s]Processed prompts: 100%|██████████| 1/1 [00:04<00:00,  4.70s/it, est. speed input: 1.06 toks/s, output: 21.27 toks/s]
+2025-04-21 13:41:09,819 - werkzeug - INFO - 10.71.8.13 - - [21/Apr/2025 13:41:09] "POST /infer HTTP/1.1" 200 -
