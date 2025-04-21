@@ -13,7 +13,8 @@ if(cluster == "ACES"):
     }
 elif(cluster == "LAUNCH"):
     model_dict = {
-            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=2,max_model_len=2048, max_num_seqs=2, device="gpu")
+            "llama_8B": LLM(model=MODEL_PATH,
+                tensor_parallel_size=2,max_model_len=2048, max_num_seqs=2, device="cuda")
     }
 
 def perform_inference(my_input, max_length, model_name):

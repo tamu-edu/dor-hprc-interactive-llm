@@ -1,16 +1,15 @@
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.75it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.26it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.17it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  3.04it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.72it/s]
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m 
-[1;36m(VllmWorker rank=1 pid=106948)[0;0m [rank1]:W0416 13:27:29.607000 106948 torch/_inductor/utils.py:1137] [0/0] Not enough SMs to use max_autotune_gemm mode
-[1;36m(VllmWorker rank=0 pid=106937)[0;0m [rank0]:W0416 13:27:29.607000 106937 torch/_inductor/utils.py:1137] [0/0] Not enough SMs to use max_autotune_gemm mode
+modules.sh: line 4: /sw/hprc/sw/oneAPI/2025.0/setvars.sh: No such file or directory
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  2.66it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.44it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.35it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  3.14it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.84it/s]
+[1;36m(VllmWorker rank=0 pid=117402)[0;0m 
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://127.0.0.1:5000
 Press CTRL+C to quit
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 3.84 toks/s, output: 76.76 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 3.84 toks/s, output: 76.76 toks/s]
-10.72.10.6 - - [16/Apr/2025 13:28:59] "POST /infer HTTP/1.1" 200 -
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 3.85 toks/s, output: 77.08 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.30s/it, est. speed input: 3.85 toks/s, output: 77.08 toks/s]
+10.72.10.4 - - [21/Apr/2025 15:05:37] "POST /infer HTTP/1.1" 200 -
