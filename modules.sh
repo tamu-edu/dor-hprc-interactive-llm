@@ -1,4 +1,4 @@
 #!/bin/bash
-ml GCC/13.2.0
-ml Python/3.11.5
+ml GCC/12.2.0
+ml Python/3.10.8
 source /sw/hprc/sw/oneAPI/2025.0/setvars.sh
