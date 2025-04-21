@@ -9,14 +9,15 @@
 #SBATCH --mem=370G
 #SBATCH --output=out
 #SBATCH --error=error
+#SBATCH --nodelist=lg09
 
 module purge
 module load WebProxy 
 
-
+export CLUSTER=LAUNCH
 # ADD YOUR COMMANDS BELOW
 ip addr | grep inet
-cd /scratch/group/hprc/dor-hprc-interactive-llm
+cd /sw/hprc/sw/dor-hprc-interactive-llm
 source modules.sh
 source venv/bin/activate
 cd inference

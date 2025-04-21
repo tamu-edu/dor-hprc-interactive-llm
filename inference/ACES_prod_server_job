@@ -13,6 +13,7 @@ module purge
 module load WebProxy 
 # ADD YOUR COMMANDS BELOW
 ip addr | grep inet
+export CLUSTER=ACES
 cd /scratch/user/u.ks124812/dor-hprc-interactive-llm/
 source modules.sh
 source venv/bin/activate
