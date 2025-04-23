@@ -9,12 +9,11 @@ elif(cluster == "LAUNCH"):
 model_dict = {}
 if(cluster == "ACES"):
     model_dict = {
-            "llama_8B": LLM(cpu_offload_gb=40, model=MODEL_PATH,dtype="bfloat16",enforce_eager=True, tensor_parallel_size=8,max_model_len=256, max_num_seqs=1, device="xpu")
+            "llama_8B": LLM(cpu_offload_gb=20, model=MODEL_PATH,dtype="bfloat16",enforce_eager=True, tensor_parallel_size=8,max_model_len=256, max_num_seqs=1, device="xpu")
     }
 elif(cluster == "LAUNCH"):
     model_dict = {
-            "llama_8B": LLM(model=MODEL_PATH,
-                tensor_parallel_size=2,max_model_len=2048, max_num_seqs=2, device="cuda")
+            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=2,max_model_len=2048, max_num_seqs=2, device="cuda")
     }
 
 def perform_inference(my_input, max_length, model_name):
