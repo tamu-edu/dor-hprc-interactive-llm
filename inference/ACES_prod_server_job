@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=test_inference
-#SBATCH --time=10:00:00
+#SBATCH --job-name=inference
+#SBATCH --time=2-00:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=96
-#SBATCH --gres=gpu:pvc:8
+#SBATCH --gres=gpu:pvc:4
 #SBATCH --nodes=1
 #SBATCH --partition=staff
 #SBATCH --mem=488G
@@ -12,8 +12,9 @@
 module purge
 module load WebProxy 
 # ADD YOUR COMMANDS BELOW
-ip addr | grep inet
+#ip addr | grep inet
 export CLUSTER=ACES
+export NUM_GPUS=4
 cd /scratch/user/u.ks124812/dor-hprc-interactive-llm/
 source modules.sh
 source venv/bin/activate
