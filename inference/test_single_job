@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=inference
 #SBATCH --time=28-00:00:00
-#SBATCH --ntasks=3
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=12
 #SBATCH --gres=gpu:pvc:4
 #SBATCH --nodes=1
@@ -11,7 +11,6 @@
 #SBATCH --partition=staff
 #SBATCH --output=out
 #SBATCH --nodelist=ac028
-#SBATCH --exclusive
 module purge
 module load WebProxy 
 cd /sw/hprc/sw/dor-hprc-interactive-llm/
@@ -24,21 +23,13 @@ export CLUSTER=ACES
 export NUM_GPUS=4
 export NUM_NODES=1
 export P_PER_NODE=1
-export CCL_WORKER_COUNT=$SLURM_CPUS_PER_TASK
-export CCL_WORKER_AFFINITY=auto
-export CCL_ENABLE_AFFINITY=0
-python3 master_app.py $((NUM_NODES*P_PER_NODE)) &
 for(( i=0;i<NUM_NODES;i++ )); do
   for(( j=0; j<P_PER_NODE; j++ )); do
     port=$((1000+j))
     log_prefix="logs/node_${i}_proc_${j}_port_${port}"
     stdout_file="${log_prefix}.out"
     stderr_file="${log_prefix}.err"
-    srun --ntasks=1 \
-         --gres=gpu:pvc:$NUM_GPUS \
-         --cpus-per-task=12 \
-         python3 app.py "${port}" \
-         > "${stdout_file}" 2>&1 &
+    python3 app.py "${port}" > "${stdout_file}" 2>&1 &
   done
 done
 wait

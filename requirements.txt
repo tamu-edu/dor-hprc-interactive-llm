@@ -1,9 +1,5 @@
-Flask
-transformers
-accelerate
-torch 
-torchvision 
-torchaudio
 cookiecutter
+Flask
 jupyter
-vllm
+portalocker
+requests

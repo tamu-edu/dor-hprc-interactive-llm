@@ -1,5 +1,12 @@
-from vllm import LLM, SamplingParams
 import os
+import random
+import subprocess
+VLLM_HOST_IP = subprocess.check_output("hostname -I | awk '{print $1}'", shell=True).decode().strip()
+os.environ["VLLM_HOST_IP"] = VLLM_HOST_IP
+port = random.randint(1024, 65535)
+print("vllm using port ", port, flush=True)
+os.environ["VLLM_PORT"] = str(port)
+from vllm import LLM, SamplingParams
 import re
 cluster = os.environ["CLUSTER"]
 MODEL_PATH = None

@@ -1,34 +1,79 @@
-from flask import Flask, request, jsonify
-import subprocess
-from inference_script import perform_inference
-import socket
 import pickle
+import subprocess
+import sys
+from flask import Flask, request, jsonify
+import portalocker
+from inference_script import perform_inference
+
 app = Flask(__name__)
+
+port = sys.argv[1]
+result = subprocess.run(["hostname", "-I"], capture_output=True, text=True, check=True)
+addresses = result.stdout.strip().split()
+ip = addresses[1]
+instance_id = ip.replace('.', '_') + "_" + port
+LOCK_FILE = f"/tmp/infer_lock_{instance_id}.lock"
+IP_LIST_FILE = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+
+def append_ip_to_file(file_path, ip_address):
+    try:
+        open(file_path, 'rb').close()
+    except FileNotFoundError:
+        with open(file_path, 'wb') as f:
+            pickle.dump([], f)
+    with open(file_path, "r+b") as f:
+        portalocker.lock(f, portalocker.LOCK_EX)
+        ip_list = pickle.load(f)
+        if ip_address not in ip_list:
+            ip_list.append(ip_address)
+            f.seek(0)
+            pickle.dump(ip_list, f)
+            f.truncate()
+        portalocker.unlock(f)
+
+append_ip_to_file(IP_LIST_FILE, f"{ip}:{port}")
+
+def try_acquire_lock():
+    f = open(LOCK_FILE, "w")
+    try:
+        portalocker.lock(f, portalocker.LOCK_EX | portalocker.LOCK_NB)
+        return f
+    except portalocker.exceptions.LockException:
+        f.close()
+        return None
+
+def release_lock(f):
+    portalocker.unlock(f)
+    f.close()
+
 @app.route('/infer', methods=['POST'])
 def infer():
     try:
         data = request.json
         prompt = data.get("input", "")
-        print("prompt: ", prompt)
         model = data.get("model", "")
-        max_response_length = int(data.get("length", ""))
-        if(max_response_length > 512):
+        max_len = int(data.get("length", "0"))
+        if max_len > 512:
             return jsonify({"status": 500, "error": "max length too long"})
-        return jsonify({"response": perform_inference(prompt, max_response_length, model)})
+        lock_f = try_acquire_lock()
+        if not lock_f:
+            return jsonify({"status": 503, "error": "Server is busy, try again later", "response": "Server is busy"})
+        try:
+            resp = perform_inference(prompt, max_len, model)
+            return jsonify({"response": resp})
+        finally:
+            release_lock(lock_f)
     except Exception as e:
-        print("got here")
-        print("failed with exception: ", e)
-        return jsonify({"status": 500, "error": e})
+        return jsonify({"status": 500, "error": str(e)})
+
+@app.route('/alive', methods=['GET'])
+def alive():
+    lock_f = try_acquire_lock()
+    if not lock_f:
+        return "False", 500
+    release_lock(lock_f)
+    return "True", 200
+
 if __name__ == '__main__':
-    result = subprocess.run(
-        ["hostname", "-I"],
-        capture_output=True,
-        text=True,
-        check=True
-    )
-    print(result.stdout.strip().split())
-    ip_address = result.stdout.strip().split()[0]
-    file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.pkl"
-    with open(file_name, "wb") as f:
-        pickle.dump(ip_address, f)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=int(port))
+

@@ -7,14 +7,15 @@
 #SBATCH --nodes=1
 #SBATCH --partition=staff
 #SBATCH --mem=488G
-#SBATCH --output=out
+#SBATCH --output=test_out
 #SBATCH --exclusive
 module purge
 module load WebProxy 
 # ADD YOUR COMMANDS BELOW
 ip addr | grep inet
 export CLUSTER=ACES
-cd /scratch/user/u.ks124812/dor-hprc-interactive-llm/
+export NUM_GPUS=4
+cd /sw/hprc/sw/dor-hprc-interactive-llm/
 source modules.sh
 source venv/bin/activate
 cd inference
