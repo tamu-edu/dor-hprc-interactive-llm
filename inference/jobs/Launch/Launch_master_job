@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --job-name=inference_master
+#SBATCH --time=2-00:00:00
+#SBATCH --ntasks=3
+#SBATCH --cpus-per-task=12
+#SBATCH --gres=gpu:a30:2
+#SBATCH --nodes=1
+#SBATCH --mem=488G
+#SBATCH --partition=gpu
+#SBATCH --output=out
+#SBATCH --exclusive
+module purge
+module load WebProxy 
+cd /sw/hprc/sw/dor-hprc-interactive-llm/
+source modules.sh
+source venv/bin/activate
+cd inference
+# ADD YOUR COMMANDS BELOW
+#ip addr | grep inet
+export CLUSTER=LAUNCH
+export NUM_GPUS=2
+python3 master_app.py $NUM_CHILDREN &
+python3 app.py 1025 > "logs/${SLURMD_NODENAME}" 2>&1 &
+wait
