@@ -113,3 +113,4 @@ hello()
 * **Called the 'hello' function after its definition**: We moved the function call to after the
 
 10.71.8.12 - - [12/May/2025 10:57:47] "POST /infer HTTP/1.1" 200 -
+slurmstepd: error: *** JOB 1108313 ON ac028 CANCELLED AT 2025-05-12T12:57:05 ***

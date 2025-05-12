@@ -21,4 +21,3 @@
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
-slurmstepd: error: *** JOB 1108314 ON ac023 CANCELLED AT 2025-05-12T12:56:59 ***
