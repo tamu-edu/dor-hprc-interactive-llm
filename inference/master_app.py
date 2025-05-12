@@ -8,19 +8,6 @@ import requests
 app = Flask(__name__)
 TIMEOUT = 3
 child_ip_addresses = []
-def check_if_child_responsive(ip_address):
-    url = f"http://{ip_address}/alive"
-    try:
-        print("sending request to ", url, flush=True)
-        response = requests.get(url, timeout=TIMEOUT)
-        print("response status: ", response.status_code)
-        if(response):
-            return True
-        return False
-    except requests.RequestException as e:
-        print(f"Request to {ip_address} failed: {e}", flush=True)
-        return False
-
 def send_to_child(ip_address, prompt, length):
     url = f"http://{ip_address}/infer"
     headers = {"Content-Type": "application/json"}
@@ -31,10 +18,11 @@ def send_to_child(ip_address, prompt, length):
     }
     print("sending to url: ", url)
     response = requests.post(url, headers=headers, json=data)
-    return response.json()["response"]
+    return response
 
 @app.route('/infer', methods=['POST'])
 def infer():
+    response = None
     try:
         data = request.json
         prompt = data.get("input", "")
@@ -46,17 +34,20 @@ def infer():
 
         result = ""
         for ip_address in child_ip_addresses:
-            alive = check_if_child_responsive(ip_address)
-            if(alive):
-                print("address was alive", flush=True)
-                result = send_to_child(ip_address, prompt, max_response_length)
-                break;
+            response = send_to_child(ip_address, prompt, max_response_length)
+            status_code = response.json().get("status", None)
+            if(status_code and (status_code == 503)):
+                print("Child Busy", flush=True)
+                continue;
+            result = response.json()["response"]
         if(result == ""):
             result = "All nodes busy, please try again"
+        print("response from child was: ", result, flush=True)
         return jsonify({"response": result})
     except Exception as e:
-        print("got here")
-        print("failed with exception: ", e)
+        
+        print("got here", flush=True)
+        print("failed with exception: ", e, flush=True)
         return jsonify({"status": 500, "error": e, "response": "server busy"})
 
 if __name__ == '__main__':

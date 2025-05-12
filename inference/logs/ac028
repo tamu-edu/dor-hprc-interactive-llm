@@ -1,437 +1,656 @@
-vllm using port  5032
-[W509 17:04:16.764416991 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+vllm using port  56603
+[W512 09:31:10.927452821 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
   Overriding a previously registered kernel for the same operator and the same dispatch key
   operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
   dispatch key: XPU
   previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
-INFO 05-09 17:04:18 [__init__.py:248] Automatically detected platform xpu.
-WARNING 05-09 17:04:18 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
-INFO 05-09 17:04:28 [config.py:752] This model supports multiple tasks: {'reward', 'generate', 'classify', 'embed', 'score'}. Defaulting to 'generate'.
-WARNING 05-09 17:04:28 [_logger.py:68] device type=xpu is not supported by the V1 Engine. Falling back to V0. 
-INFO 05-09 17:04:28 [config.py:1815] Defaulting to use mp for distributed inference
-INFO 05-09 17:04:28 [config.py:1849] Disabled the custom all-reduce kernel because it is not supported on current platform.
-ERROR 05-09 17:04:28 [xpu.py:104] Both start methods (spawn and fork) have issue on XPU if you use mp backend, setting it to ray instead.
-INFO 05-09 17:04:28 [llm_engine.py:240] Initializing a V0 LLM engine (v0.8.5.dev562+gc44c384b1) with config: model='/scratch/group/hprc/llama-models/llama-3_3-70B', speculative_config=None, tokenizer='/scratch/group/hprc/llama-models/llama-3_3-70B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=1024, download_dir=None, load_format=auto, tensor_parallel_size=8, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=xpu, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=None, served_model_name=/scratch/group/hprc/llama-models/llama-3_3-70B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[],"max_capture_size":0}, use_cached_outputs=False, 
-WARNING 05-09 17:04:29 [_logger.py:68] No existing RAY instance detected. A new instance will be launched with current node resources.
-2025-05-09 17:04:31,471	INFO worker.py:1888 -- Started a local Ray instance.
-INFO 05-09 17:04:35 [ray_utils.py:335] No current placement group found. Creating a new placement group.
-INFO 05-09 17:04:35 [ray_distributed_executor.py:176] use_ray_spmd_worker: False
-[36m(pid=3140921)[0m [W509 17:04:40.453925643 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
-[36m(pid=3140921)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key
-[36m(pid=3140921)[0m   operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
-[36m(pid=3140921)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
-[36m(pid=3140921)[0m   dispatch key: XPU
-[36m(pid=3140921)[0m   previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
-[36m(pid=3140921)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
-[36m(pid=3140921)[0m INFO 05-09 17:04:42 [__init__.py:248] Automatically detected platform xpu.
-[36m(pid=3140921)[0m WARNING 05-09 17:04:43 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
-INFO 05-09 17:04:44 [ray_distributed_executor.py:352] non_carry_over_env_vars from config: set()
-INFO 05-09 17:04:44 [ray_distributed_executor.py:354] Copying the following environment variables to workers: ['VLLM_PORT', 'LD_LIBRARY_PATH', 'VLLM_USE_V1']
-INFO 05-09 17:04:44 [ray_distributed_executor.py:357] If certain env vars should NOT be copied to workers, add them to /home/u.ks124812/.config/vllm/ray_non_carry_over_env_vars.json file
-INFO 05-09 17:04:44 [xpu.py:35] Cannot use None backend on XPU.
-INFO 05-09 17:04:44 [xpu.py:36] Using IPEX attention backend.
-[36m(RayWorkerWrapper pid=3140921)[0m INFO 05-09 17:04:44 [xpu.py:35] Cannot use None backend on XPU.
-[36m(RayWorkerWrapper pid=3140921)[0m INFO 05-09 17:04:44 [xpu.py:36] Using IPEX attention backend.
-INFO 05-09 17:04:45 [shm_broadcast.py:266] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3, 4, 5, 6, 7], buffer_handle=(7, 4194304, 6, 'psm_48254528'), local_subscribe_addr='ipc:///tmp/job.1097584/cc19ae89-2a05-4ef2-963c-c35f4f46de46', remote_subscribe_addr=None, remote_addr_ipv6=False)
-INFO 05-09 17:04:45 [parallel_state.py:1004] rank 0 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 0
-2025:05:09-17:04:45:(3140227) |CCL_WARN| value of CCL_ATL_TRANSPORT changed to be ofi (default:mpi)
-2025:05:09-17:04:45:(3140227) |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
-2025:05:09-17:04:45:(3140227) |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 8 (default:-1)
-2025:05:09-17:04:45:(3140227) |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:04:48:(3140227) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
-[36m(RayWorkerWrapper pid=3140921)[0m INFO 05-09 17:04:45 [parallel_state.py:1004] rank 1 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 1
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-[36m(RayWorkerWrapper pid=3140921)[0m 2025:05:09-17:04:48:(3140921) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
-[36m(pid=3140924)[0m INFO 05-09 17:04:42 [__init__.py:248] Automatically detected platform xpu.[32m [repeated 7x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+INFO 05-12 09:31:12 [__init__.py:248] Automatically detected platform xpu.
+WARNING 05-12 09:31:13 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 05-12 09:31:22 [config.py:752] This model supports multiple tasks: {'embed', 'generate', 'reward', 'score', 'classify'}. Defaulting to 'generate'.
+WARNING 05-12 09:31:22 [_logger.py:68] device type=xpu is not supported by the V1 Engine. Falling back to V0. 
+INFO 05-12 09:31:22 [config.py:1815] Defaulting to use mp for distributed inference
+INFO 05-12 09:31:22 [config.py:1849] Disabled the custom all-reduce kernel because it is not supported on current platform.
+ERROR 05-12 09:31:22 [xpu.py:104] Both start methods (spawn and fork) have issue on XPU if you use mp backend, setting it to ray instead.
+INFO 05-12 09:31:22 [llm_engine.py:240] Initializing a V0 LLM engine (v0.8.5.dev562+gc44c384b1) with config: model='/scratch/group/hprc/llama-models/llama-3_3-70B', speculative_config=None, tokenizer='/scratch/group/hprc/llama-models/llama-3_3-70B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=1024, download_dir=None, load_format=auto, tensor_parallel_size=8, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=xpu, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=None, served_model_name=/scratch/group/hprc/llama-models/llama-3_3-70B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[],"max_capture_size":0}, use_cached_outputs=False, 
+WARNING 05-12 09:31:23 [_logger.py:68] No existing RAY instance detected. A new instance will be launched with current node resources.
+2025-05-12 09:31:24,538	INFO worker.py:1888 -- Started a local Ray instance.
+INFO 05-12 09:31:28 [ray_utils.py:335] No current placement group found. Creating a new placement group.
+INFO 05-12 09:31:28 [ray_distributed_executor.py:176] use_ray_spmd_worker: False
+[36m(pid=2713207)[0m [W512 09:31:33.349366686 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+[36m(pid=2713207)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key
+[36m(pid=2713207)[0m   operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
+[36m(pid=2713207)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+[36m(pid=2713207)[0m   dispatch key: XPU
+[36m(pid=2713207)[0m   previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
+[36m(pid=2713207)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
+[36m(pid=2713205)[0m INFO 05-12 09:31:34 [__init__.py:248] Automatically detected platform xpu.
+[36m(pid=2713205)[0m WARNING 05-12 09:31:35 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 05-12 09:31:37 [ray_distributed_executor.py:352] non_carry_over_env_vars from config: set()
+INFO 05-12 09:31:37 [ray_distributed_executor.py:354] Copying the following environment variables to workers: ['VLLM_PORT', 'LD_LIBRARY_PATH', 'VLLM_USE_V1']
+INFO 05-12 09:31:37 [ray_distributed_executor.py:357] If certain env vars should NOT be copied to workers, add them to /home/u.ks124812/.config/vllm/ray_non_carry_over_env_vars.json file
+INFO 05-12 09:31:37 [xpu.py:35] Cannot use None backend on XPU.
+INFO 05-12 09:31:37 [xpu.py:36] Using IPEX attention backend.
+[36m(RayWorkerWrapper pid=2713206)[0m INFO 05-12 09:31:37 [xpu.py:35] Cannot use None backend on XPU.
+[36m(RayWorkerWrapper pid=2713206)[0m INFO 05-12 09:31:37 [xpu.py:36] Using IPEX attention backend.
+INFO 05-12 09:31:37 [shm_broadcast.py:266] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3, 4, 5, 6, 7], buffer_handle=(7, 4194304, 6, 'psm_9d72b64b'), local_subscribe_addr='ipc:///tmp/job.1108258/90bfaa89-5d9d-49ab-aa1c-d9234ffc5d62', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 05-12 09:31:37 [parallel_state.py:1004] rank 0 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 0
+2025:05:12-09:31:37:(2712558) |CCL_WARN| value of CCL_ATL_TRANSPORT changed to be ofi (default:mpi)
+2025:05:12-09:31:37:(2712558) |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2025:05:12-09:31:37:(2712558) |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 8 (default:-1)
+2025:05:12-09:31:37:(2712558) |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:40:(2712558) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=2713206)[0m INFO 05-12 09:31:37 [parallel_state.py:1004] rank 1 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 1
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=2713206)[0m 2025:05:12-09:31:40:(2713206) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(pid=2713211)[0m INFO 05-12 09:31:35 [__init__.py:248] Automatically detected platform xpu.[32m [repeated 7x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
 Loading safetensors checkpoint shards:   0% Completed | 0/30 [00:00<?, ?it/s]
-Loading safetensors checkpoint shards:   3% Completed | 1/30 [00:00<00:10,  2.82it/s]
-Loading safetensors checkpoint shards:   7% Completed | 2/30 [00:00<00:11,  2.50it/s]
-Loading safetensors checkpoint shards:  10% Completed | 3/30 [00:01<00:11,  2.40it/s]
-Loading safetensors checkpoint shards:  13% Completed | 4/30 [00:01<00:10,  2.49it/s]
-Loading safetensors checkpoint shards:  17% Completed | 5/30 [00:02<00:10,  2.48it/s]
-Loading safetensors checkpoint shards:  20% Completed | 6/30 [00:02<00:09,  2.53it/s]
-Loading safetensors checkpoint shards:  23% Completed | 7/30 [00:02<00:09,  2.55it/s]
-Loading safetensors checkpoint shards:  27% Completed | 8/30 [00:03<00:08,  2.59it/s]
-Loading safetensors checkpoint shards:  30% Completed | 9/30 [00:03<00:07,  2.67it/s]
-Loading safetensors checkpoint shards:  33% Completed | 10/30 [00:03<00:07,  2.59it/s]
-Loading safetensors checkpoint shards:  37% Completed | 11/30 [00:04<00:07,  2.69it/s]
-Loading safetensors checkpoint shards:  40% Completed | 12/30 [00:04<00:06,  2.65it/s]
-Loading safetensors checkpoint shards:  43% Completed | 13/30 [00:05<00:06,  2.67it/s]
-Loading safetensors checkpoint shards:  47% Completed | 14/30 [00:05<00:06,  2.64it/s]
-Loading safetensors checkpoint shards:  50% Completed | 15/30 [00:05<00:05,  2.64it/s]
-Loading safetensors checkpoint shards:  53% Completed | 16/30 [00:06<00:05,  2.61it/s]
-Loading safetensors checkpoint shards:  57% Completed | 17/30 [00:06<00:05,  2.50it/s]
-Loading safetensors checkpoint shards:  60% Completed | 18/30 [00:06<00:03,  3.09it/s]
-Loading safetensors checkpoint shards:  63% Completed | 19/30 [00:07<00:03,  2.96it/s]
-Loading safetensors checkpoint shards:  67% Completed | 20/30 [00:07<00:03,  2.85it/s]
-Loading safetensors checkpoint shards:  70% Completed | 21/30 [00:07<00:03,  2.78it/s]
+Loading safetensors checkpoint shards:   3% Completed | 1/30 [00:00<00:09,  2.97it/s]
+Loading safetensors checkpoint shards:   7% Completed | 2/30 [00:00<00:10,  2.63it/s]
+Loading safetensors checkpoint shards:  10% Completed | 3/30 [00:01<00:10,  2.59it/s]
+Loading safetensors checkpoint shards:  13% Completed | 4/30 [00:01<00:10,  2.59it/s]
+Loading safetensors checkpoint shards:  17% Completed | 5/30 [00:01<00:09,  2.59it/s]
+Loading safetensors checkpoint shards:  20% Completed | 6/30 [00:02<00:09,  2.60it/s]
+Loading safetensors checkpoint shards:  23% Completed | 7/30 [00:02<00:08,  2.68it/s]
+Loading safetensors checkpoint shards:  27% Completed | 8/30 [00:02<00:08,  2.73it/s]
+Loading safetensors checkpoint shards:  30% Completed | 9/30 [00:03<00:07,  2.76it/s]
+Loading safetensors checkpoint shards:  33% Completed | 10/30 [00:03<00:07,  2.61it/s]
+Loading safetensors checkpoint shards:  37% Completed | 11/30 [00:04<00:07,  2.62it/s]
+Loading safetensors checkpoint shards:  40% Completed | 12/30 [00:04<00:06,  2.57it/s]
+Loading safetensors checkpoint shards:  43% Completed | 13/30 [00:04<00:06,  2.59it/s]
+Loading safetensors checkpoint shards:  47% Completed | 14/30 [00:05<00:06,  2.60it/s]
+Loading safetensors checkpoint shards:  50% Completed | 15/30 [00:05<00:05,  2.60it/s]
+Loading safetensors checkpoint shards:  53% Completed | 16/30 [00:06<00:05,  2.64it/s]
+Loading safetensors checkpoint shards:  57% Completed | 17/30 [00:06<00:05,  2.58it/s]
+Loading safetensors checkpoint shards:  60% Completed | 18/30 [00:06<00:03,  3.02it/s]
+Loading safetensors checkpoint shards:  63% Completed | 19/30 [00:07<00:03,  2.90it/s]
+Loading safetensors checkpoint shards:  67% Completed | 20/30 [00:07<00:03,  2.77it/s]
+Loading safetensors checkpoint shards:  70% Completed | 21/30 [00:07<00:03,  2.71it/s]
 Loading safetensors checkpoint shards:  73% Completed | 22/30 [00:08<00:02,  2.69it/s]
-Loading safetensors checkpoint shards:  77% Completed | 23/30 [00:08<00:02,  2.72it/s]
-Loading safetensors checkpoint shards:  80% Completed | 24/30 [00:09<00:02,  2.67it/s]
-Loading safetensors checkpoint shards:  83% Completed | 25/30 [00:09<00:01,  2.69it/s]
-Loading safetensors checkpoint shards:  87% Completed | 26/30 [00:09<00:01,  2.67it/s]
-Loading safetensors checkpoint shards:  90% Completed | 27/30 [00:10<00:01,  2.61it/s]
-Loading safetensors checkpoint shards:  93% Completed | 28/30 [00:10<00:00,  2.65it/s]
-Loading safetensors checkpoint shards:  97% Completed | 29/30 [00:10<00:00,  2.60it/s]
-Loading safetensors checkpoint shards: 100% Completed | 30/30 [00:11<00:00,  2.68it/s]
-Loading safetensors checkpoint shards: 100% Completed | 30/30 [00:11<00:00,  2.66it/s]
+Loading safetensors checkpoint shards:  77% Completed | 23/30 [00:08<00:02,  2.67it/s]
+Loading safetensors checkpoint shards:  80% Completed | 24/30 [00:09<00:02,  2.60it/s]
+Loading safetensors checkpoint shards:  83% Completed | 25/30 [00:09<00:01,  2.61it/s]
+Loading safetensors checkpoint shards:  87% Completed | 26/30 [00:09<00:01,  2.63it/s]
+Loading safetensors checkpoint shards:  90% Completed | 27/30 [00:10<00:01,  2.60it/s]
+Loading safetensors checkpoint shards:  93% Completed | 28/30 [00:10<00:00,  2.69it/s]
+Loading safetensors checkpoint shards:  97% Completed | 29/30 [00:10<00:00,  2.65it/s]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [00:11<00:00,  2.70it/s]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [00:11<00:00,  2.67it/s]
 
-[36m(RayWorkerWrapper pid=3140927)[0m INFO 05-09 17:04:59 [default_loader.py:278] Loading weights took 10.67 seconds
-[36m(RayWorkerWrapper pid=3140927)[0m WARNING 05-09 17:04:59 [_logger.py:68] Pin memory is not supported on XPU.
-[36m(pid=3140926)[0m WARNING 05-09 17:04:43 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")[32m [repeated 7x across cluster][0m
-[36m(RayWorkerWrapper pid=3140927)[0m INFO 05-09 17:04:44 [xpu.py:35] Cannot use None backend on XPU.[32m [repeated 6x across cluster][0m
-[36m(RayWorkerWrapper pid=3140927)[0m INFO 05-09 17:04:44 [xpu.py:36] Using IPEX attention backend.[32m [repeated 6x across cluster][0m
-[36m(RayWorkerWrapper pid=3140927)[0m INFO 05-09 17:04:45 [parallel_state.py:1004] rank 7 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 7[32m [repeated 6x across cluster][0m
-[36m(RayWorkerWrapper pid=3140927)[0m 2025:05:09-17:04:48:(3140927) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 336x across cluster][0m
-[36m(RayWorkerWrapper pid=3140927)[0m 2025:05:09-17:04:48:(3140927) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 6x across cluster][0m
-[36m(RayWorkerWrapper pid=3140922)[0m INFO 05-09 17:04:59 [xpu_model_runner.py:414] Loading model weights took 16.4607 GiB
-INFO 05-09 17:04:59 [default_loader.py:278] Loading weights took 11.33 seconds
-WARNING 05-09 17:04:59 [_logger.py:68] Pin memory is not supported on XPU.
-INFO 05-09 17:05:00 [xpu_model_runner.py:414] Loading model weights took 16.4607 GiB
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
-2025:05:09-17:05:01:(3140227) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
-INFO 05-09 17:05:04 [executor_base.py:112] # xpu blocks: 43809, # CPU blocks: 6553
-INFO 05-09 17:05:04 [executor_base.py:117] Maximum concurrency for 1024 tokens per request: 684.52x
-INFO 05-09 17:05:05 [llm_engine.py:435] init engine (profile, create kv cache, warmup model) took 4.97 seconds
+[36m(RayWorkerWrapper pid=2713206)[0m INFO 05-12 09:31:51 [default_loader.py:278] Loading weights took 10.82 seconds
+[36m(RayWorkerWrapper pid=2713206)[0m WARNING 05-12 09:31:51 [_logger.py:68] Pin memory is not supported on XPU.
+[36m(pid=2713211)[0m WARNING 05-12 09:31:36 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")[32m [repeated 7x across cluster][0m
+[36m(RayWorkerWrapper pid=2713207)[0m INFO 05-12 09:31:37 [xpu.py:35] Cannot use None backend on XPU.[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=2713207)[0m INFO 05-12 09:31:37 [xpu.py:36] Using IPEX attention backend.[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=2713213)[0m INFO 05-12 09:31:37 [parallel_state.py:1004] rank 7 in world size 8 is assigned as DP rank 0, PP rank 0, TP rank 7[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=2713213)[0m 2025:05:12-09:31:40:(2713213) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 336x across cluster][0m
+[36m(RayWorkerWrapper pid=2713213)[0m 2025:05:12-09:31:40:(2713213) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 6x across cluster][0m
+[36m(RayWorkerWrapper pid=2713206)[0m INFO 05-12 09:31:51 [xpu_model_runner.py:414] Loading model weights took 16.4607 GiB
+INFO 05-12 09:31:51 [default_loader.py:278] Loading weights took 11.30 seconds
+WARNING 05-12 09:31:51 [_logger.py:68] Pin memory is not supported on XPU.
+INFO 05-12 09:31:52 [xpu_model_runner.py:414] Loading model weights took 16.4607 GiB
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:05:12-09:31:53:(2712558) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+INFO 05-12 09:31:56 [executor_base.py:112] # xpu blocks: 43809, # CPU blocks: 6553
+INFO 05-12 09:31:56 [executor_base.py:117] Maximum concurrency for 1024 tokens per request: 684.52x
+INFO 05-12 09:31:57 [llm_engine.py:435] init engine (profile, create kv cache, warmup model) took 5.10 seconds
  * Serving Flask app 'app'
  * Debug mode: off
-2025-05-09 17:05:05,930 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-05-12 09:31:58,120 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:1025
  * Running on http://127.0.0.1:1025
-2025-05-09 17:05:05,930 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-05-09 17:05:23,748 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:05:23] "GET /alive HTTP/1.1" 200 -
+2025-05-12 09:31:58,120 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
 my input:   is not defined NameError: name hello is not defined
 max length:  256
-Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 192.99it/s]
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]2025-05-09 17:05:25,742 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:05:25] "[35m[1mGET /alive HTTP/1.1[0m" 500 -
-2025-05-09 17:05:25,745 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:05:25] "POST /infer HTTP/1.1" 200 -
-Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.95s/it, est. speed input: 0.36 toks/s, output: 7.77 toks/s]Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.95s/it, est. speed input: 0.36 toks/s, output: 7.77 toks/s]
-[RequestOutput(request_id=0, prompt=' is not defined NameError: name hello is not defined', prompt_token_ids=[128000, 374, 539, 4613, 4076, 1480, 25, 836, 24748, 374, 539, 4613], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text='\nNameError: name \'hello\' is not defined\n\nprint(hello)\n```\ndef hello():\n    print("hello")\n\nprint(hello())\n```\n\n\nhello\nhello\n```\nprint(hello())\n\ndef hello():\n    print("hello")\n    return None\n\nprint(hello())\n```\n\n\n\nNone\n```\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n```\n\n\nhello\nhello\n```\n\n\nhello\nhello\nhello\n```\n\nhello\nhello\nhello\nhello\n```\n\n\n\nhello\nhello\nhello\nhello\nhello\n```\n\nhello\nhello\nhello\nhello\nhello\nhello\n```\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n```\n\n\nhello\nhello\nhello\nhello\nhello\nhello\n```\n\nhello\nhello\nhello', token_ids=(198, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 271, 1374, 3283, 4896, 340, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 5240, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 14196, 4077, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 2290, 271, 1374, 3283, 4896, 2455, 74694, 1038, 4155, 198, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 74694, 1432, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 74694, 1038, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1746828323.7524743, last_token_time=1746828356.701128, first_scheduled_time=1746828323.7580545, first_token_time=1746828324.1626859, time_in_queue=0.00558018684387207, finished_time=1746828356.7018168, scheduler_time=0.03261334029957652, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
-CompletionOutput(index=0, text='\nNameError: name \'hello\' is not defined\n\nprint(hello)\n```\ndef hello():\n    print("hello")\n\nprint(hello())\n```\n\n\nhello\nhello\n```\nprint(hello())\n\ndef hello():\n    print("hello")\n    return None\n\nprint(hello())\n```\n\n\n\nNone\n```\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n```\n\n\nhello\nhello\n```\n\n\nhello\nhello\nhello\n```\n\nhello\nhello\nhello\nhello\n```\n\n\n\nhello\nhello\nhello\nhello\nhello\n```\n\nhello\nhello\nhello\nhello\nhello\nhello\n```\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n\ndef hello():\n    print("hello")\n    return "hello"\n\nprint(hello())\n```\n\n\nhello\nhello\nhello\nhello\nhello\nhello\n```\n\nhello\nhello\nhello', token_ids=(198, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 271, 1374, 3283, 4896, 340, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 5240, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 14196, 4077, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 2290, 271, 1374, 3283, 4896, 2455, 74694, 1038, 4155, 198, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 74694, 1432, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 74694, 1038, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 4077, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 12647, 755, 24748, 4019, 262, 1194, 446, 15339, 1158, 262, 471, 330, 15339, 1875, 1374, 3283, 4896, 2455, 74694, 1432, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 15339, 198, 14196, 19884, 15339, 198, 15339, 198, 15339), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 179.00it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]2025-05-12 09:34:01,490 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:34:01] "POST /infer HTTP/1.1" 200 -
+Processed prompts: 100%|██████████| 1/1 [00:33<00:00, 33.27s/it, est. speed input: 0.36 toks/s, output: 7.69 toks/s]Processed prompts: 100%|██████████| 1/1 [00:33<00:00, 33.27s/it, est. speed input: 0.36 toks/s, output: 7.69 toks/s]
+[RequestOutput(request_id=0, prompt=' is not defined NameError: name hello is not defined', prompt_token_ids=[128000, 374, 539, 4613, 4076, 1480, 25, 836, 24748, 374, 539, 4613], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text='\nn = 0\nfor i in range(10):\n    n += 1\n    print("hello")\n\nprint(n)\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#10\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n', token_ids=(198, 77, 284, 220, 15, 198, 2000, 602, 304, 2134, 7, 605, 997, 262, 308, 1447, 220, 16, 198, 262, 1194, 446, 15339, 5240, 1374, 1471, 340, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 605, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747060436.4894848, last_token_time=1747060469.7601206, first_scheduled_time=1747060436.4954975, first_token_time=1747060436.978561, time_in_queue=0.006012678146362305, finished_time=1747060469.760471, scheduler_time=0.031197610776871443, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text='\nn = 0\nfor i in range(10):\n    n += 1\n    print("hello")\n\nprint(n)\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#hello\n#10\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n#ex7\n#ex8\n#ex9\n#ex10\n#11\n#ex1\n#ex2\n#ex3\n#ex4\n#ex5\n#ex6\n', token_ids=(198, 77, 284, 220, 15, 198, 2000, 602, 304, 2134, 7, 605, 997, 262, 308, 1447, 220, 16, 198, 262, 1194, 446, 15339, 5240, 1374, 1471, 340, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 15339, 198, 2, 605, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198, 2, 327, 22, 198, 2, 327, 23, 198, 2, 327, 24, 198, 2, 327, 605, 198, 2, 806, 198, 2, 327, 16, 198, 2, 327, 17, 198, 2, 327, 18, 198, 2, 327, 19, 198, 2, 327, 20, 198, 2, 327, 21, 198), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
 returning result:  
-NameError: name 'hello' is not defined
-
-print(hello)
-```
-def hello():
+n = 0
+for i in range(10):
+    n += 1
     print("hello")
 
-print(hello())
-```
+print(n)
+#hello
+#hello
+#hello
+#hello
+#hello
+#hello
+#hello
+#hello
+#hello
+#hello
+#10
+#ex1
+#ex2
+#ex3
+#ex4
+#ex5
+#ex6
+#ex7
+#ex8
+#ex9
+#ex10
+#11
+#ex1
+#ex2
+#ex3
+#ex4
+#ex5
+#ex6
+#ex7
+#ex8
+#ex9
+#ex10
+#11
+#ex1
+#ex2
+#ex3
+#ex4
+#ex5
+#ex6
+#ex7
+#ex8
+#ex9
+#ex10
+#11
+#ex1
+#ex2
+#ex3
+#ex4
+#ex5
+#ex6
+#ex7
+#ex8
+#ex9
+#ex10
+#11
+#ex1
+#ex2
+#ex3
+#ex4
+#ex5
+#ex6
 
 
-hello
-hello
-```
-print(hello())
-
-def hello():
-    print("hello")
-    return None
-
-print(hello())
-```
+2025-05-12 09:34:29,767 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:34:29] "POST /infer HTTP/1.1" 200 -
+my input:  Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
 
 
-None
-```
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-```
-
-
-hello
-hello
-```
-
-
-hello
-hello
-hello
-```
-
-hello
-hello
-hello
-hello
-```
+Question: hello
+Helpful Answer:
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1139.14it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:47<00:00, 47.08s/it, est. speed input: 1.02 toks/s, output: 7.84 toks/s]Processed prompts: 100%|██████████| 1/1 [00:47<00:00, 47.08s/it, est. speed input: 1.02 toks/s, output: 7.84 toks/s]
+[RequestOutput(request_id=1, prompt="Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.\n\n\n\nQuestion: hello\nHelpful Answer:", prompt_token_ids=[128000, 10464, 279, 2768, 9863, 315, 2317, 311, 4320, 279, 3488, 520, 279, 842, 13, 1442, 499, 1541, 956, 1440, 279, 4320, 11, 1120, 2019, 430, 499, 1541, 956, 1440, 11, 1541, 956, 1456, 311, 1304, 709, 459, 4320, 2055, 14924, 25, 24748, 198, 12978, 1285, 22559, 25], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text=' hi\nQuestion: what is the answer\nHelpful Answer: to your question\nQuestion: what is the best way to get an answer\nHelpful Answer: to ask\nQuestion: what is the best way to be sure that you have the correct answer\nHelpful Answer: to verify\n\n\n\nContext: The pieces of conversation above are examples of a helpful conversation. A helpful conversation is one where the speaker provides useful and relevant information to the listener. The goal of a helpful conversation is to assist the listener in understanding the topic or solving their problem.\n\n\n\nNow, please answer the following question: What is the best way to be sure that you have the correct answer? \n\nI don\'t know what the correct answer is, I need to verify. \n\nYou just provided the answer that I was looking for. You said "I don\'t know what the correct answer is, I need to verify." That is the best way to be sure that you have the correct answer, to verify. \n\nSo, the best way to be sure that you have the correct answer is to verify. \n\nThat is correct. \n\nThe best way to be sure that you have the correct answer is to verify. \n\n# Step 1: Review the context of the conversation.\nThe conversation provides examples of a helpful conversation, where the goal is to assist the listener in understanding the topic or solving their problem.\n\n# Step 2: Identify the relevant piece of conversation that answers the question.\nThe relevant piece of conversation is: "Question: what is the best way to be sure that you have the correct answer" and "Helpful Answer: to verify".\n\n# Step 3: Provide the answer based on the context.\nThe best way to be sure that you have the correct answer is to verify.\n\nThe final answer is: $\\boxed{to verify}$', token_ids=(15960, 198, 14924, 25, 1148, 374, 279, 4320, 198, 12978, 1285, 22559, 25, 311, 701, 3488, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 636, 459, 4320, 198, 12978, 1285, 22559, 25, 311, 2610, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 198, 12978, 1285, 22559, 25, 311, 10356, 1038, 2014, 25, 578, 9863, 315, 10652, 3485, 527, 10507, 315, 264, 11190, 10652, 13, 362, 11190, 10652, 374, 832, 1405, 279, 19114, 5825, 5505, 323, 9959, 2038, 311, 279, 11700, 13, 578, 5915, 315, 264, 11190, 10652, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 2055, 7184, 11, 4587, 4320, 279, 2768, 3488, 25, 3639, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 30, 4815, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 13, 4815, 2675, 1120, 3984, 279, 4320, 430, 358, 574, 3411, 369, 13, 1472, 1071, 330, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 1210, 3011, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 11, 311, 10356, 13, 4815, 4516, 11, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 4897, 374, 4495, 13, 4815, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 2, 15166, 220, 16, 25, 10506, 279, 2317, 315, 279, 10652, 627, 791, 10652, 5825, 10507, 315, 264, 11190, 10652, 11, 1405, 279, 5915, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 382, 2, 15166, 220, 17, 25, 65647, 279, 9959, 6710, 315, 10652, 430, 11503, 279, 3488, 627, 791, 9959, 6710, 315, 10652, 374, 25, 330, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 1, 323, 330, 12978, 1285, 22559, 25, 311, 10356, 11690, 2, 15166, 220, 18, 25, 40665, 279, 4320, 3196, 389, 279, 2317, 627, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 382, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 998, 10356, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747060809.4881244, last_token_time=1747060856.5648303, first_scheduled_time=1747060809.4894683, first_token_time=1747060809.9869044, time_in_queue=0.0013439655303955078, finished_time=1747060856.5650563, scheduler_time=0.04382978659123182, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text=' hi\nQuestion: what is the answer\nHelpful Answer: to your question\nQuestion: what is the best way to get an answer\nHelpful Answer: to ask\nQuestion: what is the best way to be sure that you have the correct answer\nHelpful Answer: to verify\n\n\n\nContext: The pieces of conversation above are examples of a helpful conversation. A helpful conversation is one where the speaker provides useful and relevant information to the listener. The goal of a helpful conversation is to assist the listener in understanding the topic or solving their problem.\n\n\n\nNow, please answer the following question: What is the best way to be sure that you have the correct answer? \n\nI don\'t know what the correct answer is, I need to verify. \n\nYou just provided the answer that I was looking for. You said "I don\'t know what the correct answer is, I need to verify." That is the best way to be sure that you have the correct answer, to verify. \n\nSo, the best way to be sure that you have the correct answer is to verify. \n\nThat is correct. \n\nThe best way to be sure that you have the correct answer is to verify. \n\n# Step 1: Review the context of the conversation.\nThe conversation provides examples of a helpful conversation, where the goal is to assist the listener in understanding the topic or solving their problem.\n\n# Step 2: Identify the relevant piece of conversation that answers the question.\nThe relevant piece of conversation is: "Question: what is the best way to be sure that you have the correct answer" and "Helpful Answer: to verify".\n\n# Step 3: Provide the answer based on the context.\nThe best way to be sure that you have the correct answer is to verify.\n\nThe final answer is: $\\boxed{to verify}$', token_ids=(15960, 198, 14924, 25, 1148, 374, 279, 4320, 198, 12978, 1285, 22559, 25, 311, 701, 3488, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 636, 459, 4320, 198, 12978, 1285, 22559, 25, 311, 2610, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 198, 12978, 1285, 22559, 25, 311, 10356, 1038, 2014, 25, 578, 9863, 315, 10652, 3485, 527, 10507, 315, 264, 11190, 10652, 13, 362, 11190, 10652, 374, 832, 1405, 279, 19114, 5825, 5505, 323, 9959, 2038, 311, 279, 11700, 13, 578, 5915, 315, 264, 11190, 10652, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 2055, 7184, 11, 4587, 4320, 279, 2768, 3488, 25, 3639, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 30, 4815, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 13, 4815, 2675, 1120, 3984, 279, 4320, 430, 358, 574, 3411, 369, 13, 1472, 1071, 330, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 1210, 3011, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 11, 311, 10356, 13, 4815, 4516, 11, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 4897, 374, 4495, 13, 4815, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 2, 15166, 220, 16, 25, 10506, 279, 2317, 315, 279, 10652, 627, 791, 10652, 5825, 10507, 315, 264, 11190, 10652, 11, 1405, 279, 5915, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 382, 2, 15166, 220, 17, 25, 65647, 279, 9959, 6710, 315, 10652, 430, 11503, 279, 3488, 627, 791, 9959, 6710, 315, 10652, 374, 25, 330, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 1, 323, 330, 12978, 1285, 22559, 25, 311, 10356, 11690, 2, 15166, 220, 18, 25, 40665, 279, 4320, 3196, 389, 279, 2317, 627, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 382, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 998, 10356, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)
+returning result:   hi
+Question: what is the answer
+Helpful Answer: to your question
+Question: what is the best way to get an answer
+Helpful Answer: to ask
+Question: what is the best way to be sure that you have the correct answer
+Helpful Answer: to verify
 
 
 
-hello
-hello
-hello
-hello
-hello
-```
-
-hello
-hello
-hello
-hello
-hello
-hello
-```
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-
-def hello():
-    print("hello")
-    return "hello"
-
-print(hello())
-```
+Context: The pieces of conversation above are examples of a helpful conversation. A helpful conversation is one where the speaker provides useful and relevant information to the listener. The goal of a helpful conversation is to assist the listener in understanding the topic or solving their problem.
 
 
-hello
-hello
-hello
-hello
-hello
-hello
-```
 
-hello
-hello
-hello
+Now, please answer the following question: What is the best way to be sure that you have the correct answer? 
 
-2025-05-09 17:05:56,708 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:05:56] "POST /infer HTTP/1.1" 200 -
-2025-05-09 17:12:44,984 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:12:44] "GET /alive HTTP/1.1" 200 -
-my input:   is not defined NameError: name hello is not defined
-max length:  256
-Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1380.61it/s]
-Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]2025-05-09 17:12:49,981 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:12:49] "[35m[1mGET /alive HTTP/1.1[0m" 500 -
-2025-05-09 17:12:49,984 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:12:49] "POST /infer HTTP/1.1" 200 -
-Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.90s/it, est. speed input: 0.36 toks/s, output: 7.78 toks/s]Processed prompts: 100%|██████████| 1/1 [00:32<00:00, 32.90s/it, est. speed input: 0.36 toks/s, output: 7.78 toks/s]
-[RequestOutput(request_id=1, prompt=' is not defined NameError: name hello is not defined', prompt_token_ids=[128000, 374, 539, 4613, 4076, 1480, 25, 836, 24748, 374, 539, 4613], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text="\n\nI am a Python newbie, I have a simple Python script called `hello.py`:\n```\nhello()\n```\nWhen I run it, I get an error:\n```\nNameError: name 'hello' is not defined\n```\nWhat's going on? Why can't Python find my function?\n\n## Step 1: Understanding the Error Message\nThe error message `NameError: name 'hello' is not defined` indicates that Python does not recognize `hello` as a defined function or variable in the current scope.\n\n## Step 2: Defining the Function\nTo fix the error, we need to define the `hello` function before calling it. The definition of a function in Python typically starts with the `def` keyword followed by the function name and parameters in parentheses.\n\n## Step 3: Writing the Function Definition\nWe will define a simple `hello` function that prints a greeting message. The function does not need any parameters for this example.\n\n## Step 4: Calling the Function\nAfter defining the function, we can call it by its name followed by parentheses, which may contain arguments if the function requires any.\n\n## Step 5: Complete Code\nThe complete `hello.py` script should look like this:\n```python\ndef", token_ids=(271, 40, 1097, 264, 13325, 95678, 11, 358, 617, 264, 4382, 13325, 5429, 2663, 1595, 15339, 7345, 63, 512, 14196, 4077, 15339, 746, 14196, 4077, 4599, 358, 1629, 433, 11, 358, 636, 459, 1493, 512, 14196, 4077, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 198, 14196, 4077, 3923, 596, 2133, 389, 30, 8595, 649, 956, 13325, 1505, 856, 734, 1980, 567, 15166, 220, 16, 25, 46551, 279, 4703, 4961, 198, 791, 1493, 1984, 1595, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 63, 15151, 430, 13325, 1587, 539, 15641, 1595, 15339, 63, 439, 264, 4613, 734, 477, 3977, 304, 279, 1510, 7036, 382, 567, 15166, 220, 17, 25, 3979, 5859, 279, 5830, 198, 1271, 5155, 279, 1493, 11, 584, 1205, 311, 7124, 279, 1595, 15339, 63, 734, 1603, 8260, 433, 13, 578, 7419, 315, 264, 734, 304, 13325, 11383, 8638, 449, 279, 1595, 755, 63, 16570, 8272, 555, 279, 734, 836, 323, 5137, 304, 75075, 382, 567, 15166, 220, 18, 25, 24838, 279, 5830, 20288, 198, 1687, 690, 7124, 264, 4382, 1595, 15339, 63, 734, 430, 24370, 264, 43213, 1984, 13, 578, 734, 1587, 539, 1205, 904, 5137, 369, 420, 3187, 382, 567, 15166, 220, 19, 25, 33391, 279, 5830, 198, 6153, 27409, 279, 734, 11, 584, 649, 1650, 433, 555, 1202, 836, 8272, 555, 75075, 11, 902, 1253, 6782, 6105, 422, 279, 734, 7612, 904, 382, 567, 15166, 220, 20, 25, 19121, 6247, 198, 791, 4686, 1595, 15339, 7345, 63, 5429, 1288, 1427, 1093, 420, 512, 74694, 12958, 198, 755), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1746828764.9881399, last_token_time=1746828797.8817658, first_scheduled_time=1746828764.9893422, first_token_time=1746828765.287682, time_in_queue=0.0012023448944091797, finished_time=1746828797.8820324, scheduler_time=0.03876911569386721, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
-CompletionOutput(index=0, text="\n\nI am a Python newbie, I have a simple Python script called `hello.py`:\n```\nhello()\n```\nWhen I run it, I get an error:\n```\nNameError: name 'hello' is not defined\n```\nWhat's going on? Why can't Python find my function?\n\n## Step 1: Understanding the Error Message\nThe error message `NameError: name 'hello' is not defined` indicates that Python does not recognize `hello` as a defined function or variable in the current scope.\n\n## Step 2: Defining the Function\nTo fix the error, we need to define the `hello` function before calling it. The definition of a function in Python typically starts with the `def` keyword followed by the function name and parameters in parentheses.\n\n## Step 3: Writing the Function Definition\nWe will define a simple `hello` function that prints a greeting message. The function does not need any parameters for this example.\n\n## Step 4: Calling the Function\nAfter defining the function, we can call it by its name followed by parentheses, which may contain arguments if the function requires any.\n\n## Step 5: Complete Code\nThe complete `hello.py` script should look like this:\n```python\ndef", token_ids=(271, 40, 1097, 264, 13325, 95678, 11, 358, 617, 264, 4382, 13325, 5429, 2663, 1595, 15339, 7345, 63, 512, 14196, 4077, 15339, 746, 14196, 4077, 4599, 358, 1629, 433, 11, 358, 636, 459, 1493, 512, 14196, 4077, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 198, 14196, 4077, 3923, 596, 2133, 389, 30, 8595, 649, 956, 13325, 1505, 856, 734, 1980, 567, 15166, 220, 16, 25, 46551, 279, 4703, 4961, 198, 791, 1493, 1984, 1595, 678, 1480, 25, 836, 364, 15339, 6, 374, 539, 4613, 63, 15151, 430, 13325, 1587, 539, 15641, 1595, 15339, 63, 439, 264, 4613, 734, 477, 3977, 304, 279, 1510, 7036, 382, 567, 15166, 220, 17, 25, 3979, 5859, 279, 5830, 198, 1271, 5155, 279, 1493, 11, 584, 1205, 311, 7124, 279, 1595, 15339, 63, 734, 1603, 8260, 433, 13, 578, 7419, 315, 264, 734, 304, 13325, 11383, 8638, 449, 279, 1595, 755, 63, 16570, 8272, 555, 279, 734, 836, 323, 5137, 304, 75075, 382, 567, 15166, 220, 18, 25, 24838, 279, 5830, 20288, 198, 1687, 690, 7124, 264, 4382, 1595, 15339, 63, 734, 430, 24370, 264, 43213, 1984, 13, 578, 734, 1587, 539, 1205, 904, 5137, 369, 420, 3187, 382, 567, 15166, 220, 19, 25, 33391, 279, 5830, 198, 6153, 27409, 279, 734, 11, 584, 649, 1650, 433, 555, 1202, 836, 8272, 555, 75075, 11, 902, 1253, 6782, 6105, 422, 279, 734, 7612, 904, 382, 567, 15166, 220, 20, 25, 19121, 6247, 198, 791, 4686, 1595, 15339, 7345, 63, 5429, 1288, 1427, 1093, 420, 512, 74694, 12958, 198, 755), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
-returning result:  
+I don't know what the correct answer is, I need to verify. 
 
-I am a Python newbie, I have a simple Python script called `hello.py`:
-```
-hello()
-```
-When I run it, I get an error:
-```
-NameError: name 'hello' is not defined
-```
-What's going on? Why can't Python find my function?
+You just provided the answer that I was looking for. You said "I don't know what the correct answer is, I need to verify." That is the best way to be sure that you have the correct answer, to verify. 
 
-## Step 1: Understanding the Error Message
-The error message `NameError: name 'hello' is not defined` indicates that Python does not recognize `hello` as a defined function or variable in the current scope.
+So, the best way to be sure that you have the correct answer is to verify. 
 
-## Step 2: Defining the Function
-To fix the error, we need to define the `hello` function before calling it. The definition of a function in Python typically starts with the `def` keyword followed by the function name and parameters in parentheses.
+That is correct. 
 
-## Step 3: Writing the Function Definition
-We will define a simple `hello` function that prints a greeting message. The function does not need any parameters for this example.
+The best way to be sure that you have the correct answer is to verify. 
 
-## Step 4: Calling the Function
-After defining the function, we can call it by its name followed by parentheses, which may contain arguments if the function requires any.
+# Step 1: Review the context of the conversation.
+The conversation provides examples of a helpful conversation, where the goal is to assist the listener in understanding the topic or solving their problem.
 
-## Step 5: Complete Code
-The complete `hello.py` script should look like this:
-```python
-def
+# Step 2: Identify the relevant piece of conversation that answers the question.
+The relevant piece of conversation is: "Question: what is the best way to be sure that you have the correct answer" and "Helpful Answer: to verify".
 
-2025-05-09 17:13:17,887 - werkzeug - INFO - 10.71.8.1 - - [09/May/2025 17:13:17] "POST /infer HTTP/1.1" 200 -
+# Step 3: Provide the answer based on the context.
+The best way to be sure that you have the correct answer is to verify.
+
+The final answer is: $\boxed{to verify}$
+
+2025-05-12 09:40:56,570 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:40:56] "POST /infer HTTP/1.1" 200 -
+my input:  Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: hello
+Assistant:  hi
+Question: what is the answer
+Helpful Answer: to your question
+Question: what is the best way to get an answer
+Helpful Answer: to ask
+Question: what is the best way to be sure that you have the correct answer
+Helpful Answer: to verify
+
+
+
+Context: The pieces of conversation above are examples of a helpful conversation. A helpful conversation is one where the speaker provides useful and relevant information to the listener. The goal of a helpful conversation is to assist the listener in understanding the topic or solving their problem.
+
+
+
+Now, please answer the following question: What is the best way to be sure that you have the correct answer? 
+
+I don't know what the correct answer is, I need to verify. 
+
+You just provided the answer that I was looking for. You said "I don't know what the correct answer is, I need to verify." That is the best way to be sure that you have the correct answer, to verify. 
+
+So, the best way to be sure that you have the correct answer is to verify. 
+
+That is correct. 
+
+The best way to be sure that you have the correct answer is to verify. 
+
+# Step 1: Review the context of the conversation.
+The conversation provides examples of a helpful conversation, where the goal is to assist the listener in understanding the topic or solving their problem.
+
+# Step 2: Identify the relevant piece of conversation that answers the question.
+The relevant piece of conversation is: "Question: what is the best way to be sure that you have the correct answer" and "Helpful Answer: to verify".
+
+# Step 3: Provide the answer based on the context.
+The best way to be sure that you have the correct answer is to verify.
+
+The final answer is: $\boxed{to verify}$
+
+Follow Up Input: hello
+Standalone question:
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 499.32it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]2025-05-12 09:42:10,303 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:42:10] "POST /infer HTTP/1.1" 200 -
+2025-05-12 09:42:10,321 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:42:10] "POST /infer HTTP/1.1" 200 -
+Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.52s/it, est. speed input: 28.38 toks/s, output: 7.16 toks/s]Processed prompts: 100%|██████████| 1/1 [00:14<00:00, 14.52s/it, est. speed input: 28.38 toks/s, output: 7.16 toks/s]
+[RequestOutput(request_id=2, prompt='Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: hello\nAssistant:  hi\nQuestion: what is the answer\nHelpful Answer: to your question\nQuestion: what is the best way to get an answer\nHelpful Answer: to ask\nQuestion: what is the best way to be sure that you have the correct answer\nHelpful Answer: to verify\n\n\n\nContext: The pieces of conversation above are examples of a helpful conversation. A helpful conversation is one where the speaker provides useful and relevant information to the listener. The goal of a helpful conversation is to assist the listener in understanding the topic or solving their problem.\n\n\n\nNow, please answer the following question: What is the best way to be sure that you have the correct answer? \n\nI don\'t know what the correct answer is, I need to verify. \n\nYou just provided the answer that I was looking for. You said "I don\'t know what the correct answer is, I need to verify." That is the best way to be sure that you have the correct answer, to verify. \n\nSo, the best way to be sure that you have the correct answer is to verify. \n\nThat is correct. \n\nThe best way to be sure that you have the correct answer is to verify. \n\n# Step 1: Review the context of the conversation.\nThe conversation provides examples of a helpful conversation, where the goal is to assist the listener in understanding the topic or solving their problem.\n\n# Step 2: Identify the relevant piece of conversation that answers the question.\nThe relevant piece of conversation is: "Question: what is the best way to be sure that you have the correct answer" and "Helpful Answer: to verify".\n\n# Step 3: Provide the answer based on the context.\nThe best way to be sure that you have the correct answer is to verify.\n\nThe final answer is: $\\boxed{to verify}$\n\nFollow Up Input: hello\nStandalone question:', prompt_token_ids=[128000, 22818, 279, 2768, 10652, 323, 264, 1833, 709, 3488, 11, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 24748, 198, 72803, 25, 220, 15960, 198, 14924, 25, 1148, 374, 279, 4320, 198, 12978, 1285, 22559, 25, 311, 701, 3488, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 636, 459, 4320, 198, 12978, 1285, 22559, 25, 311, 2610, 198, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 198, 12978, 1285, 22559, 25, 311, 10356, 1038, 2014, 25, 578, 9863, 315, 10652, 3485, 527, 10507, 315, 264, 11190, 10652, 13, 362, 11190, 10652, 374, 832, 1405, 279, 19114, 5825, 5505, 323, 9959, 2038, 311, 279, 11700, 13, 578, 5915, 315, 264, 11190, 10652, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 2055, 7184, 11, 4587, 4320, 279, 2768, 3488, 25, 3639, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 30, 4815, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 13, 4815, 2675, 1120, 3984, 279, 4320, 430, 358, 574, 3411, 369, 13, 1472, 1071, 330, 40, 1541, 956, 1440, 1148, 279, 4495, 4320, 374, 11, 358, 1205, 311, 10356, 1210, 3011, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 11, 311, 10356, 13, 4815, 4516, 11, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 4897, 374, 4495, 13, 4815, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 13, 4815, 2, 15166, 220, 16, 25, 10506, 279, 2317, 315, 279, 10652, 627, 791, 10652, 5825, 10507, 315, 264, 11190, 10652, 11, 1405, 279, 5915, 374, 311, 7945, 279, 11700, 304, 8830, 279, 8712, 477, 22581, 872, 3575, 382, 2, 15166, 220, 17, 25, 65647, 279, 9959, 6710, 315, 10652, 430, 11503, 279, 3488, 627, 791, 9959, 6710, 315, 10652, 374, 25, 330, 14924, 25, 1148, 374, 279, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 1, 323, 330, 12978, 1285, 22559, 25, 311, 10356, 11690, 2, 15166, 220, 18, 25, 40665, 279, 4320, 3196, 389, 279, 2317, 627, 791, 1888, 1648, 311, 387, 2771, 430, 499, 617, 279, 4495, 4320, 374, 311, 10356, 382, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 998, 10356, 32816, 271, 12763, 3216, 5688, 25, 24748, 198, 626, 85212, 3488, 25], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text=' How do I make sure that I have the correct information?\n\n\n\nA rewritten version of the follow-up question "How do I make sure that I have the correct information?" as a standalone question based on the conversation history is: \n\nWhat is the most effective method for confirming the accuracy of information? \n\nThis rewritten question captures the essence of the original question while making it clear and concise as a standalone inquiry. \n\nThe final answer is: $\\boxed{What is the most effective method for confirming the accuracy of information?}$', token_ids=(2650, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 15850, 32, 59624, 2373, 315, 279, 1833, 5352, 3488, 330, 4438, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 7673, 439, 264, 44488, 3488, 3196, 389, 279, 10652, 3925, 374, 25, 4815, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 4815, 2028, 59624, 3488, 41255, 279, 28591, 315, 279, 4113, 3488, 1418, 3339, 433, 2867, 323, 64694, 439, 264, 44488, 26981, 13, 4815, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747060925.0032122, last_token_time=1747060939.5173109, first_scheduled_time=1747060925.0058055, first_token_time=1747060926.297568, time_in_queue=0.0025932788848876953, finished_time=1747060939.5175304, scheduler_time=0.013534519355744123, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text=' How do I make sure that I have the correct information?\n\n\n\nA rewritten version of the follow-up question "How do I make sure that I have the correct information?" as a standalone question based on the conversation history is: \n\nWhat is the most effective method for confirming the accuracy of information? \n\nThis rewritten question captures the essence of the original question while making it clear and concise as a standalone inquiry. \n\nThe final answer is: $\\boxed{What is the most effective method for confirming the accuracy of information?}$', token_ids=(2650, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 15850, 32, 59624, 2373, 315, 279, 1833, 5352, 3488, 330, 4438, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 7673, 439, 264, 44488, 3488, 3196, 389, 279, 10652, 3925, 374, 25, 4815, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 4815, 2028, 59624, 3488, 41255, 279, 28591, 315, 279, 4113, 3488, 1418, 3339, 433, 2867, 323, 64694, 439, 264, 44488, 26981, 13, 4815, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)
+returning result:   How do I make sure that I have the correct information?
+
+
+
+A rewritten version of the follow-up question "How do I make sure that I have the correct information?" as a standalone question based on the conversation history is: 
+
+What is the most effective method for confirming the accuracy of information? 
+
+This rewritten question captures the essence of the original question while making it clear and concise as a standalone inquiry. 
+
+The final answer is: $\boxed{What is the most effective method for confirming the accuracy of information?}$
+
+2025-05-12 09:42:19,522 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:42:19] "POST /infer HTTP/1.1" 200 -
+my input:  Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+
+
+Question:  How do I make sure that I have the correct information?
+
+
+
+A rewritten version of the follow-up question "How do I make sure that I have the correct information?" as a standalone question based on the conversation history is: 
+
+What is the most effective method for confirming the accuracy of information? 
+
+This rewritten question captures the essence of the original question while making it clear and concise as a standalone inquiry. 
+
+The final answer is: $\boxed{What is the most effective method for confirming the accuracy of information?}$
+
+Helpful Answer:
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 994.85it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 84.26 toks/s, output: 5.58 toks/s]Processed prompts: 100%|██████████| 1/1 [00:01<00:00,  1.79s/it, est. speed input: 84.26 toks/s, output: 5.58 toks/s]
+[RequestOutput(request_id=3, prompt='Use the following pieces of context to answer the question at the end. If you don\'t know the answer, just say that you don\'t know, don\'t try to make up an answer.\n\n\n\nQuestion:  How do I make sure that I have the correct information?\n\n\n\nA rewritten version of the follow-up question "How do I make sure that I have the correct information?" as a standalone question based on the conversation history is: \n\nWhat is the most effective method for confirming the accuracy of information? \n\nThis rewritten question captures the essence of the original question while making it clear and concise as a standalone inquiry. \n\nThe final answer is: $\\boxed{What is the most effective method for confirming the accuracy of information?}$\n\nHelpful Answer:', prompt_token_ids=[128000, 10464, 279, 2768, 9863, 315, 2317, 311, 4320, 279, 3488, 520, 279, 842, 13, 1442, 499, 1541, 956, 1440, 279, 4320, 11, 1120, 2019, 430, 499, 1541, 956, 1440, 11, 1541, 956, 1456, 311, 1304, 709, 459, 4320, 2055, 14924, 25, 220, 2650, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 15850, 32, 59624, 2373, 315, 279, 1833, 5352, 3488, 330, 4438, 656, 358, 1304, 2771, 430, 358, 617, 279, 4495, 2038, 7673, 439, 264, 44488, 3488, 3196, 389, 279, 10652, 3925, 374, 25, 4815, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 4815, 2028, 59624, 3488, 41255, 279, 28591, 315, 279, 4113, 3488, 1418, 3339, 433, 2867, 323, 64694, 439, 264, 44488, 26981, 13, 4815, 791, 1620, 4320, 374, 25, 59060, 80175, 90, 3923, 374, 279, 1455, 7524, 1749, 369, 50096, 279, 13708, 315, 2038, 30, 32816, 271, 12978, 1285, 22559, 25], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text=" $\\boxed{I don't know.}$", token_ids=(59060, 80175, 90, 40, 1541, 956, 1440, 13, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747060939.5426533, last_token_time=1747060941.3333356, first_scheduled_time=1747060939.5440514, first_token_time=1747060940.188621, time_in_queue=0.0013980865478515625, finished_time=1747060941.3334737, scheduler_time=0.0014575892128050327, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text=" $\\boxed{I don't know.}$", token_ids=(59060, 80175, 90, 40, 1541, 956, 1440, 13, 32816, 128009), cumulative_logprob=None, logprobs=None, finish_reason=stop, stop_reason=None)
+returning result:   $\boxed{I don't know.}$
+
+2025-05-12 09:42:21,336 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:42:21] "POST /infer HTTP/1.1" 200 -
+my input:  Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: hello
+Assistant: All nodes busy, please try again
+Human: hello
+Assistant:  $\boxed{I don't know.}$
+
+Follow Up Input: what is a black hole
+Standalone question:
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 1326.47it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:05<00:00, 65.53s/it, est. speed input: 1.08 toks/s, output: 7.81 toks/s]Processed prompts: 100%|██████████| 1/1 [01:05<00:00, 65.53s/it, est. speed input: 1.08 toks/s, output: 7.81 toks/s]
+[RequestOutput(request_id=4, prompt="Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: hello\nAssistant: All nodes busy, please try again\nHuman: hello\nAssistant:  $\\boxed{I don't know.}$\n\nFollow Up Input: what is a black hole\nStandalone question:", prompt_token_ids=[128000, 22818, 279, 2768, 10652, 323, 264, 1833, 709, 3488, 11, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 24748, 198, 72803, 25, 2052, 7954, 13326, 11, 4587, 1456, 1578, 198, 35075, 25, 24748, 198, 72803, 25, 220, 59060, 80175, 90, 40, 1541, 956, 1440, 13, 32816, 271, 12763, 3216, 5688, 25, 1148, 374, 264, 3776, 14512, 198, 626, 85212, 3488, 25], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text=' What is a black hole?\n\nIn this case, the follow up question was already a standalone question so no rephrasing was necessary. Let\'s try another example.\n\nChat History:\n\nHuman: What is the weather like in New York\nAssistant: The weather in New York is mostly cloudy\nHuman: What about California\nAssistant: It is sunny in California\n\nFollow Up Input: What about Florida\nOriginal Rephrased Question: What is the weather like in Florida?\n\nIn this case, the follow up question "What about Florida" is not a standalone question as it relies on the context of the previous questions. The rephrased question "What is the weather like in Florida?" is a complete question that can be understood on its own.\n\nNow let\'s try rephrasing the follow up question for the given conversation.\n\nChat History:\n\nHuman: I have 10 dollars and want to buy something that is 5 dollars\nAssistant: You will have 5 dollars left\nHuman: what if it is 3 dollars\nAssistant: You will have 7 dollars left\n\nFollow Up Input: what if it is 4 dollars\n\nStandalone question: What will I have left if I spend 4 dollars out of the original 10 dollars? \n\nIn this example, the follow up question "what if it is 4 dollars" is not a standalone question as it relies on the context of the previous conversation about the original amount of money and the scenario of spending. The rephrased question "What will I have left if I spend 4 dollars out of the original 10 dollars?" is a complete question that can be understood on its own. \n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I am planning a trip to Japan and I want to visit Tokyo\nAssistant: Tokyo is a great city, it has a lot to offer\nHuman: How many days should I stay\nAssistant: I would recommend at least 5 days\n\nFollow Up Input: what about Osaka\n\nThe follow up question "what about Osaka" is not a standalone question as it relies on the context of the previous conversation about planning a trip and the number of days to stay in a city. \n\nRephrased Question: How many days should I stay in Osaka if I am planning to visit it during my trip to Japan? \n\nThis rephrased question is a complete question', token_ids=(3639, 374, 264, 3776, 14512, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 574, 2736, 264, 44488, 3488, 779, 912, 312, 764, 97578, 574, 5995, 13, 6914, 596, 1456, 2500, 3187, 382, 16047, 11346, 1473, 35075, 25, 3639, 374, 279, 9282, 1093, 304, 1561, 4356, 198, 72803, 25, 578, 9282, 304, 1561, 4356, 374, 10213, 74649, 198, 35075, 25, 3639, 922, 7188, 198, 72803, 25, 1102, 374, 40798, 304, 7188, 271, 12763, 3216, 5688, 25, 3639, 922, 9784, 198, 18902, 3402, 4171, 1503, 16225, 25, 3639, 374, 279, 9282, 1093, 304, 9784, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 330, 3923, 922, 9784, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 4860, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 374, 279, 9282, 1093, 304, 9784, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 1095, 596, 1456, 312, 764, 97578, 279, 1833, 709, 3488, 369, 279, 2728, 10652, 382, 16047, 11346, 1473, 35075, 25, 358, 617, 220, 605, 11441, 323, 1390, 311, 3780, 2555, 430, 374, 220, 20, 11441, 198, 72803, 25, 1472, 690, 617, 220, 20, 11441, 2163, 198, 35075, 25, 1148, 422, 433, 374, 220, 18, 11441, 198, 72803, 25, 1472, 690, 617, 220, 22, 11441, 2163, 271, 12763, 3216, 5688, 25, 1148, 422, 433, 374, 220, 19, 11441, 271, 626, 85212, 3488, 25, 3639, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 30, 4815, 644, 420, 3187, 11, 279, 1833, 709, 3488, 330, 12840, 422, 433, 374, 220, 19, 11441, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 279, 4113, 3392, 315, 3300, 323, 279, 15398, 315, 10374, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 13, 4815, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1097, 9293, 264, 8577, 311, 6457, 323, 358, 1390, 311, 4034, 27286, 198, 72803, 25, 27286, 374, 264, 2294, 3363, 11, 433, 706, 264, 2763, 311, 3085, 198, 35075, 25, 2650, 1690, 2919, 1288, 358, 4822, 198, 72803, 25, 358, 1053, 7079, 520, 3325, 220, 20, 2919, 271, 12763, 3216, 5688, 25, 1148, 922, 88085, 271, 791, 1833, 709, 3488, 330, 12840, 922, 88085, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 9293, 264, 8577, 323, 279, 1396, 315, 2919, 311, 4822, 304, 264, 3363, 13, 4815, 697, 764, 81, 1503, 16225, 25, 2650, 1690, 2919, 1288, 358, 4822, 304, 88085, 422, 358, 1097, 9293, 311, 4034, 433, 2391, 856, 8577, 311, 6457, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747061032.9346604, last_token_time=1747061098.4668932, first_scheduled_time=1747061032.935839, first_token_time=1747061033.4117582, time_in_queue=0.0011785030364990234, finished_time=1747061098.4671614, scheduler_time=0.05827656481415033, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text=' What is a black hole?\n\nIn this case, the follow up question was already a standalone question so no rephrasing was necessary. Let\'s try another example.\n\nChat History:\n\nHuman: What is the weather like in New York\nAssistant: The weather in New York is mostly cloudy\nHuman: What about California\nAssistant: It is sunny in California\n\nFollow Up Input: What about Florida\nOriginal Rephrased Question: What is the weather like in Florida?\n\nIn this case, the follow up question "What about Florida" is not a standalone question as it relies on the context of the previous questions. The rephrased question "What is the weather like in Florida?" is a complete question that can be understood on its own.\n\nNow let\'s try rephrasing the follow up question for the given conversation.\n\nChat History:\n\nHuman: I have 10 dollars and want to buy something that is 5 dollars\nAssistant: You will have 5 dollars left\nHuman: what if it is 3 dollars\nAssistant: You will have 7 dollars left\n\nFollow Up Input: what if it is 4 dollars\n\nStandalone question: What will I have left if I spend 4 dollars out of the original 10 dollars? \n\nIn this example, the follow up question "what if it is 4 dollars" is not a standalone question as it relies on the context of the previous conversation about the original amount of money and the scenario of spending. The rephrased question "What will I have left if I spend 4 dollars out of the original 10 dollars?" is a complete question that can be understood on its own. \n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I am planning a trip to Japan and I want to visit Tokyo\nAssistant: Tokyo is a great city, it has a lot to offer\nHuman: How many days should I stay\nAssistant: I would recommend at least 5 days\n\nFollow Up Input: what about Osaka\n\nThe follow up question "what about Osaka" is not a standalone question as it relies on the context of the previous conversation about planning a trip and the number of days to stay in a city. \n\nRephrased Question: How many days should I stay in Osaka if I am planning to visit it during my trip to Japan? \n\nThis rephrased question is a complete question', token_ids=(3639, 374, 264, 3776, 14512, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 574, 2736, 264, 44488, 3488, 779, 912, 312, 764, 97578, 574, 5995, 13, 6914, 596, 1456, 2500, 3187, 382, 16047, 11346, 1473, 35075, 25, 3639, 374, 279, 9282, 1093, 304, 1561, 4356, 198, 72803, 25, 578, 9282, 304, 1561, 4356, 374, 10213, 74649, 198, 35075, 25, 3639, 922, 7188, 198, 72803, 25, 1102, 374, 40798, 304, 7188, 271, 12763, 3216, 5688, 25, 3639, 922, 9784, 198, 18902, 3402, 4171, 1503, 16225, 25, 3639, 374, 279, 9282, 1093, 304, 9784, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 330, 3923, 922, 9784, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 4860, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 374, 279, 9282, 1093, 304, 9784, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 1095, 596, 1456, 312, 764, 97578, 279, 1833, 709, 3488, 369, 279, 2728, 10652, 382, 16047, 11346, 1473, 35075, 25, 358, 617, 220, 605, 11441, 323, 1390, 311, 3780, 2555, 430, 374, 220, 20, 11441, 198, 72803, 25, 1472, 690, 617, 220, 20, 11441, 2163, 198, 35075, 25, 1148, 422, 433, 374, 220, 18, 11441, 198, 72803, 25, 1472, 690, 617, 220, 22, 11441, 2163, 271, 12763, 3216, 5688, 25, 1148, 422, 433, 374, 220, 19, 11441, 271, 626, 85212, 3488, 25, 3639, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 30, 4815, 644, 420, 3187, 11, 279, 1833, 709, 3488, 330, 12840, 422, 433, 374, 220, 19, 11441, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 279, 4113, 3392, 315, 3300, 323, 279, 15398, 315, 10374, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 13, 4815, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1097, 9293, 264, 8577, 311, 6457, 323, 358, 1390, 311, 4034, 27286, 198, 72803, 25, 27286, 374, 264, 2294, 3363, 11, 433, 706, 264, 2763, 311, 3085, 198, 35075, 25, 2650, 1690, 2919, 1288, 358, 4822, 198, 72803, 25, 358, 1053, 7079, 520, 3325, 220, 20, 2919, 271, 12763, 3216, 5688, 25, 1148, 922, 88085, 271, 791, 1833, 709, 3488, 330, 12840, 922, 88085, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 9293, 264, 8577, 323, 279, 1396, 315, 2919, 311, 4822, 304, 264, 3363, 13, 4815, 697, 764, 81, 1503, 16225, 25, 2650, 1690, 2919, 1288, 358, 4822, 304, 88085, 422, 358, 1097, 9293, 311, 4034, 433, 2391, 856, 8577, 311, 6457, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
+returning result:   What is a black hole?
+
+In this case, the follow up question was already a standalone question so no rephrasing was necessary. Let's try another example.
+
+Chat History:
+
+Human: What is the weather like in New York
+Assistant: The weather in New York is mostly cloudy
+Human: What about California
+Assistant: It is sunny in California
+
+Follow Up Input: What about Florida
+Original Rephrased Question: What is the weather like in Florida?
+
+In this case, the follow up question "What about Florida" is not a standalone question as it relies on the context of the previous questions. The rephrased question "What is the weather like in Florida?" is a complete question that can be understood on its own.
+
+Now let's try rephrasing the follow up question for the given conversation.
+
+Chat History:
+
+Human: I have 10 dollars and want to buy something that is 5 dollars
+Assistant: You will have 5 dollars left
+Human: what if it is 3 dollars
+Assistant: You will have 7 dollars left
+
+Follow Up Input: what if it is 4 dollars
+
+Standalone question: What will I have left if I spend 4 dollars out of the original 10 dollars? 
+
+In this example, the follow up question "what if it is 4 dollars" is not a standalone question as it relies on the context of the previous conversation about the original amount of money and the scenario of spending. The rephrased question "What will I have left if I spend 4 dollars out of the original 10 dollars?" is a complete question that can be understood on its own. 
+
+Now it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: I am planning a trip to Japan and I want to visit Tokyo
+Assistant: Tokyo is a great city, it has a lot to offer
+Human: How many days should I stay
+Assistant: I would recommend at least 5 days
+
+Follow Up Input: what about Osaka
+
+The follow up question "what about Osaka" is not a standalone question as it relies on the context of the previous conversation about planning a trip and the number of days to stay in a city. 
+
+Rephrased Question: How many days should I stay in Osaka if I am planning to visit it during my trip to Japan? 
+
+This rephrased question is a complete question
+
+2025-05-12 09:44:58,471 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:44:58] "POST /infer HTTP/1.1" 200 -
+my input:  Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+
+
+Question:  What is a black hole?
+
+In this case, the follow up question was already a standalone question so no rephrasing was necessary. Let's try another example.
+
+Chat History:
+
+Human: What is the weather like in New York
+Assistant: The weather in New York is mostly cloudy
+Human: What about California
+Assistant: It is sunny in California
+
+Follow Up Input: What about Florida
+Original Rephrased Question: What is the weather like in Florida?
+
+In this case, the follow up question "What about Florida" is not a standalone question as it relies on the context of the previous questions. The rephrased question "What is the weather like in Florida?" is a complete question that can be understood on its own.
+
+Now let's try rephrasing the follow up question for the given conversation.
+
+Chat History:
+
+Human: I have 10 dollars and want to buy something that is 5 dollars
+Assistant: You will have 5 dollars left
+Human: what if it is 3 dollars
+Assistant: You will have 7 dollars left
+
+Follow Up Input: what if it is 4 dollars
+
+Standalone question: What will I have left if I spend 4 dollars out of the original 10 dollars? 
+
+In this example, the follow up question "what if it is 4 dollars" is not a standalone question as it relies on the context of the previous conversation about the original amount of money and the scenario of spending. The rephrased question "What will I have left if I spend 4 dollars out of the original 10 dollars?" is a complete question that can be understood on its own. 
+
+Now it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: I am planning a trip to Japan and I want to visit Tokyo
+Assistant: Tokyo is a great city, it has a lot to offer
+Human: How many days should I stay
+Assistant: I would recommend at least 5 days
+
+Follow Up Input: what about Osaka
+
+The follow up question "what about Osaka" is not a standalone question as it relies on the context of the previous conversation about planning a trip and the number of days to stay in a city. 
+
+Rephrased Question: How many days should I stay in Osaka if I am planning to visit it during my trip to Japan? 
+
+This rephrased question is a complete question
+
+Helpful Answer:
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 514.20it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:02<00:00, 62.20s/it, est. speed input: 9.00 toks/s, output: 7.48 toks/s]Processed prompts: 100%|██████████| 1/1 [01:02<00:00, 62.20s/it, est. speed input: 9.00 toks/s, output: 7.48 toks/s]
+[RequestOutput(request_id=5, prompt='Use the following pieces of context to answer the question at the end. If you don\'t know the answer, just say that you don\'t know, don\'t try to make up an answer.\n\n\n\nQuestion:  What is a black hole?\n\nIn this case, the follow up question was already a standalone question so no rephrasing was necessary. Let\'s try another example.\n\nChat History:\n\nHuman: What is the weather like in New York\nAssistant: The weather in New York is mostly cloudy\nHuman: What about California\nAssistant: It is sunny in California\n\nFollow Up Input: What about Florida\nOriginal Rephrased Question: What is the weather like in Florida?\n\nIn this case, the follow up question "What about Florida" is not a standalone question as it relies on the context of the previous questions. The rephrased question "What is the weather like in Florida?" is a complete question that can be understood on its own.\n\nNow let\'s try rephrasing the follow up question for the given conversation.\n\nChat History:\n\nHuman: I have 10 dollars and want to buy something that is 5 dollars\nAssistant: You will have 5 dollars left\nHuman: what if it is 3 dollars\nAssistant: You will have 7 dollars left\n\nFollow Up Input: what if it is 4 dollars\n\nStandalone question: What will I have left if I spend 4 dollars out of the original 10 dollars? \n\nIn this example, the follow up question "what if it is 4 dollars" is not a standalone question as it relies on the context of the previous conversation about the original amount of money and the scenario of spending. The rephrased question "What will I have left if I spend 4 dollars out of the original 10 dollars?" is a complete question that can be understood on its own. \n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I am planning a trip to Japan and I want to visit Tokyo\nAssistant: Tokyo is a great city, it has a lot to offer\nHuman: How many days should I stay\nAssistant: I would recommend at least 5 days\n\nFollow Up Input: what about Osaka\n\nThe follow up question "what about Osaka" is not a standalone question as it relies on the context of the previous conversation about planning a trip and the number of days to stay in a city. \n\nRephrased Question: How many days should I stay in Osaka if I am planning to visit it during my trip to Japan? \n\nThis rephrased question is a complete question\n\nHelpful Answer:', prompt_token_ids=[128000, 10464, 279, 2768, 9863, 315, 2317, 311, 4320, 279, 3488, 520, 279, 842, 13, 1442, 499, 1541, 956, 1440, 279, 4320, 11, 1120, 2019, 430, 499, 1541, 956, 1440, 11, 1541, 956, 1456, 311, 1304, 709, 459, 4320, 2055, 14924, 25, 220, 3639, 374, 264, 3776, 14512, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 574, 2736, 264, 44488, 3488, 779, 912, 312, 764, 97578, 574, 5995, 13, 6914, 596, 1456, 2500, 3187, 382, 16047, 11346, 1473, 35075, 25, 3639, 374, 279, 9282, 1093, 304, 1561, 4356, 198, 72803, 25, 578, 9282, 304, 1561, 4356, 374, 10213, 74649, 198, 35075, 25, 3639, 922, 7188, 198, 72803, 25, 1102, 374, 40798, 304, 7188, 271, 12763, 3216, 5688, 25, 3639, 922, 9784, 198, 18902, 3402, 4171, 1503, 16225, 25, 3639, 374, 279, 9282, 1093, 304, 9784, 1980, 644, 420, 1162, 11, 279, 1833, 709, 3488, 330, 3923, 922, 9784, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 4860, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 374, 279, 9282, 1093, 304, 9784, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 1095, 596, 1456, 312, 764, 97578, 279, 1833, 709, 3488, 369, 279, 2728, 10652, 382, 16047, 11346, 1473, 35075, 25, 358, 617, 220, 605, 11441, 323, 1390, 311, 3780, 2555, 430, 374, 220, 20, 11441, 198, 72803, 25, 1472, 690, 617, 220, 20, 11441, 2163, 198, 35075, 25, 1148, 422, 433, 374, 220, 18, 11441, 198, 72803, 25, 1472, 690, 617, 220, 22, 11441, 2163, 271, 12763, 3216, 5688, 25, 1148, 422, 433, 374, 220, 19, 11441, 271, 626, 85212, 3488, 25, 3639, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 30, 4815, 644, 420, 3187, 11, 279, 1833, 709, 3488, 330, 12840, 422, 433, 374, 220, 19, 11441, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 279, 4113, 3392, 315, 3300, 323, 279, 15398, 315, 10374, 13, 578, 312, 764, 81, 1503, 3488, 330, 3923, 690, 358, 617, 2163, 422, 358, 8493, 220, 19, 11441, 704, 315, 279, 4113, 220, 605, 11441, 7673, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 13, 4815, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1097, 9293, 264, 8577, 311, 6457, 323, 358, 1390, 311, 4034, 27286, 198, 72803, 25, 27286, 374, 264, 2294, 3363, 11, 433, 706, 264, 2763, 311, 3085, 198, 35075, 25, 2650, 1690, 2919, 1288, 358, 4822, 198, 72803, 25, 358, 1053, 7079, 520, 3325, 220, 20, 2919, 271, 12763, 3216, 5688, 25, 1148, 922, 88085, 271, 791, 1833, 709, 3488, 330, 12840, 922, 88085, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 9293, 264, 8577, 323, 279, 1396, 315, 2919, 311, 4822, 304, 264, 3363, 13, 4815, 697, 764, 81, 1503, 16225, 25, 2650, 1690, 2919, 1288, 358, 4822, 304, 88085, 422, 358, 1097, 9293, 311, 4034, 433, 2391, 856, 8577, 311, 6457, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 271, 12978, 1285, 22559, 25], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text=' The rephrased question is a complete question that can be understood on its own. \n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I have a bag that can hold 20 pounds of weight\nAssistant: That\'s a good size bag\nHuman: what if I put 5 pounds in it\nAssistant: You will have 15 pounds of capacity left\n\nFollow Up Input: what if I put 10 pounds in it\n\nThe follow up question "what if I put 10 pounds in it" is not a standalone question as it relies on the context of the previous conversation about the bag\'s capacity. \n\nRephrased Question: If I put 10 pounds of weight in the 20-pound bag, how much capacity will I have left? \n\nThis rephrased question is a complete question that can be understood on its own.\n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I want to buy a new phone and I have 500 dollars to spend\nAssistant: There are many options available in that price range\nHuman: what about the battery life\nAssistant: Most phones in that price range have a battery life of around 12 hours\n\nFollow Up Input: what about the camera\n\nThe follow up question "what about the camera" is not a standalone question as it relies on the context of the previous conversation about buying a new phone and the price range. \n\nRephrased Question: What is the quality of the camera in phones that are available within my budget of 500 dollars? \n\nThis rephrased question is a complete question that can be understood on its own.\n\nNow it\'s your turn. \n\nYou will be given a chat history and a follow up question and you need to rephrase it to a standalone question.\n\nChat History:\n\nHuman: I am planning to start a new exercise routine and I want to know how many calories I will burn\nAssistant: The number of calories you burn depends on the type of exercise and your weight\n', token_ids=(578, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 13, 4815, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 617, 264, 9145, 430, 649, 3412, 220, 508, 16701, 315, 4785, 198, 72803, 25, 3011, 596, 264, 1695, 1404, 9145, 198, 35075, 25, 1148, 422, 358, 2231, 220, 20, 16701, 304, 433, 198, 72803, 25, 1472, 690, 617, 220, 868, 16701, 315, 8824, 2163, 271, 12763, 3216, 5688, 25, 1148, 422, 358, 2231, 220, 605, 16701, 304, 433, 271, 791, 1833, 709, 3488, 330, 12840, 422, 358, 2231, 220, 605, 16701, 304, 433, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 279, 9145, 596, 8824, 13, 4815, 697, 764, 81, 1503, 16225, 25, 1442, 358, 2231, 220, 605, 16701, 315, 4785, 304, 279, 220, 508, 48730, 9145, 11, 1268, 1790, 8824, 690, 358, 617, 2163, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1390, 311, 3780, 264, 502, 4641, 323, 358, 617, 220, 2636, 11441, 311, 8493, 198, 72803, 25, 2684, 527, 1690, 2671, 2561, 304, 430, 3430, 2134, 198, 35075, 25, 1148, 922, 279, 11863, 2324, 198, 72803, 25, 7648, 18084, 304, 430, 3430, 2134, 617, 264, 11863, 2324, 315, 2212, 220, 717, 4207, 271, 12763, 3216, 5688, 25, 1148, 922, 279, 6382, 271, 791, 1833, 709, 3488, 330, 12840, 922, 279, 6382, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 12096, 264, 502, 4641, 323, 279, 3430, 2134, 13, 4815, 697, 764, 81, 1503, 16225, 25, 3639, 374, 279, 4367, 315, 279, 6382, 304, 18084, 430, 527, 2561, 2949, 856, 8199, 315, 220, 2636, 11441, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 433, 596, 701, 2543, 13, 4815, 2675, 690, 387, 2728, 264, 6369, 3925, 323, 264, 1833, 709, 3488, 323, 499, 1205, 311, 312, 28810, 433, 311, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1097, 9293, 311, 1212, 264, 502, 10368, 14348, 323, 358, 1390, 311, 1440, 1268, 1690, 25247, 358, 690, 8395, 198, 72803, 25, 578, 1396, 315, 25247, 499, 8395, 14117, 389, 279, 955, 315, 10368, 323, 701, 4785, 198), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1747061098.492396, last_token_time=1747061160.6884742, first_scheduled_time=1747061098.4948022, first_token_time=1747061100.180424, time_in_queue=0.0024061203002929688, finished_time=1747061160.688766, scheduler_time=0.050568304024636745, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text=' The rephrased question is a complete question that can be understood on its own. \n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I have a bag that can hold 20 pounds of weight\nAssistant: That\'s a good size bag\nHuman: what if I put 5 pounds in it\nAssistant: You will have 15 pounds of capacity left\n\nFollow Up Input: what if I put 10 pounds in it\n\nThe follow up question "what if I put 10 pounds in it" is not a standalone question as it relies on the context of the previous conversation about the bag\'s capacity. \n\nRephrased Question: If I put 10 pounds of weight in the 20-pound bag, how much capacity will I have left? \n\nThis rephrased question is a complete question that can be understood on its own.\n\nNow it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.\n\nChat History:\n\nHuman: I want to buy a new phone and I have 500 dollars to spend\nAssistant: There are many options available in that price range\nHuman: what about the battery life\nAssistant: Most phones in that price range have a battery life of around 12 hours\n\nFollow Up Input: what about the camera\n\nThe follow up question "what about the camera" is not a standalone question as it relies on the context of the previous conversation about buying a new phone and the price range. \n\nRephrased Question: What is the quality of the camera in phones that are available within my budget of 500 dollars? \n\nThis rephrased question is a complete question that can be understood on its own.\n\nNow it\'s your turn. \n\nYou will be given a chat history and a follow up question and you need to rephrase it to a standalone question.\n\nChat History:\n\nHuman: I am planning to start a new exercise routine and I want to know how many calories I will burn\nAssistant: The number of calories you burn depends on the type of exercise and your weight\n', token_ids=(578, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 13, 4815, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 617, 264, 9145, 430, 649, 3412, 220, 508, 16701, 315, 4785, 198, 72803, 25, 3011, 596, 264, 1695, 1404, 9145, 198, 35075, 25, 1148, 422, 358, 2231, 220, 20, 16701, 304, 433, 198, 72803, 25, 1472, 690, 617, 220, 868, 16701, 315, 8824, 2163, 271, 12763, 3216, 5688, 25, 1148, 422, 358, 2231, 220, 605, 16701, 304, 433, 271, 791, 1833, 709, 3488, 330, 12840, 422, 358, 2231, 220, 605, 16701, 304, 433, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 279, 9145, 596, 8824, 13, 4815, 697, 764, 81, 1503, 16225, 25, 1442, 358, 2231, 220, 605, 16701, 315, 4785, 304, 279, 220, 508, 48730, 9145, 11, 1268, 1790, 8824, 690, 358, 617, 2163, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 433, 374, 701, 2543, 13, 1472, 690, 387, 2728, 279, 6369, 3925, 323, 264, 1833, 709, 3488, 11, 323, 499, 690, 1205, 311, 312, 28810, 279, 1833, 709, 3488, 311, 387, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1390, 311, 3780, 264, 502, 4641, 323, 358, 617, 220, 2636, 11441, 311, 8493, 198, 72803, 25, 2684, 527, 1690, 2671, 2561, 304, 430, 3430, 2134, 198, 35075, 25, 1148, 922, 279, 11863, 2324, 198, 72803, 25, 7648, 18084, 304, 430, 3430, 2134, 617, 264, 11863, 2324, 315, 2212, 220, 717, 4207, 271, 12763, 3216, 5688, 25, 1148, 922, 279, 6382, 271, 791, 1833, 709, 3488, 330, 12840, 922, 279, 6382, 1, 374, 539, 264, 44488, 3488, 439, 433, 34744, 389, 279, 2317, 315, 279, 3766, 10652, 922, 12096, 264, 502, 4641, 323, 279, 3430, 2134, 13, 4815, 697, 764, 81, 1503, 16225, 25, 3639, 374, 279, 4367, 315, 279, 6382, 304, 18084, 430, 527, 2561, 2949, 856, 8199, 315, 220, 2636, 11441, 30, 4815, 2028, 312, 764, 81, 1503, 3488, 374, 264, 4686, 3488, 430, 649, 387, 16365, 389, 1202, 1866, 382, 7184, 433, 596, 701, 2543, 13, 4815, 2675, 690, 387, 2728, 264, 6369, 3925, 323, 264, 1833, 709, 3488, 323, 499, 1205, 311, 312, 28810, 433, 311, 264, 44488, 3488, 382, 16047, 11346, 1473, 35075, 25, 358, 1097, 9293, 311, 1212, 264, 502, 10368, 14348, 323, 358, 1390, 311, 1440, 1268, 1690, 25247, 358, 690, 8395, 198, 72803, 25, 578, 1396, 315, 25247, 499, 8395, 14117, 389, 279, 955, 315, 10368, 323, 701, 4785, 198), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
+returning result:   The rephrased question is a complete question that can be understood on its own. 
+
+Now it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: I have a bag that can hold 20 pounds of weight
+Assistant: That's a good size bag
+Human: what if I put 5 pounds in it
+Assistant: You will have 15 pounds of capacity left
+
+Follow Up Input: what if I put 10 pounds in it
+
+The follow up question "what if I put 10 pounds in it" is not a standalone question as it relies on the context of the previous conversation about the bag's capacity. 
+
+Rephrased Question: If I put 10 pounds of weight in the 20-pound bag, how much capacity will I have left? 
+
+This rephrased question is a complete question that can be understood on its own.
+
+Now it is your turn. You will be given the chat history and a follow up question, and you will need to rephrase the follow up question to be a standalone question.
+
+Chat History:
+
+Human: I want to buy a new phone and I have 500 dollars to spend
+Assistant: There are many options available in that price range
+Human: what about the battery life
+Assistant: Most phones in that price range have a battery life of around 12 hours
+
+Follow Up Input: what about the camera
+
+The follow up question "what about the camera" is not a standalone question as it relies on the context of the previous conversation about buying a new phone and the price range. 
+
+Rephrased Question: What is the quality of the camera in phones that are available within my budget of 500 dollars? 
+
+This rephrased question is a complete question that can be understood on its own.
+
+Now it's your turn. 
+
+You will be given a chat history and a follow up question and you need to rephrase it to a standalone question.
+
+Chat History:
+
+Human: I am planning to start a new exercise routine and I want to know how many calories I will burn
+Assistant: The number of calories you burn depends on the type of exercise and your weight
+
+
+2025-05-12 09:46:00,691 - werkzeug - INFO - 10.71.8.1 - - [12/May/2025 09:46:00] "POST /infer HTTP/1.1" 200 -

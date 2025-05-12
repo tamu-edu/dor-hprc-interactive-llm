@@ -66,13 +66,6 @@ def infer():
     except Exception as e:
         return jsonify({"status": 500, "error": str(e)})
 
-@app.route('/alive', methods=['GET'])
-def alive():
-    lock_f = try_acquire_lock()
-    if not lock_f:
-        return "False", 500
-    release_lock(lock_f)
-    return "True", 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(port))
