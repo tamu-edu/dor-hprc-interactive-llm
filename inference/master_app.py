@@ -32,6 +32,8 @@ def infer():
         if(max_response_length > 512):
             return jsonify({"status": 400, "error": "max length too long"})
 
+        child_ip_addresses = get_children()
+        print(child_ip_addresses)
         result = ""
         for ip_address in child_ip_addresses:
             response = send_to_child(ip_address, prompt, max_response_length)
@@ -39,7 +41,11 @@ def infer():
             if(status_code and (status_code == 503)):
                 print("Child Busy", flush=True)
                 continue;
+            if(status_code and status_code >= 400):
+                continue;
             result = response.json()["response"]
+            if(result != ""):
+                break;
         if(result == ""):
             result = "All nodes busy, please try again"
         print("response from child was: ", result, flush=True)
@@ -50,6 +56,13 @@ def infer():
         print("failed with exception: ", e, flush=True)
         return jsonify({"status": 500, "error": e, "response": "server busy"})
 
+def get_children():
+    file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+    child_ip_addresses = []
+    with open(file_name, "rb") as f:
+        child_ip_addresses = pickle.load(f)
+    return child_ip_addresses
+
 if __name__ == '__main__':
     expected_num_ip_addresses = int(sys.argv[1]) 
     child_ip_addresses = []
@@ -58,8 +71,7 @@ if __name__ == '__main__':
         pickle.dump([], f)
     print("waiting for children to write ip addresses to file", flush=True)
     while(len(child_ip_addresses) < expected_num_ip_addresses):
-        with open(file_name, "rb") as f:
-            child_ip_addresses = pickle.load(f)
+        child_ip_addresses = get_children()
         time.sleep(1)
     print("child ip addresses: ", child_ip_addresses, flush=True)  
     result = subprocess.run(
