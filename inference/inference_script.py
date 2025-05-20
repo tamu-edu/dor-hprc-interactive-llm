@@ -28,9 +28,20 @@ def remove_ansi_sequences(text):
     ansi_escape = re.compile(r'\x1b\[[0-9;]*m')
     return ansi_escape.sub('', text)
 
+def validate_length(llm, text, max_tokens):
+    tokenizer = llm.get_tokenizer()
+    input_tokens = tokenizer.encode(text)
+    num_tokens = len(input_tokens)
+    if(num_tokens > max_tokens):
+        return False
+    return True
+
 def perform_inference(my_input, max_length, model_name):
     my_input = remove_ansi_sequences(my_input)
     llm = model_dict[model_name]
+    short_enough = validate_length(llm, my_input, max_length)
+    if(not short_enough):
+        raise ValueError("Prompt too long")
     sampling_params = SamplingParams(temperature=0.8, top_p=0.95,max_tokens=max_length, min_tokens = 5)
     print("my input: ", my_input)
     print("max length: ", max_length)

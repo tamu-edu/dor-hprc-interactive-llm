@@ -54,12 +54,15 @@ def infer():
         model = data.get("model", "")
         max_len = int(data.get("length", "0"))
         if max_len > 512:
-            return jsonify({"status": 500, "error": "max length too long"})
+            return jsonify({"status": 501, "error": "max length too long"})
         lock_f = try_acquire_lock()
         if not lock_f:
             return jsonify({"status": 503, "error": "Server is busy, try again later", "response": "Server is busy"})
         try:
-            resp = perform_inference(prompt, max_len, model)
+            try:
+                resp = perform_inference(prompt, max_len, model)
+            except ValueError:
+                return jsonify({"status": 501, "response": "max length too long"})
             return jsonify({"response": resp})
         finally:
             release_lock(lock_f)

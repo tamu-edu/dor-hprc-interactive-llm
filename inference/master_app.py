@@ -37,13 +37,20 @@ def infer():
         result = ""
         for ip_address in child_ip_addresses:
             response = send_to_child(ip_address, prompt, max_response_length)
-            status_code = response.json().get("status", None)
+            try:
+                status_code = response.json().get("status", None)
+            except Exception as e:
+                print(f"node {ip_address} down, continuing")
+                continue;
             if(status_code and (status_code == 503)):
                 print("Child Busy", flush=True)
                 continue;
-            if(status_code and status_code >= 400):
+            if(status_code and (status_code == 501)):
+                result = "Prompt too long"
+            elif(status_code and status_code >= 400):
                 continue;
-            result = response.json()["response"]
+            if(result == ""):
+                result = response.json()["response"]
             if(result != ""):
                 break;
         if(result == ""):
