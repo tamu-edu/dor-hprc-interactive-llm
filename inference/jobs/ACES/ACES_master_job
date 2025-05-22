@@ -10,7 +10,6 @@
 #SBATCH --mem=488G
 #SBATCH --partition=staff
 #SBATCH --output=out
-#SBATCH --nodelist=ac028
 #SBATCH --exclusive
 module purge
 module load WebProxy 

@@ -1,12 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=inference_child
-#SBATCH --time=2-00:00:00
+#SBATCH --time=28-00:00:00
 #SBATCH --ntasks=3
 #SBATCH --cpus-per-task=12
 #SBATCH --gres=gpu:pvc:4
 #SBATCH --nodes=1
 #SBATCH --mem=488G
 #SBATCH --partition=staff
+#SBATCH --qos=hprc
+#SBATCH --reservation=pvc_llm
 #SBATCH --output=out1
 #SBATCH --exclusive
 module purge
