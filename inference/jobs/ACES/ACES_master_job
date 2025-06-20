@@ -3,7 +3,7 @@
 #SBATCH --time=28-00:00:00
 #SBATCH --ntasks=3
 #SBATCH --cpus-per-task=12
-#SBATCH --gres=gpu:pvc:8
+#SBATCH --gres=gpu:pvc:4
 #SBATCH --nodes=1
 #SBATCH --qos=hprc
 #SBATCH --reservation=pvc_llm
@@ -20,7 +20,7 @@ cd inference
 # ADD YOUR COMMANDS BELOW
 #ip addr | grep inet
 export CLUSTER=ACES
-export NUM_GPUS=8
+export NUM_GPUS=4
 python3 master_app.py $NUM_CHILDREN &
 python3 app.py 1025 > "logs/ac028" 2>&1 &
 wait

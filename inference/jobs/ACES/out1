@@ -1,44 +1,46 @@
  
-:: WARNING: setvars.sh has already been run. Skipping re-execution.
-   To force a re-execution of setvars.sh, use the '--force' option.
-   Using '--force' can result in excessive use of your environment variables.
-  
-usage: source setvars.sh [--force] [--config=file] [--help] [...]
-  --force        Force setvars.sh to re-run, doing so may overload environment.
-  --config=file  Customize env vars using a setvars.sh configuration file.
-  --help         Display this help message and exit.
-  ...            Additional args are passed to individual env/vars.sh scripts
-                 and should follow this script's arguments.
-  
-  Some POSIX shells do not accept command-line options. In that case, you can pass
-  command-line options via the SETVARS_ARGS environment variable. For example:
-  
-  $ SETVARS_ARGS="--config=config.txt" ; export SETVARS_ARGS
-  $ . path/to/setvars.sh
-  
-  The SETVARS_ARGS environment variable is cleared on exiting setvars.sh.
-  
-The oneAPI toolkits no longer support 32-bit libraries, starting with the 2025.0 toolkit release. See the oneAPI release notes for more details.
-  
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.4.20(1)-release
+   args: Using "$@" for setvars.sh arguments: 
+:: advisor -- latest
+:: ccl -- latest
  
-:: WARNING: setvars.sh has already been run. Skipping re-execution.
-   To force a re-execution of setvars.sh, use the '--force' option.
-   Using '--force' can result in excessive use of your environment variables.
-  
-usage: source setvars.sh [--force] [--config=file] [--help] [...]
-  --force        Force setvars.sh to re-run, doing so may overload environment.
-  --config=file  Customize env vars using a setvars.sh configuration file.
-  --help         Display this help message and exit.
-  ...            Additional args are passed to individual env/vars.sh scripts
-                 and should follow this script's arguments.
-  
-  Some POSIX shells do not accept command-line options. In that case, you can pass
-  command-line options via the SETVARS_ARGS environment variable. For example:
-  
-  $ SETVARS_ARGS="--config=config.txt" ; export SETVARS_ARGS
-  $ . path/to/setvars.sh
-  
-  The SETVARS_ARGS environment variable is cleared on exiting setvars.sh.
-  
-The oneAPI toolkits no longer support 32-bit libraries, starting with the 2025.0 toolkit release. See the oneAPI release notes for more details.
-  
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.4.20(1)-release
+   args: Using "$@" for setvars.sh arguments: 
+:: advisor -- latest
+:: compiler -- latest
+:: ccl -- latest
+:: dal -- latest
+:: compiler -- latest
+:: debugger -- latest
+:: dal -- latest
+:: dev-utilities -- latest
+:: debugger -- latest
+:: dnnl -- latest
+:: dev-utilities -- latest
+:: dpcpp-ct -- latest
+:: dnnl -- latest
+:: dpl -- latest
+:: dpcpp-ct -- latest
+:: ipp -- latest
+:: dpl -- latest
+:: ippcp -- latest
+:: ipp -- latest
+:: mkl -- latest
+:: ippcp -- latest
+:: mpi -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: pti -- latest
+:: pti -- latest
+:: tbb -- latest
+:: umf -- latest
+:: tbb -- latest
+:: umf -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 

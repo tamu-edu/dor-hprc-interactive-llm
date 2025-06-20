@@ -4,6 +4,7 @@ import socket
 import pickle
 import sys
 import time
+import json
 import requests
 app = Flask(__name__)
 TIMEOUT = 3
@@ -93,4 +94,9 @@ if __name__ == '__main__':
     file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.pkl"
     with open(file_name, "wb") as f:
         pickle.dump(ip_address, f)
+
+    json_path = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.json"
+    with open(json_path, "w") as f:
+        json.dump({"ip": ip_address}, f, indent=2)
+
     app.run(host='0.0.0.0', port=5000)
