@@ -22,9 +22,9 @@
 :: oneAPI environment initialized ::
  
 waiting for children to write ip addresses to file
-child ip addresses:  ['10.71.8.202:1025', '10.71.8.112:1025', '10.71.8.199:1025']
-['10.71.1.112', '10.71.8.112']
-10.71.8.112
+child ip addresses:  ['10.71.8.125:1025', '10.71.8.123:1025', '10.71.8.199:1025']
+['10.71.1.123', '10.71.8.123']
+10.71.8.123
  * Serving Flask app 'master_app'
  * Debug mode: off
 [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m

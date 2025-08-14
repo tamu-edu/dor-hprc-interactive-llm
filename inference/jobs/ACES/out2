@@ -1,0 +1,286 @@
+ 
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.4.20(1)-release
+   args: Using "$@" for setvars.sh arguments: 
+:: advisor -- latest
+:: ccl -- latest
+:: compiler -- latest
+:: dal -- latest
+:: debugger -- latest
+:: dev-utilities -- latest
+:: dnnl -- latest
+:: dpcpp-ct -- latest
+:: dpl -- latest
+:: ipp -- latest
+:: ippcp -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: pti -- latest
+:: tbb -- latest
+:: umf -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+vllm using port  34706
+[W803 07:51:08.543019903 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
+       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
+INFO 08-03 07:51:12 [__init__.py:248] Automatically detected platform xpu.
+WARNING 08-03 07:51:12 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 08-03 07:51:24 [config.py:752] This model supports multiple tasks: {'score', 'embed', 'reward', 'classify', 'generate'}. Defaulting to 'generate'.
+WARNING 08-03 07:51:24 [_logger.py:68] device type=xpu is not supported by the V1 Engine. Falling back to V0. 
+INFO 08-03 07:51:24 [config.py:1815] Defaulting to use mp for distributed inference
+INFO 08-03 07:51:24 [config.py:1849] Disabled the custom all-reduce kernel because it is not supported on current platform.
+ERROR 08-03 07:51:24 [xpu.py:104] Both start methods (spawn and fork) have issue on XPU if you use mp backend, setting it to ray instead.
+INFO 08-03 07:51:24 [llm_engine.py:240] Initializing a V0 LLM engine (v0.8.5.dev562+gc44c384b1) with config: model='/scratch/group/hprc/llama-models/llama-3_3-70B', speculative_config=None, tokenizer='/scratch/group/hprc/llama-models/llama-3_3-70B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=1024, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=True, quantization=None, enforce_eager=True, kv_cache_dtype=auto,  device_config=xpu, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=None, served_model_name=/scratch/group/hprc/llama-models/llama-3_3-70B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[],"max_capture_size":0}, use_cached_outputs=False, 
+WARNING 08-03 07:51:24 [_logger.py:68] No existing RAY instance detected. A new instance will be launched with current node resources.
+2025-08-03 07:51:28,852	INFO worker.py:1888 -- Started a local Ray instance.
+INFO 08-03 07:51:32 [ray_utils.py:335] No current placement group found. Creating a new placement group.
+INFO 08-03 07:51:32 [ray_distributed_executor.py:176] use_ray_spmd_worker: False
+[36m(pid=1226171)[0m [W803 07:51:37.578592541 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
+[36m(pid=1226171)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key
+[36m(pid=1226171)[0m   operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
+[36m(pid=1226171)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+[36m(pid=1226171)[0m   dispatch key: XPU
+[36m(pid=1226171)[0m   previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
+[36m(pid=1226171)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
+[36m(pid=1226171)[0m INFO 08-03 07:51:40 [__init__.py:248] Automatically detected platform xpu.
+[36m(pid=1226172)[0m WARNING 08-03 07:51:41 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+INFO 08-03 07:51:42 [ray_distributed_executor.py:352] non_carry_over_env_vars from config: set()
+INFO 08-03 07:51:42 [ray_distributed_executor.py:354] Copying the following environment variables to workers: ['VLLM_PORT', 'LD_LIBRARY_PATH', 'VLLM_USE_V1']
+INFO 08-03 07:51:42 [ray_distributed_executor.py:357] If certain env vars should NOT be copied to workers, add them to /home/u.ks124812/.config/vllm/ray_non_carry_over_env_vars.json file
+INFO 08-03 07:51:42 [xpu.py:35] Cannot use None backend on XPU.
+INFO 08-03 07:51:42 [xpu.py:36] Using IPEX attention backend.
+[36m(RayWorkerWrapper pid=1226172)[0m INFO 08-03 07:51:42 [xpu.py:35] Cannot use None backend on XPU.
+[36m(RayWorkerWrapper pid=1226172)[0m INFO 08-03 07:51:42 [xpu.py:36] Using IPEX attention backend.
+INFO 08-03 07:51:43 [shm_broadcast.py:266] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_89b50ddc'), local_subscribe_addr='ipc:///tmp/job.1208094/b963b41b-af83-43fe-8bc5-874014f2b6b0', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 08-03 07:51:43 [parallel_state.py:1004] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0
+2025:08:03-07:51:43:(1225493) |CCL_WARN| value of CCL_ATL_TRANSPORT changed to be ofi (default:mpi)
+2025:08:03-07:51:43:(1225493) |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2025:08:03-07:51:43:(1225493) |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 4 (default:-1)
+2025:08:03-07:51:43:(1225493) |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:51:44:(1225493) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=1226172)[0m INFO 08-03 07:51:43 [parallel_state.py:1004] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+[36m(RayWorkerWrapper pid=1226172)[0m 2025:08:03-07:51:44:(1226172) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+Loading safetensors checkpoint shards:   0% Completed | 0/30 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   3% Completed | 1/30 [00:02<01:21,  2.80s/it]
+Loading safetensors checkpoint shards:   7% Completed | 2/30 [00:05<01:22,  2.95s/it]
+Loading safetensors checkpoint shards:  10% Completed | 3/30 [00:08<01:14,  2.76s/it]
+Loading safetensors checkpoint shards:  13% Completed | 4/30 [00:10<01:08,  2.63s/it]
+Loading safetensors checkpoint shards:  17% Completed | 5/30 [00:13<01:06,  2.67s/it]
+Loading safetensors checkpoint shards:  20% Completed | 6/30 [00:15<01:01,  2.54s/it]
+Loading safetensors checkpoint shards:  23% Completed | 7/30 [00:18<00:55,  2.43s/it]
+Loading safetensors checkpoint shards:  27% Completed | 8/30 [00:20<00:52,  2.39s/it]
+Loading safetensors checkpoint shards:  30% Completed | 9/30 [00:22<00:46,  2.23s/it]
+Loading safetensors checkpoint shards:  33% Completed | 10/30 [00:24<00:45,  2.26s/it]
+Loading safetensors checkpoint shards:  37% Completed | 11/30 [00:27<00:49,  2.60s/it]
+Loading safetensors checkpoint shards:  40% Completed | 12/30 [00:30<00:44,  2.46s/it]
+Loading safetensors checkpoint shards:  43% Completed | 13/30 [00:32<00:39,  2.34s/it]
+Loading safetensors checkpoint shards:  47% Completed | 14/30 [00:34<00:36,  2.26s/it]
+Loading safetensors checkpoint shards:  50% Completed | 15/30 [00:36<00:35,  2.34s/it]
+Loading safetensors checkpoint shards:  53% Completed | 16/30 [00:38<00:30,  2.20s/it]
+Loading safetensors checkpoint shards:  57% Completed | 17/30 [00:41<00:29,  2.30s/it]
+Loading safetensors checkpoint shards:  60% Completed | 18/30 [00:43<00:27,  2.27s/it]
+Loading safetensors checkpoint shards:  63% Completed | 19/30 [00:45<00:24,  2.22s/it]
+Loading safetensors checkpoint shards:  67% Completed | 20/30 [00:53<00:38,  3.90s/it]
+Loading safetensors checkpoint shards:  70% Completed | 21/30 [01:02<00:50,  5.61s/it]
+Loading safetensors checkpoint shards:  73% Completed | 22/30 [01:10<00:49,  6.15s/it]
+Loading safetensors checkpoint shards:  77% Completed | 23/30 [01:18<00:48,  6.92s/it]
+Loading safetensors checkpoint shards:  80% Completed | 24/30 [01:27<00:44,  7.36s/it]
+Loading safetensors checkpoint shards:  83% Completed | 25/30 [01:29<00:29,  5.86s/it]
+Loading safetensors checkpoint shards:  87% Completed | 26/30 [01:39<00:27,  6.93s/it]
+Loading safetensors checkpoint shards:  90% Completed | 27/30 [01:46<00:20,  6.93s/it]
+Loading safetensors checkpoint shards:  93% Completed | 28/30 [01:54<00:14,  7.37s/it]
+Loading safetensors checkpoint shards:  97% Completed | 29/30 [02:03<00:07,  7.89s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [02:13<00:00,  8.56s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [02:13<00:00,  4.46s/it]
+
+[36m(RayWorkerWrapper pid=1226173)[0m INFO 08-03 07:54:00 [default_loader.py:278] Loading weights took 133.71 seconds
+[36m(pid=1226174)[0m INFO 08-03 07:51:40 [__init__.py:248] Automatically detected platform xpu.[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=1226174)[0m WARNING 08-03 07:51:41 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")[32m [repeated 3x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m INFO 08-03 07:51:42 [xpu.py:35] Cannot use None backend on XPU.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m INFO 08-03 07:51:42 [xpu.py:36] Using IPEX attention backend.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m INFO 08-03 07:51:43 [parallel_state.py:1004] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m 2025:08:03-07:51:44:(1226174) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 24x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m 2025:08:03-07:51:44:(1226174) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226173)[0m WARNING 08-03 07:54:00 [_logger.py:68] Pin memory is not supported on XPU.
+INFO 08-03 07:54:00 [default_loader.py:278] Loading weights took 133.80 seconds
+WARNING 08-03 07:54:00 [_logger.py:68] Pin memory is not supported on XPU.
+INFO 08-03 07:54:00 [xpu_model_runner.py:414] Loading model weights took 32.8894 GiB
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices
+2025:08:03-07:54:02:(1225493) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode
+[36m(RayWorkerWrapper pid=1226172)[0m INFO 08-03 07:54:00 [xpu_model_runner.py:414] Loading model weights took 32.8894 GiB
+INFO 08-03 07:54:09 [executor_base.py:112] # xpu blocks: 8446, # CPU blocks: 3276
+INFO 08-03 07:54:09 [executor_base.py:117] Maximum concurrency for 1024 tokens per request: 131.97x
+INFO 08-03 07:54:10 [llm_engine.py:435] init engine (profile, create kv cache, warmup model) took 10.04 seconds
+my input:  write hello world in perl
+max length:  512
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 2032.12it/s]
+Processed prompts:   0%|          | 0/1 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 1/1 [01:09<00:00, 69.85s/it, est. speed input: 0.09 toks/s, output: 7.33 toks/s]Processed prompts: 100%|██████████| 1/1 [01:09<00:00, 69.86s/it, est. speed input: 0.09 toks/s, output: 7.33 toks/s]
+[RequestOutput(request_id=0, prompt='write hello world in perl', prompt_token_ids=[128000, 5040, 24748, 1917, 304, 57156], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=0, text='\nTo write a "Hello, World!" program in Perl, you would create a simple script. Here\'s how you can do it:\n\n1. **Open a text editor**: You can use any text editor like Notepad on Windows, TextEdit on Mac, or any other plain text editor.\n\n2. **Write the Perl code**: In your text editor, write the following line of code:\n\n```perl\nprint "Hello, World!\\n";\n```\n\nThis line of code uses the `print` function to output the string "Hello, World!\\n" to the screen. The `\\n` at the end of the string is a newline character, which moves the cursor to the next line after printing the message.\n\n3. **Save the file**: Save your file with a `.pl` extension, for example, `hello_world.pl`. This extension is commonly used for Perl scripts, though it\'s not required.\n\n4. **Run the script**: To run your Perl script, you\'ll need to have Perl installed on your computer. You can download it from the official Perl website if you haven\'t already. \n\n   - **On Windows**: Open the Command Prompt, navigate to the directory where your `hello_world.pl` file is saved using the `cd` command, and then run your script by typing `perl hello_world.pl` and pressing Enter.\n   \n   - **On Mac or Linux**: Open the Terminal, navigate to the directory where your script is located, and run it by typing `perl hello_world.pl` and pressing Enter. You might need to give execute permissions to your script first by running `chmod +x hello_world.pl`, and then you can run it directly by typing `./hello_world.pl`.\n\nYou should see "Hello, World!" printed to the screen, followed by a newline.\n\n### More Complete Example\n\nIf you want a slightly more complete Perl program that includes a `use strict;` and `use warnings;` for better error checking and a main block for encapsulation, it might look like this:\n\n```perl\n#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nprint "Hello, World!\\n";\n```\n\nOr, encapsulated in a main block:\n\n```perl\n#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nsub main {\n    print "Hello, World!\\n";\n}\n\nmain();\n```\n\nThe `#!/usr/bin/perl` line is known as the shebang and specifies the interpreter that should be used to run the script. It\'s useful for making your script executable', token_ids=(198, 1271, 3350, 264, 330, 9906, 11, 4435, 9135, 2068, 304, 45532, 11, 499, 1053, 1893, 264, 4382, 5429, 13, 5810, 596, 1268, 499, 649, 656, 433, 1473, 16, 13, 3146, 5109, 264, 1495, 6576, 96618, 1472, 649, 1005, 904, 1495, 6576, 1093, 2876, 70641, 389, 5632, 11, 2991, 4126, 389, 7553, 11, 477, 904, 1023, 14733, 1495, 6576, 382, 17, 13, 3146, 8144, 279, 45532, 2082, 96618, 763, 701, 1495, 6576, 11, 3350, 279, 2768, 1584, 315, 2082, 1473, 74694, 66036, 198, 1374, 330, 9906, 11, 4435, 15114, 77, 886, 14196, 19884, 2028, 1584, 315, 2082, 5829, 279, 1595, 1374, 63, 734, 311, 2612, 279, 925, 330, 9906, 11, 4435, 15114, 77, 1, 311, 279, 4264, 13, 578, 92505, 77, 63, 520, 279, 842, 315, 279, 925, 374, 264, 40127, 3752, 11, 902, 11031, 279, 8291, 311, 279, 1828, 1584, 1306, 18991, 279, 1984, 382, 18, 13, 3146, 8960, 279, 1052, 96618, 10467, 701, 1052, 449, 264, 75190, 501, 63, 9070, 11, 369, 3187, 11, 1595, 15339, 32892, 8022, 29687, 1115, 9070, 374, 17037, 1511, 369, 45532, 20070, 11, 3582, 433, 596, 539, 2631, 382, 19, 13, 3146, 6869, 279, 5429, 96618, 2057, 1629, 701, 45532, 5429, 11, 499, 3358, 1205, 311, 617, 45532, 10487, 389, 701, 6500, 13, 1472, 649, 4232, 433, 505, 279, 4033, 45532, 3997, 422, 499, 9167, 956, 2736, 13, 4815, 256, 482, 3146, 1966, 5632, 96618, 5377, 279, 7498, 60601, 11, 21546, 311, 279, 6352, 1405, 701, 1595, 15339, 32892, 8022, 63, 1052, 374, 6924, 1701, 279, 1595, 4484, 63, 3290, 11, 323, 1243, 1629, 701, 5429, 555, 20061, 1595, 66036, 24748, 32892, 8022, 63, 323, 26422, 11502, 627, 5996, 256, 482, 3146, 1966, 7553, 477, 14677, 96618, 5377, 279, 35190, 11, 21546, 311, 279, 6352, 1405, 701, 5429, 374, 7559, 11, 323, 1629, 433, 555, 20061, 1595, 66036, 24748, 32892, 8022, 63, 323, 26422, 11502, 13, 1472, 2643, 1205, 311, 3041, 9203, 8709, 311, 701, 5429, 1176, 555, 4401, 1595, 57374, 489, 87, 24748, 32892, 8022, 7964, 323, 1243, 499, 649, 1629, 433, 6089, 555, 20061, 1595, 1761, 15339, 32892, 8022, 63438, 2675, 1288, 1518, 330, 9906, 11, 4435, 9135, 17124, 311, 279, 4264, 11, 8272, 555, 264, 40127, 382, 14711, 4497, 19121, 13688, 271, 2746, 499, 1390, 264, 10284, 810, 4686, 45532, 2068, 430, 5764, 264, 1595, 817, 7452, 26, 63, 323, 1595, 817, 19530, 26, 63, 369, 2731, 1493, 13598, 323, 264, 1925, 2565, 369, 43669, 2987, 11, 433, 2643, 1427, 1093, 420, 1473, 74694, 66036, 198, 8872, 7208, 8923, 78222, 198, 817, 7452, 280, 817, 19530, 401, 1374, 330, 9906, 11, 4435, 15114, 77, 886, 14196, 19884, 2244, 11, 43669, 7913, 304, 264, 1925, 2565, 1473, 74694, 66036, 198, 8872, 7208, 8923, 78222, 198, 817, 7452, 280, 817, 19530, 401, 2008, 1925, 341, 262, 1194, 330, 9906, 11, 4435, 15114, 77, 886, 633, 3902, 545, 14196, 19884, 791, 1595, 8872, 7208, 8923, 78222, 63, 1584, 374, 3967, 439, 279, 1364, 28273, 323, 30202, 279, 40399, 430, 1288, 387, 1511, 311, 1629, 279, 5429, 13, 1102, 596, 5505, 369, 3339, 701, 5429, 33256), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestMetrics(arrival_time=1754225650.5910945, last_token_time=1754225720.4435453, first_scheduled_time=1754225650.591878, first_token_time=1754225651.1751854, time_in_queue=0.0007834434509277344, finished_time=1754225720.4437988, scheduler_time=0.0608028499991633, model_forward_time=None, model_execute_time=None, spec_token_acceptance_counts=[0]), lora_request=None, num_cached_tokens=0, multi_modal_placeholders={})]
+CompletionOutput(index=0, text='\nTo write a "Hello, World!" program in Perl, you would create a simple script. Here\'s how you can do it:\n\n1. **Open a text editor**: You can use any text editor like Notepad on Windows, TextEdit on Mac, or any other plain text editor.\n\n2. **Write the Perl code**: In your text editor, write the following line of code:\n\n```perl\nprint "Hello, World!\\n";\n```\n\nThis line of code uses the `print` function to output the string "Hello, World!\\n" to the screen. The `\\n` at the end of the string is a newline character, which moves the cursor to the next line after printing the message.\n\n3. **Save the file**: Save your file with a `.pl` extension, for example, `hello_world.pl`. This extension is commonly used for Perl scripts, though it\'s not required.\n\n4. **Run the script**: To run your Perl script, you\'ll need to have Perl installed on your computer. You can download it from the official Perl website if you haven\'t already. \n\n   - **On Windows**: Open the Command Prompt, navigate to the directory where your `hello_world.pl` file is saved using the `cd` command, and then run your script by typing `perl hello_world.pl` and pressing Enter.\n   \n   - **On Mac or Linux**: Open the Terminal, navigate to the directory where your script is located, and run it by typing `perl hello_world.pl` and pressing Enter. You might need to give execute permissions to your script first by running `chmod +x hello_world.pl`, and then you can run it directly by typing `./hello_world.pl`.\n\nYou should see "Hello, World!" printed to the screen, followed by a newline.\n\n### More Complete Example\n\nIf you want a slightly more complete Perl program that includes a `use strict;` and `use warnings;` for better error checking and a main block for encapsulation, it might look like this:\n\n```perl\n#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nprint "Hello, World!\\n";\n```\n\nOr, encapsulated in a main block:\n\n```perl\n#!/usr/bin/perl\nuse strict;\nuse warnings;\n\nsub main {\n    print "Hello, World!\\n";\n}\n\nmain();\n```\n\nThe `#!/usr/bin/perl` line is known as the shebang and specifies the interpreter that should be used to run the script. It\'s useful for making your script executable', token_ids=(198, 1271, 3350, 264, 330, 9906, 11, 4435, 9135, 2068, 304, 45532, 11, 499, 1053, 1893, 264, 4382, 5429, 13, 5810, 596, 1268, 499, 649, 656, 433, 1473, 16, 13, 3146, 5109, 264, 1495, 6576, 96618, 1472, 649, 1005, 904, 1495, 6576, 1093, 2876, 70641, 389, 5632, 11, 2991, 4126, 389, 7553, 11, 477, 904, 1023, 14733, 1495, 6576, 382, 17, 13, 3146, 8144, 279, 45532, 2082, 96618, 763, 701, 1495, 6576, 11, 3350, 279, 2768, 1584, 315, 2082, 1473, 74694, 66036, 198, 1374, 330, 9906, 11, 4435, 15114, 77, 886, 14196, 19884, 2028, 1584, 315, 2082, 5829, 279, 1595, 1374, 63, 734, 311, 2612, 279, 925, 330, 9906, 11, 4435, 15114, 77, 1, 311, 279, 4264, 13, 578, 92505, 77, 63, 520, 279, 842, 315, 279, 925, 374, 264, 40127, 3752, 11, 902, 11031, 279, 8291, 311, 279, 1828, 1584, 1306, 18991, 279, 1984, 382, 18, 13, 3146, 8960, 279, 1052, 96618, 10467, 701, 1052, 449, 264, 75190, 501, 63, 9070, 11, 369, 3187, 11, 1595, 15339, 32892, 8022, 29687, 1115, 9070, 374, 17037, 1511, 369, 45532, 20070, 11, 3582, 433, 596, 539, 2631, 382, 19, 13, 3146, 6869, 279, 5429, 96618, 2057, 1629, 701, 45532, 5429, 11, 499, 3358, 1205, 311, 617, 45532, 10487, 389, 701, 6500, 13, 1472, 649, 4232, 433, 505, 279, 4033, 45532, 3997, 422, 499, 9167, 956, 2736, 13, 4815, 256, 482, 3146, 1966, 5632, 96618, 5377, 279, 7498, 60601, 11, 21546, 311, 279, 6352, 1405, 701, 1595, 15339, 32892, 8022, 63, 1052, 374, 6924, 1701, 279, 1595, 4484, 63, 3290, 11, 323, 1243, 1629, 701, 5429, 555, 20061, 1595, 66036, 24748, 32892, 8022, 63, 323, 26422, 11502, 627, 5996, 256, 482, 3146, 1966, 7553, 477, 14677, 96618, 5377, 279, 35190, 11, 21546, 311, 279, 6352, 1405, 701, 5429, 374, 7559, 11, 323, 1629, 433, 555, 20061, 1595, 66036, 24748, 32892, 8022, 63, 323, 26422, 11502, 13, 1472, 2643, 1205, 311, 3041, 9203, 8709, 311, 701, 5429, 1176, 555, 4401, 1595, 57374, 489, 87, 24748, 32892, 8022, 7964, 323, 1243, 499, 649, 1629, 433, 6089, 555, 20061, 1595, 1761, 15339, 32892, 8022, 63438, 2675, 1288, 1518, 330, 9906, 11, 4435, 9135, 17124, 311, 279, 4264, 11, 8272, 555, 264, 40127, 382, 14711, 4497, 19121, 13688, 271, 2746, 499, 1390, 264, 10284, 810, 4686, 45532, 2068, 430, 5764, 264, 1595, 817, 7452, 26, 63, 323, 1595, 817, 19530, 26, 63, 369, 2731, 1493, 13598, 323, 264, 1925, 2565, 369, 43669, 2987, 11, 433, 2643, 1427, 1093, 420, 1473, 74694, 66036, 198, 8872, 7208, 8923, 78222, 198, 817, 7452, 280, 817, 19530, 401, 1374, 330, 9906, 11, 4435, 15114, 77, 886, 14196, 19884, 2244, 11, 43669, 7913, 304, 264, 1925, 2565, 1473, 74694, 66036, 198, 8872, 7208, 8923, 78222, 198, 817, 7452, 280, 817, 19530, 401, 2008, 1925, 341, 262, 1194, 330, 9906, 11, 4435, 15114, 77, 886, 633, 3902, 545, 14196, 19884, 791, 1595, 8872, 7208, 8923, 78222, 63, 1584, 374, 3967, 439, 279, 1364, 28273, 323, 30202, 279, 40399, 430, 1288, 387, 1511, 311, 1629, 279, 5429, 13, 1102, 596, 5505, 369, 3339, 701, 5429, 33256), cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)
+returning result:  
+To write a "Hello, World!" program in Perl, you would create a simple script. Here's how you can do it:
+
+1. **Open a text editor**: You can use any text editor like Notepad on Windows, TextEdit on Mac, or any other plain text editor.
+
+2. **Write the Perl code**: In your text editor, write the following line of code:
+
+```perl
+print "Hello, World!\n";
+```
+
+This line of code uses the `print` function to output the string "Hello, World!\n" to the screen. The `\n` at the end of the string is a newline character, which moves the cursor to the next line after printing the message.
+
+3. **Save the file**: Save your file with a `.pl` extension, for example, `hello_world.pl`. This extension is commonly used for Perl scripts, though it's not required.
+
+4. **Run the script**: To run your Perl script, you'll need to have Perl installed on your computer. You can download it from the official Perl website if you haven't already. 
+
+   - **On Windows**: Open the Command Prompt, navigate to the directory where your `hello_world.pl` file is saved using the `cd` command, and then run your script by typing `perl hello_world.pl` and pressing Enter.
+   
+   - **On Mac or Linux**: Open the Terminal, navigate to the directory where your script is located, and run it by typing `perl hello_world.pl` and pressing Enter. You might need to give execute permissions to your script first by running `chmod +x hello_world.pl`, and then you can run it directly by typing `./hello_world.pl`.
+
+You should see "Hello, World!" printed to the screen, followed by a newline.
+
+### More Complete Example
+
+If you want a slightly more complete Perl program that includes a `use strict;` and `use warnings;` for better error checking and a main block for encapsulation, it might look like this:
+
+```perl
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+print "Hello, World!\n";
+```
+
+Or, encapsulated in a main block:
+
+```perl
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+sub main {
+    print "Hello, World!\n";
+}
+
+main();
+```
+
+The `#!/usr/bin/perl` line is known as the shebang and specifies the interpreter that should be used to run the script. It's useful for making your script executable
+
+
+To write a "Hello, World!" program in Perl, you would create a simple script. Here's how you can do it:
+
+1. **Open a text editor**: You can use any text editor like Notepad on Windows, TextEdit on Mac, or any other plain text editor.
+
+2. **Write the Perl code**: In your text editor, write the following line of code:
+
+```perl
+print "Hello, World!\n";
+```
+
+This line of code uses the `print` function to output the string "Hello, World!\n" to the screen. The `\n` at the end of the string is a newline character, which moves the cursor to the next line after printing the message.
+
+3. **Save the file**: Save your file with a `.pl` extension, for example, `hello_world.pl`. This extension is commonly used for Perl scripts, though it's not required.
+
+4. **Run the script**: To run your Perl script, you'll need to have Perl installed on your computer. You can download it from the official Perl website if you haven't already. 
+
+   - **On Windows**: Open the Command Prompt, navigate to the directory where your `hello_world.pl` file is saved using the `cd` command, and then run your script by typing `perl hello_world.pl` and pressing Enter.
+   
+   - **On Mac or Linux**: Open the Terminal, navigate to the directory where your script is located, and run it by typing `perl hello_world.pl` and pressing Enter. You might need to give execute permissions to your script first by running `chmod +x hello_world.pl`, and then you can run it directly by typing `./hello_world.pl`.
+
+You should see "Hello, World!" printed to the screen, followed by a newline.
+
+### More Complete Example
+
+If you want a slightly more complete Perl program that includes a `use strict;` and `use warnings;` for better error checking and a main block for encapsulation, it might look like this:
+
+```perl
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+print "Hello, World!\n";
+```
+
+Or, encapsulated in a main block:
+
+```perl
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+sub main {
+    print "Hello, World!\n";
+}
+
+main();
+```
+
+The `#!/usr/bin/perl` line is known as the shebang and specifies the interpreter that should be used to run the script. It's useful for making your script executable
+
+[36m(pid=1226174)[0m [W803 07:51:37.608843807 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m   Overriding a previously registered kernel for the same operator and the same dispatch key[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m   operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m     registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m   dispatch key: XPU[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m   previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37[32m [repeated 3x across cluster][0m
+[36m(pid=1226174)[0m        new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())[32m [repeated 3x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m INFO 08-03 07:54:00 [default_loader.py:278] Loading weights took 133.78 seconds[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m 2025:08:03-07:54:02:(1226174) |CCL_WARN| topology recognition shows PCIe connection between devices. If this is not correct, you can disable topology recognition, with CCL_TOPO_FABRIC_VERTEX_CONNECTION_CHECK=0. This will assume XeLinks across devices[32m [repeated 36x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m 2025:08:03-07:54:02:(1226174) |CCL_WARN| pidfd is not supported, fallbacks to drmfd exchange mode[32m [repeated 3x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m WARNING 08-03 07:54:00 [_logger.py:68] Pin memory is not supported on XPU.[32m [repeated 2x across cluster][0m
+[36m(RayWorkerWrapper pid=1226174)[0m INFO 08-03 07:54:00 [xpu_model_runner.py:414] Loading model weights took 32.8894 GiB[32m [repeated 2x across cluster][0m
+Exception ignored in: <function LLMEngine.__del__ at 0x154534e10430>
+Traceback (most recent call last):
+  File "/sw/hprc/sw/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev562+gc44c384b1.xpu-py3.10.egg/vllm/engine/llm_engine.py", line 524, in __del__
+  File "/sw/hprc/sw/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev562+gc44c384b1.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 127, in shutdown
+AttributeError: 'NoneType' object has no attribute 'info'
+Exception ignored in: <function RayDistributedExecutor.__del__ at 0x154532acd000>
+Traceback (most recent call last):
+  File "/sw/hprc/sw/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev562+gc44c384b1.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 635, in __del__
+  File "/sw/hprc/sw/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm-0.8.5.dev562+gc44c384b1.xpu-py3.10.egg/vllm/executor/ray_distributed_executor.py", line 127, in shutdown
+AttributeError: 'NoneType' object has no attribute 'info'
+/sw/eb/sw/Python/3.10.8-GCCcore-12.2.0/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

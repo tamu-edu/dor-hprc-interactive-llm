@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=inference_child
+#SBATCH --job-name=inference_test
 #SBATCH --time=2-00:00:00
 #SBATCH --ntasks=3
 #SBATCH --cpus-per-task=12
@@ -7,7 +7,9 @@
 #SBATCH --nodes=1
 #SBATCH --mem=488G
 #SBATCH --partition=staff
-#SBATCH --output=out1
+#SBATCH --reservation=pvc_llm
+#SBATCH --output=out2
+#SBATCH --nodelist=ac025
 #SBATCH --exclusive
 module purge
 module load WebProxy 

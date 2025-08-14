@@ -3,6 +3,7 @@ import subprocess
 import sys
 from flask import Flask, request, jsonify
 import portalocker
+import os
 from inference_script import perform_inference
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ ip = addresses[1]
 instance_id = ip.replace('.', '_') + "_" + port
 LOCK_FILE = f"/tmp/infer_lock_{instance_id}.lock"
 IP_LIST_FILE = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+MAX_TOKENS = int(os.environ["NUM_TOKENS"])
 
 def append_ip_to_file(file_path, ip_address):
     try:
@@ -53,7 +55,7 @@ def infer():
         prompt = data.get("input", "")
         model = data.get("model", "")
         max_len = int(data.get("length", "0"))
-        if max_len > 512:
+        if max_len > MAX_TOKENS:
             return jsonify({"status": 501, "error": "max length too long"})
         lock_f = try_acquire_lock()
         if not lock_f:

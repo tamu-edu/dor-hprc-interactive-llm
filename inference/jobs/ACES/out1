@@ -2,45 +2,45 @@
 :: initializing oneAPI environment ...
    slurm_script: BASH_VERSION = 4.4.20(1)-release
    args: Using "$@" for setvars.sh arguments: 
-:: advisor -- latest
-:: ccl -- latest
  
 :: initializing oneAPI environment ...
    slurm_script: BASH_VERSION = 4.4.20(1)-release
    args: Using "$@" for setvars.sh arguments: 
 :: advisor -- latest
-:: compiler -- latest
+:: advisor -- latest
 :: ccl -- latest
-:: dal -- latest
+:: ccl -- latest
 :: compiler -- latest
-:: debugger -- latest
+:: compiler -- latest
 :: dal -- latest
-:: dev-utilities -- latest
+:: dal -- latest
 :: debugger -- latest
-:: dnnl -- latest
+:: debugger -- latest
 :: dev-utilities -- latest
-:: dpcpp-ct -- latest
+:: dev-utilities -- latest
 :: dnnl -- latest
-:: dpl -- latest
+:: dnnl -- latest
 :: dpcpp-ct -- latest
-:: ipp -- latest
+:: dpcpp-ct -- latest
 :: dpl -- latest
-:: ippcp -- latest
+:: dpl -- latest
 :: ipp -- latest
-:: mkl -- latest
+:: ipp -- latest
 :: ippcp -- latest
-:: mpi -- latest
+:: ippcp -- latest
+:: mkl -- latest
 :: mkl -- latest
 :: mpi -- latest
+:: mpi -- latest
 :: pti -- latest
 :: pti -- latest
 :: tbb -- latest
-:: umf -- latest
 :: tbb -- latest
 :: umf -- latest
+:: umf -- latest
+:: vtune -- latest
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
-:: vtune -- latest
 :: oneAPI environment initialized ::
  

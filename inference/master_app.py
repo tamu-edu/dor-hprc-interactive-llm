@@ -30,8 +30,6 @@ def infer():
         print("prompt: ", prompt)
         model = data.get("model", "")
         max_response_length = int(data.get("length", ""))
-        if(max_response_length > 512):
-            return jsonify({"status": 400, "error": "max length too long"})
 
         child_ip_addresses = get_children()
         print(child_ip_addresses)

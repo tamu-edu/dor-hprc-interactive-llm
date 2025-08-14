@@ -9,6 +9,7 @@
 #SBATCH --reservation=pvc_llm
 #SBATCH --mem=488G
 #SBATCH --partition=staff
+#SBATCH --nodelist=ac023
 #SBATCH --output=out
 #SBATCH --exclusive
 module purge

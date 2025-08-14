@@ -12,6 +12,7 @@ cluster = os.environ["CLUSTER"]
 MODEL_PATH = None
 if(cluster == "ACES"):
     MODEL_PATH = "/scratch/group/hprc/llama-models/llama-3_3-70B"
+    #MODEL_PATH = "/scratch/data/llms/phi-4-reasoning-plus/"
 elif(cluster == "LAUNCH"):
     MODEL_PATH = "/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/"
 model_dict = {}

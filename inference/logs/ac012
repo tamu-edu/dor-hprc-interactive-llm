@@ -1,10 +1,1 @@
-vllm using port  41792
-[W620 13:41:22.865045569 OperatorEntry.cpp:154] Warning: Warning only once for all operators,  other operators may also be overridden.
-  Overriding a previously registered kernel for the same operator and the same dispatch key
-  operator: aten::geometric_(Tensor(a!) self, float p, *, Generator? generator=None) -> Tensor(a!)
-    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
-  dispatch key: XPU
-  previous kernel: registered at /pytorch/aten/src/ATen/VmapModeRegistrations.cpp:37
-       new kernel: registered at /build/intel-pytorch-extension/build/Release/csrc/gpu/csrc/gpu/xpu/ATen/RegisterXPU_0.cpp:186 (function operator())
-INFO 06-20 13:41:24 [__init__.py:248] Automatically detected platform xpu.
-WARNING 06-20 13:41:25 [_logger.py:68] Failed to import from vllm._C with ModuleNotFoundError("No module named 'vllm._C'")
+vllm using port  26869
