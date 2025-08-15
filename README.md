@@ -21,6 +21,7 @@ export NUM_TOKENS=1024 #The maximum number of tokens that the model can produce 
 ```
 Now, with your virtual environment activated, you can run:  
 ```
+cd inference
 python3 master_app.py
 ```
 on a node. note that master_app.py does not require a gpu to run.  
