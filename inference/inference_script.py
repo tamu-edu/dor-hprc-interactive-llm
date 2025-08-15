@@ -8,22 +8,19 @@ print("vllm using port ", port, flush=True)
 os.environ["VLLM_PORT"] = str(port)
 from vllm import LLM, SamplingParams
 import re
-cluster = os.environ["CLUSTER"]
-MODEL_PATH = None
-if(cluster == "ACES"):
-    MODEL_PATH = "/scratch/group/hprc/llama-models/llama-3_3-70B"
-    #MODEL_PATH = "/scratch/data/llms/phi-4-reasoning-plus/"
-elif(cluster == "LAUNCH"):
-    MODEL_PATH = "/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/"
+cluster = os.environ.get("CLUSTER", None)
+NUM_GPUS = int(os.environ["NUM_GPUS"])
+MODEL_PATH = os.environ["MODEL_PATH"]
+MAX_TOKENS = int(os.environ["NUM_TOKENS"])
+
 model_dict = {}
-if(cluster == "ACES"):
-    NUM_GPUS = int(os.environ["NUM_GPUS"])
+if(cluster == "ACES"): #because ACES uses xpus
     model_dict = {
-            "llama_8B":LLM(model=MODEL_PATH,dtype="bfloat16",enforce_eager=True,tensor_parallel_size=NUM_GPUS,max_model_len=1024, max_num_seqs=1, device="xpu")
+            "llama_8B":LLM(model=MODEL_PATH,dtype="bfloat16",enforce_eager=True,tensor_parallel_size=NUM_GPUS,max_model_len=MAX_TOKENS, max_num_seqs=1, device="xpu")
     }
-elif(cluster == "LAUNCH"):
+else:
     model_dict = {
-            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=2,max_model_len=2048, max_num_seqs=2, device="cuda")
+            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=NUM_GPUS,max_model_len=MAX_TOKENS, max_num_seqs=2, device="cuda")
     }
 def remove_ansi_sequences(text):
     ansi_escape = re.compile(r'\x1b\[[0-9;]*m')
@@ -45,12 +42,9 @@ def perform_inference(my_input, max_length, model_name):
         raise ValueError("Prompt too long")
     sampling_params = SamplingParams(temperature=0.8, top_p=0.95,max_tokens=max_length, min_tokens = 5)
     print("my input: ", my_input)
-    print("max length: ", max_length)
     outputs = llm.generate([my_input], sampling_params)
-    print(outputs, flush=True)
     result = ""
     for output in outputs[0].outputs:
-        print(output)
         result += output.text + "\n";
     print("returning result: ", result, flush=True)
     return result

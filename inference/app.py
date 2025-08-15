@@ -14,7 +14,7 @@ addresses = result.stdout.strip().split()
 ip = addresses[1]
 instance_id = ip.replace('.', '_') + "_" + port
 LOCK_FILE = f"/tmp/infer_lock_{instance_id}.lock"
-IP_LIST_FILE = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+IP_LIST_FILE = os.environ["IP_LIST_FILE"]
 MAX_TOKENS = int(os.environ["NUM_TOKENS"])
 
 def append_ip_to_file(file_path, ip_address):

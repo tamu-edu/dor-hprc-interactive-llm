@@ -1,15 +1,17 @@
 import pickle
 import requests
+IP_LIST_FILE = os.environ["IP_LIST_FILE"]
+NUM_CHILDREN = int(os.environ["NUM_CHILDREN"])
 def send_question(prompt, index, results):
     response = None
-    with open("/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.pkl", "rb") as my_file:
+    with open(IP_LIST_FILE, "rb") as my_file:
         ip = pickle.load(my_file)
         url = f"http://{ip}:5000/infer"
         headers = {"Content-Type": "application/json"}
         data = {
-        "input": prompt,
-        "length": 1024,
-        "model": "llama_8B"
+            "input": prompt,
+            "length": 256,
+            "model": "llama_8B"
         }
         print("sending to url: ", url)
         response = requests.post(url, headers=headers, json=data)

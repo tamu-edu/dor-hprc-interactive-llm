@@ -7,7 +7,9 @@ import time
 import json
 import requests
 app = Flask(__name__)
-TIMEOUT = 3
+MASTER_IP_ADDRESS_PATH = os.environ["MASTER_IP_ADDRESS_PATH"]
+IP_LIST_FILE = os.environ["IP_LIST_FILE"]
+
 child_ip_addresses = []
 def send_to_child(ip_address, prompt, length):
     url = f"http://{ip_address}/infer"
@@ -63,7 +65,7 @@ def infer():
         return jsonify({"status": 500, "error": e, "response": "server busy"})
 
 def get_children():
-    file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+    file_name = IP_LIST_FILE
     child_ip_addresses = []
     with open(file_name, "rb") as f:
         child_ip_addresses = pickle.load(f)
@@ -72,29 +74,22 @@ def get_children():
 if __name__ == '__main__':
     expected_num_ip_addresses = int(sys.argv[1]) 
     child_ip_addresses = []
-    file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl"
+    file_name = IP_LIST_FILE
     with open(file_name, "wb") as f:
         pickle.dump([], f)
     print("waiting for children to write ip addresses to file", flush=True)
     while(len(child_ip_addresses) < expected_num_ip_addresses):
         child_ip_addresses = get_children()
         time.sleep(1)
-    print("child ip addresses: ", child_ip_addresses, flush=True)  
     result = subprocess.run(
         ["hostname", "-I"],
         capture_output=True,
         text=True,
         check=True
     )
-    print(result.stdout.strip().split())
     ip_address = result.stdout.strip().split()[1]
-    print(ip_address)
-    file_name = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.pkl"
+    file_name = MASTER_IP_ADDRESS_PATH
     with open(file_name, "wb") as f:
         pickle.dump(ip_address, f)
-
-    json_path = "/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.json"
-    with open(json_path, "w") as f:
-        json.dump({"ip": ip_address}, f, indent=2)
 
     app.run(host='0.0.0.0', port=5000)
