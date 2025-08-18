@@ -27,11 +27,12 @@ python3 master_app.py
 on a node. note that master_app.py does not require a gpu to run.  
 You can then run app.py exactly $NUM_CHILDREN times, these processes can be distributed across as many nodes as needed: 
 ```
-python3 app.py //on node a  
-python3 app.py //on node b  
+python3 app.py <port number> //on node a  
+python3 app.py <port number> //on node b  
 ...
-python3 app.py //on node x
+python3 app.py <port number> //on node x
 ```
+Note that if you run two app.py instances on the same node, they must have different port numbers.
 Once your app is running, you can test it with:
 ```
 python3 test/test_scale.py
