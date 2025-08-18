@@ -59,3 +59,6 @@ launch a jupyterlab session with this virtual environment.
 Documentation for using the jupyter-ai extension can be found here: https://github.com/jupyterlab/jupyter-ai  
 Or HPRC has documentation for usage here: https://hprc.tamu.edu/kb/Software/Jupyter-AI-Assistant/  
 Note that HPRC Provider :: HPRC_llama_8B will be replaced by whatever you used for your provider and model name.  
+### Installing as an interactive application on OOD
+This part is a bit tricky since configuration is going to vary between clusters. This is the repo that HPRC used to install the jupyter ai assistant on Launch:  
+https://github.com/tamu-edu/dor-hprc-jupyter-ai-interactive-app
