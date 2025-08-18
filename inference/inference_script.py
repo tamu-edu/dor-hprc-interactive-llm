@@ -20,7 +20,7 @@ if(cluster == "ACES"): #because ACES uses xpus
     }
 else:
     model_dict = {
-            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=NUM_GPUS,max_model_len=MAX_TOKENS, max_num_seqs=2, device="cuda")
+            "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=NUM_GPUS,max_model_len=MAX_TOKENS, max_num_seqs=2)
     }
 def remove_ansi_sequences(text):
     ansi_escape = re.compile(r'\x1b\[[0-9;]*m')

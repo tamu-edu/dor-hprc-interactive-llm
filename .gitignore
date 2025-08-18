@@ -1,4 +1,6 @@
 venv
+.venv
+uv_env
 *__pycache__
 *.swp
 vllm

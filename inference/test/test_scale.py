@@ -1,10 +1,11 @@
 import pickle
 import requests
-IP_LIST_FILE = os.environ["IP_LIST_FILE"]
+import os
+MASTER_IP_ADDRESS_PATH = os.environ["MASTER_IP_ADDRESS_PATH"]
 NUM_CHILDREN = int(os.environ["NUM_CHILDREN"])
 def send_question(prompt, index, results):
     response = None
-    with open(IP_LIST_FILE, "rb") as my_file:
+    with open(MASTER_IP_ADDRESS_PATH, "rb") as my_file:
         ip = pickle.load(my_file)
         url = f"http://{ip}:5000/infer"
         headers = {"Content-Type": "application/json"}

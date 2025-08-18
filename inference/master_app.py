@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import subprocess
 import socket
+import os
 import pickle
 import sys
 import time
@@ -9,7 +10,7 @@ import requests
 app = Flask(__name__)
 MASTER_IP_ADDRESS_PATH = os.environ["MASTER_IP_ADDRESS_PATH"]
 IP_LIST_FILE = os.environ["IP_LIST_FILE"]
-
+NUM_CHILDREN = int(os.environ["NUM_CHILDREN"])
 child_ip_addresses = []
 def send_to_child(ip_address, prompt, length):
     url = f"http://{ip_address}/infer"
@@ -72,7 +73,7 @@ def get_children():
     return child_ip_addresses
 
 if __name__ == '__main__':
-    expected_num_ip_addresses = int(sys.argv[1]) 
+    expected_num_ip_addresses = NUM_CHILDREN
     child_ip_addresses = []
     file_name = IP_LIST_FILE
     with open(file_name, "wb") as f:
