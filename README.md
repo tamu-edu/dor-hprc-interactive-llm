@@ -5,6 +5,7 @@ git clone --recursive git@github.com:tamu-edu/dor-hprc-interactive-llm.git
 cd dor-hprc-interactive-llm
 source modules.sh # modify modules.sh if needed to load python 3.10.8
 python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ``` 
 you will need to install vllm as well, their installation instructions can be found here:  
