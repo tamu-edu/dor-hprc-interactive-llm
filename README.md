@@ -35,5 +35,5 @@ python3 app.py <port number> //on node x
 Note that if you run two app.py instances on the same node, they must have different port numbers.
 Once your app is running, you can test it with:
 ```
-python3 test/test_scale.py
+python3 test/test_scale.py <num children>
 ```
