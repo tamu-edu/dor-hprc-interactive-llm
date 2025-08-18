@@ -2,7 +2,6 @@ import pickle
 import requests
 import os
 MASTER_IP_ADDRESS_PATH = os.environ["MASTER_IP_ADDRESS_PATH"]
-NUM_CHILDREN = int(os.environ["NUM_CHILDREN"])
 def send_question(prompt, index, results):
     response = None
     with open(MASTER_IP_ADDRESS_PATH, "rb") as my_file:
