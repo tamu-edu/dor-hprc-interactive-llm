@@ -42,4 +42,7 @@ python3 test/test_scale.py <num children>
 Unfortunately several things in the Jupyter-AI extension code are hardcoded: the path to the master ip address and the provider / model names. Luckily, these are not too tricky to change.  
 #### Setting the path to the master IP address file
 in the file jupyter-ai/packages/HPRC-llama-8B/HPRC_llama_8B/llm.py change the variable master_ip_address_file to the same value you used for the MASTER_IP_ADDRESS_PATH when launching your inference server.  
-#### Changing provider / model names  
+#### Changing provider name  
+in the file jupyter-ai/packages/HPRC-llama-8B/HPRC_llama_8B/provider.py change the name field to a string of your choosing.  
+### Changing model name
+in the file jupyter-ai/packages/HPRC-llama-8B/HPRC_llama_8B/llm.py change the model_id field to a string of your choosing. 
