@@ -2,45 +2,23 @@
 :: initializing oneAPI environment ...
    slurm_script: BASH_VERSION = 4.4.20(1)-release
    args: Using "$@" for setvars.sh arguments: 
- 
-:: initializing oneAPI environment ...
-   slurm_script: BASH_VERSION = 4.4.20(1)-release
-   args: Using "$@" for setvars.sh arguments: 
-:: advisor -- latest
 :: advisor -- latest
 :: ccl -- latest
-:: ccl -- latest
-:: compiler -- latest
 :: compiler -- latest
 :: dal -- latest
-:: dal -- latest
-:: debugger -- latest
 :: debugger -- latest
 :: dev-utilities -- latest
-:: dev-utilities -- latest
-:: dnnl -- latest
 :: dnnl -- latest
 :: dpcpp-ct -- latest
-:: dpcpp-ct -- latest
-:: dpl -- latest
 :: dpl -- latest
 :: ipp -- latest
-:: ipp -- latest
-:: ippcp -- latest
 :: ippcp -- latest
 :: mkl -- latest
-:: mkl -- latest
-:: mpi -- latest
 :: mpi -- latest
 :: pti -- latest
-:: pti -- latest
-:: tbb -- latest
 :: tbb -- latest
 :: umf -- latest
-:: umf -- latest
-:: vtune -- latest
 :: vtune -- latest
 :: oneAPI environment initialized ::
  
-:: oneAPI environment initialized ::
- 
+slurmstepd: error: *** JOB 1387494 ON ac025 CANCELLED AT 2026-01-15T15:07:31 ***
