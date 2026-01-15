@@ -1,0 +1,10 @@
+vllm using port  21779
+INFO 08-15 11:06:27 [__init__.py:235] Automatically detected platform cuda.
+Traceback (most recent call last):
+  File "/ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/inference/./app.py", line 7, in <module>
+    from inference_script import perform_inference
+  File "/ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/inference/inference_script.py", line 23, in <module>
+    "llama_8B": LLM(model=MODEL_PATH, tensor_parallel_size=NUM_GPUS,max_model_len=MAX_TOKENS, max_num_seqs=2, device="cuda")
+  File "/ztank/scratch/user/u.ks124812/dor-hprc-interactive-llm/venv/lib/python3.10/site-packages/vllm/entrypoints/llm.py", line 243, in __init__
+    engine_args = EngineArgs(
+TypeError: EngineArgs.__init__() got an unexpected keyword argument 'device'
