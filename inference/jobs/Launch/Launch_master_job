@@ -7,6 +7,7 @@
 #SBATCH --nodes=1
 #SBATCH --mem=488G
 #SBATCH --partition=gpu
+#SBATCH --reservation=jupyter_assistant
 #SBATCH --output=out
 #SBATCH --exclusive
 module purge
@@ -17,11 +18,6 @@ source venv/bin/activate
 cd inference
 # ADD YOUR COMMANDS BELOW
 #ip addr | grep inet
-export CLUSTER=LAUNCH
-export NUM_GPUS=2
-export IP_LIST_FILE=/sw/hprc/sw/dor-hprc-venv-manager/codeai/child_ips.pkl
-export IP_FILE=/sw/hprc/sw/dor-hprc-venv-manager/codeai/ip.pkl
-export MODEL_PATH=/ztank/scratch/group/hprc/torch_tune/llm_base_models/llama-3.1-8B-Instruct/
 python3 master_app.py $NUM_CHILDREN &
 python3 app.py 1025 > "logs/${SLURMD_NODENAME}" 2>&1 &
 wait
